@@ -8,7 +8,7 @@ public class InputManager : MonoBehaviour
     {
         get { return instance; }
     }
-
+    [SerializeField]
     private PlayerControls playerControls;
 
     private void Awake()
@@ -16,6 +16,9 @@ public class InputManager : MonoBehaviour
         if (instance != null && instance != this) { Destroy(this.gameObject); }
         else instance = this;
         playerControls = new PlayerControls();
+
+  
+
     }
 
     private void OnEnable()
@@ -31,8 +34,10 @@ public class InputManager : MonoBehaviour
     {
         return playerControls.Player.Movement.ReadValue<Vector2>();
     }
-    public bool PlayerDashed()
-    {
-        return playerControls.Player.Dash.triggered;
-    }
+   
+
+    //public bool PlayerDashed()
+    //{
+    //    return playerControls.Player.Dash.triggered;
+    //}
 }

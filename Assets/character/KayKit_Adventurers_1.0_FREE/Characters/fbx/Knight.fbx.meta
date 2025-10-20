@@ -297,7 +297,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -306,11 +306,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: T-Pose
-      takeName: T-Pose
+      name: Idle (1)
+      takeName: Idle
       internalID: -8312538846858333772
       firstFrame: 0
-      lastFrame: 1
+      lastFrame: 32
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -318,7 +318,7 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
-      loopBlend: 0
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -346,7 +346,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -375,7 +375,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -404,7 +404,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -433,7 +433,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -462,7 +462,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -491,7 +491,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -520,7 +520,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -549,7 +549,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -578,7 +578,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -2786,16 +2786,6 @@ ModelImporter:
       position: {x: -8.419292e-10, y: 0.096125245, z: -0.057499886}
       rotation: {x: -0.0000000119789805, y: -0.000000015198488, z: 0.7071068, w: 0.7071067}
       scale: {x: 1, y: 1, z: 1}
-    - name: 1H_Sword_Offhand
-      parentName: handslot.l
-      position: {x: -0.000000059604645, y: 0.017011791, z: -0.00000012129213}
-      rotation: {x: 0.000000056966275, y: 0.0000000022765432, z: -0.00000029562733, w: 1}
-      scale: {x: 1.0000005, y: 1.0000005, z: 1.0000001}
-    - name: Badge_Shield
-      parentName: handslot.l
-      position: {x: -0.000000059604645, y: 0.017011762, z: 0.15588522}
-      rotation: {x: 0.000000056966275, y: 0.0000000022765432, z: -0.00000029562733, w: 1}
-      scale: {x: 1.0000005, y: 1.0000005, z: 1.0000001}
     - name: Rectangle_Shield
       parentName: handslot.l
       position: {x: -0.000000059604645, y: 0.017011762, z: 0.15588522}
@@ -2809,6 +2799,16 @@ ModelImporter:
     - name: Spike_Shield
       parentName: handslot.l
       position: {x: -0.000000059604645, y: 0.017011762, z: 0.15588522}
+      rotation: {x: 0.000000056966275, y: 0.0000000022765432, z: -0.00000029562733, w: 1}
+      scale: {x: 1.0000005, y: 1.0000005, z: 1.0000001}
+    - name: Badge_Shield
+      parentName: handslot.l
+      position: {x: -0.000000059604645, y: 0.017011762, z: 0.15588522}
+      rotation: {x: 0.000000056966275, y: 0.0000000022765432, z: -0.00000029562733, w: 1}
+      scale: {x: 1.0000005, y: 1.0000005, z: 1.0000001}
+    - name: 1H_Sword_Offhand
+      parentName: handslot.l
+      position: {x: -0.000000059604645, y: 0.017011791, z: -0.00000012129213}
       rotation: {x: 0.000000056966275, y: 0.0000000022765432, z: -0.00000029562733, w: 1}
       scale: {x: 1.0000005, y: 1.0000005, z: 1.0000001}
     - name: upperarm.r
@@ -2836,12 +2836,12 @@ ModelImporter:
       position: {x: 8.4187235e-10, y: 0.096125245, z: -0.057499886}
       rotation: {x: -0.000000011979, y: 0.000000015198468, z: -0.7071068, w: 0.7071067}
       scale: {x: 1, y: 1, z: 1}
-    - name: 1H_Sword
+    - name: 2H_Sword
       parentName: handslot.r
       position: {x: 0.000000059604645, y: 0.03330931, z: -0.00000023864456}
       rotation: {x: 0.000000056966357, y: -0.000000002276496, z: -0.000000030214018, w: 1}
       scale: {x: 1.0000005, y: 1.0000005, z: 1.0000001}
-    - name: 2H_Sword
+    - name: 1H_Sword
       parentName: handslot.r
       position: {x: 0.000000059604645, y: 0.03330931, z: -0.00000023864456}
       rotation: {x: 0.000000056966357, y: -0.000000002276496, z: -0.000000030214018, w: 1}
@@ -2999,7 +2999,7 @@ ModelImporter:
     hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  autoGenerateAvatarMappingIfUnspecified: 0
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
   avatarSetup: 1
