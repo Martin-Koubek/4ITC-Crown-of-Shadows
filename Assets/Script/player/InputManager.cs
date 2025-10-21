@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
     private static InputManager instance;
+    private static bool sprint = false;
 
     public static InputManager Instance
     {
@@ -29,6 +31,17 @@ public class InputManager : MonoBehaviour
     {
         playerControls.Disable();
     }
+
+    public bool GetPlayetSprint()
+    {
+        return playerControls.Player.Sprint.triggered;
+    }
+        
+ 
+            
+
+
+    
 
     public Vector2 GetPlayerMovement()
     {

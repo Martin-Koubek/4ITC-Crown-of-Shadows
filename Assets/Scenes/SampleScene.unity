@@ -18632,9 +18632,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c687feee8a089e7419467524f5ab0ddc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 2
+  playerSpeed: 3
   dashDistance: 5
   rotationSpeed: 4
+  sprintSpeed: 6
   cameraTransform: {fileID: 1426962179}
 --- !u!143 &1636162232
 CharacterController:
