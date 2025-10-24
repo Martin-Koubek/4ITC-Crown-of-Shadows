@@ -34,7 +34,7 @@ public class InputManager : MonoBehaviour
 
     public bool GetPlayetSprint()
     {
-        return playerControls.Player.Sprint.triggered;
+        return playerControls.Player.Sprint.inProgress;
     }
         
  

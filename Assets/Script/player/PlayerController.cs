@@ -13,7 +13,10 @@ public class PlayerController : MonoBehaviour
     private float rotationSpeed = .8f;
     [SerializeField]
     private float sprintSpeed = 6f;
-
+    [SerializeField]
+    private float gravityValue = -9.81f;
+    private bool grounded = true;
+    private Vector3 playerVelocity;
     private CharacterController controller;
 
     //private bool Dashed;
@@ -42,19 +45,17 @@ public class PlayerController : MonoBehaviour
     {
         bool sprinting = inputManager.GetPlayetSprint();
         Debug.Log(sprinting);
-        bool toggle = false;
         Vector2 movement = inputManager.GetPlayerMovement();
         Vector3 move = new Vector3(movement.x, 0f, movement.y);
         move = cameraTransform.right.normalized * move.x + cameraTransform.forward.normalized * move.z;
         move.y = 0f;
 
-        if(sprinting && !toggle)
+        if (grounded && playerVelocity.y < 0f)
         {
-            toggle = true;
-            Debug.Log(toggle + "sprint toggled on");
+            playerVelocity.y = 0f;
         }
 
-        if (toggle)
+        if (sprinting)
         {
             Debug.Log("zacaloto");
             controller.Move(move * Time.deltaTime * sprintSpeed);
@@ -62,13 +63,16 @@ public class PlayerController : MonoBehaviour
             animator.SetFloat(moveZAnimationParameterId, movement.y);
             Debug.Log("Funguje to");
         }
-        else if (!toggle)
+        else if (!sprinting)
         {
             Debug.Log("Default");
             controller.Move(move * Time.deltaTime * playerSpeed);
             animator.SetFloat(moveXAnimationParameterId, movement.x);
             animator.SetFloat(moveZAnimationParameterId, movement.y / 2);
         }
+        playerVelocity.y += gravityValue * Time.deltaTime;
+        controller.Move(playerVelocity * Time.deltaTime);
+
         Quaternion targetRotation = Quaternion.Euler(0, cameraTransform.eulerAngles.y, 0);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
