@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Default");
             controller.Move(move * Time.deltaTime * playerSpeed);
-            animator.SetFloat(moveXAnimationParameterId, movement.x);
+            animator.SetFloat(moveXAnimationParameterId, movement.x / 2);
             animator.SetFloat(moveZAnimationParameterId, movement.y / 2);
         }
         playerVelocity.y += gravityValue * Time.deltaTime;
