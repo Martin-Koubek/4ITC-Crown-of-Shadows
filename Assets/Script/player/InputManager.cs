@@ -37,7 +37,27 @@ public class InputManager : MonoBehaviour
         return playerControls.Player.Sprint.inProgress;
     }
         
- 
+    public bool GetPlayerInventory()
+    {
+        return playerControls.Player.Inventory.triggered;
+    }
+
+    public bool GetPlayerMenu()
+    {
+        return playerControls.Player.Pause.triggered;
+    }
+    public bool GetPlayerAttack()
+    {
+        return playerControls.Player.Attack.triggered;
+    }
+    public bool GetPlayerBlock_HeavyAttack()
+    {
+        return playerControls.Player.BlockHeavyAttack.inProgress;
+    }
+    public bool GetPlayerInteract()
+    {
+        return playerControls.Player.Interact.triggered;
+    }
             
 
 
