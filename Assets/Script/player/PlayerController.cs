@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
     private InputManager inputManager;
     [SerializeField]
     private Transform cameraTransform;
+    //animations
     [Header("Animator")]
     private Animator animator;
     int moveXAnimationParameterId;
