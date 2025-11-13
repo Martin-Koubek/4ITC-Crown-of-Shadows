@@ -4,4 +4,16 @@ public class DoorSC : MonoBehaviour
 {
     public bool isOpen = false;
     private Animation openDoor;
+
+    private void Update()
+    {
+        if (isOpen)
+        {
+
+        }
+        else
+        {
+
+        }
+    }
 }

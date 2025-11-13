@@ -4,7 +4,10 @@ using UnityEngine;
 public class Interaction : MonoBehaviour
 {
     private InputManager inputManager;
+    private Transform _RayCastPoint;
     private RaycastHit hit;
+    [SerializeField]
+    private float _hitRange;
 
     private void Awake()
     {
@@ -13,10 +16,17 @@ public class Interaction : MonoBehaviour
     private void Update()
     {
         bool interacted = inputManager.GetPlayerInteract();
-
+        Ray ray = new Ray(_RayCastPoint.position, _RayCastPoint.forward);
         if (interacted)
         {
-        
+            Physics.Raycast(ray, out hit, _hitRange);
+
+            if (hit.collider.gameObject.TryGetComponent<DoorSC>(out DoorSC door))
+            {
+                if (!door.isOpen)
+                {
+                }
+            }
         }
 
     }

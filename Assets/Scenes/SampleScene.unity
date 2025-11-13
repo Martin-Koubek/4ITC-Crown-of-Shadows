@@ -3180,6 +3180,22 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Door
       objectReference: {fileID: 0}
+    - target: {fileID: 5980314168419120999, guid: ec435d6df2be5b342853c02165052317, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5980314168419120999, guid: ec435d6df2be5b342853c02165052317, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5980314168419120999, guid: ec435d6df2be5b342853c02165052317, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5980314168419120999, guid: ec435d6df2be5b342853c02165052317, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3199,6 +3215,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ec435d6df2be5b342853c02165052317, type: 3}
       insertIndex: -1
       addedObject: {fileID: 814721895}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ec435d6df2be5b342853c02165052317, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 814721896}
     - targetCorrespondingSourceObject: {fileID: 3245047377962470163, guid: ec435d6df2be5b342853c02165052317, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1547423972}
@@ -9395,6 +9414,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOpen: 0
+--- !u!95 &814721896
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 814721884}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 505818cb9b57e4648b0f71ee761c35c4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &815771910 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ed27608b14172f149832161482ba8b87, type: 3}
@@ -19336,6 +19377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fdd2d9d1d318404c98cceea94fed50a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _hitRange: 0
 --- !u!4 &1638828937 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ed27608b14172f149832161482ba8b87, type: 3}
