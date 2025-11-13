@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(Hittabel))]
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
@@ -77,12 +78,10 @@ public class PlayerController : MonoBehaviour
         bool inventoryOpen = inputManager.GetPlayerInventory();
         bool menuOpen = inputManager.GetPlayerMenu();
         bool sprinting = inputManager.GetPlayetSprint();
-        Debug.Log(sprinting);
         Vector2 movement = inputManager.GetPlayerMovement();
         Vector3 move = new Vector3(movement.x, 0f, movement.y);
         move = cameraTransform.right.normalized * move.x + cameraTransform.forward.normalized * move.z;
         move.y = 0f;
-
 
         if (grounded && playerVelocity.y < 0f)
         {
@@ -126,15 +125,12 @@ public class PlayerController : MonoBehaviour
 
             if (sprinting)
             {
-                Debug.Log("zacaloto");
                 controller.Move(move * Time.deltaTime * sprintSpeed);
                 animator.SetFloat(moveXAnimationParameterId, movement.x);
                 animator.SetFloat(moveZAnimationParameterId, movement.y);
-                Debug.Log("Funguje to");
             }
             else if (!sprinting)
             {
-                Debug.Log("Default");
                 controller.Move(move * Time.deltaTime * playerSpeed);
                 animator.SetFloat(moveXAnimationParameterId, movement.x / 2);
                 animator.SetFloat(moveZAnimationParameterId, movement.y / 2);
@@ -152,15 +148,12 @@ public class PlayerController : MonoBehaviour
 
                 if (sprinting)
                 {
-                    Debug.Log("zacaloto");
                     controller.Move(move * Time.deltaTime * sprintSpeed);
                     animator.SetFloat(moveXAnimationParameterId, movement.x);
                     animator.SetFloat(moveZAnimationParameterId, movement.y);
-                    Debug.Log("Funguje to");
                 }
                 else if (!sprinting)
                 {
-                    Debug.Log("Default");
                     controller.Move(move * Time.deltaTime * playerSpeed);
                     animator.SetFloat(moveXAnimationParameterId, movement.x / 2);
                     animator.SetFloat(moveZAnimationParameterId, movement.y / 2);
@@ -174,15 +167,12 @@ public class PlayerController : MonoBehaviour
 
                 if (sprinting)
                 {
-                    Debug.Log("zacaloto");
                     controller.Move(move * Time.deltaTime * sprintSpeed);
                     animator.SetFloat(moveXAnimationParameterId, movement.x);
                     animator.SetFloat(moveZAnimationParameterId, movement.y);
-                    Debug.Log("Funguje to");
                 }
                 else if (!sprinting)
                 {
-                    Debug.Log("Default");
                     controller.Move(move * Time.deltaTime * playerSpeed);
                     animator.SetFloat(moveXAnimationParameterId, movement.x / 2);
                     animator.SetFloat(moveZAnimationParameterId, movement.y / 2);
@@ -196,15 +186,12 @@ public class PlayerController : MonoBehaviour
 
                 if (sprinting)
                 {
-                    Debug.Log("zacaloto");
                     controller.Move(move * Time.deltaTime * sprintSpeed);
                     animator.SetFloat(moveXAnimationParameterId, movement.x);
                     animator.SetFloat(moveZAnimationParameterId, movement.y);
-                    Debug.Log("Funguje to");
                 }
                 else if (!sprinting)
                 {
-                    Debug.Log("Default");
                     controller.Move(move * Time.deltaTime * playerSpeed);
                     animator.SetFloat(moveXAnimationParameterId, movement.x / 2);
                     animator.SetFloat(moveZAnimationParameterId, movement.y / 2);
@@ -214,15 +201,12 @@ public class PlayerController : MonoBehaviour
 
         if (sprinting)
         {
-            Debug.Log("zacaloto");
             controller.Move(move * Time.deltaTime * sprintSpeed);
             animator.SetFloat(moveXAnimationParameterId, movement.x);
             animator.SetFloat(moveZAnimationParameterId, movement.y);
-            Debug.Log("Funguje to");
         }
         else if (!sprinting)
         {
-            Debug.Log("Default");
             controller.Move(move * Time.deltaTime * playerSpeed);
             animator.SetFloat(moveXAnimationParameterId, movement.x / 2);
             animator.SetFloat(moveZAnimationParameterId, movement.y / 2);
