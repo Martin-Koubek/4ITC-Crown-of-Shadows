@@ -38,6 +38,7 @@ public class Interaction : MonoBehaviour
                         door.isOpen = false;
                     }
                 }
+
                 else if (hit.collider.gameObject.TryGetComponent<Potion>(out Potion potion))
                 {
                     if (inventory.MaxConsumables == inventory.consumableAmount)
@@ -48,25 +49,19 @@ public class Interaction : MonoBehaviour
                     {
                         Debug.Log("toto je poù·k");
                         inventory.consumable = potion.gameObject;
-                        inventory.consumableAmount++;
+                        inventory.consumableAmount ++;
+                        hit.collider.gameObject.SetActive(false);
                         Destroy(potion);
                     }
                 }
+
                 else if (hit.collider.gameObject.TryGetComponent<Sword>(out Sword sword))
                 {
-                    if(inventory.RHand == null)
+                    if (inventory.CurentWeapon == null)
                     {
-                        Debug.Log("sword");
-                        inventory.RHand = sword.gameObject;
+                        Debug.Log("Sebral jsem meË");
+                        inventory.CurentWeapon = sword.gameObject;
                         playerController.armed = true;
-                        if (sword.oneH)
-                        {
-                            playerController.oneHandedWeapon = true;
-                        }
-                        else if (sword.twoH)
-                        {
-                            playerController.twoHandedWeapon = true;
-                        }
                         Destroy(hit.collider.gameObject);
                     }
                 }

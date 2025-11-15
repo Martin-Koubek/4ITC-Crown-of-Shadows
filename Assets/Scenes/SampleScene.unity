@@ -1170,6 +1170,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4, y: 4, z: 1.0000007}
   m_Center: {x: 0, y: 2, z: -0.00000032782555}
+--- !u!1 &82466816 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 513368784993747600, guid: 4b2721e2fbab61245aa92d0b2b9d1beb, type: 3}
+  m_PrefabInstance: {fileID: 3644218103921471524}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &82466823
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 82466816}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6863997473345357328, guid: c4647da6e4cd4c04da5823462b9840d0, type: 3}
 --- !u!4 &86808192 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ed27608b14172f149832161482ba8b87, type: 3}
@@ -1640,6 +1667,33 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ed27608b14172f149832161482ba8b87, type: 3}
   m_PrefabInstance: {fileID: 1529260329}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &141887579 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2859845749591630243, guid: 49d4943194a9ad140bc0a68a5fd7b97d, type: 3}
+  m_PrefabInstance: {fileID: 7280875929002083062}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &141887586
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 141887579}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6855750626627074973, guid: 4ab5c1693d81f9d468ce91e0e8543ae5, type: 3}
 --- !u!1001 &143583411
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14467,8 +14521,8 @@ BoxCollider:
   m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 48, y: 0.2, z: 48}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 48, y: 0.1, z: 48}
+  m_Center: {x: 0, y: -0.1, z: 0}
 --- !u!1001 &1308899111
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19587,8 +19641,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 32, y: 0.2, z: 48}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 32, y: 0.1, z: 48}
+  m_Center: {x: 0, y: -0.1, z: 0}
 --- !u!4 &1706040986 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ed27608b14172f149832161482ba8b87, type: 3}
@@ -23800,6 +23854,38 @@ PrefabInstance:
       propertyPath: 'WeaponReferences.Array.data[6]'
       value: 
       objectReference: {fileID: 964532570}
+    - target: {fileID: 4858391481996358634, guid: 2c805183cae1545409fb64ba527c24d3, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4858391481996358634, guid: 2c805183cae1545409fb64ba527c24d3, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4858391481996358634, guid: 2c805183cae1545409fb64ba527c24d3, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4858391481996358634, guid: 2c805183cae1545409fb64ba527c24d3, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4858391481996358634, guid: 2c805183cae1545409fb64ba527c24d3, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4858391481996358634, guid: 2c805183cae1545409fb64ba527c24d3, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4858391481996358634, guid: 2c805183cae1545409fb64ba527c24d3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -2320.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4858391481996358634, guid: 2c805183cae1545409fb64ba527c24d3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -6.300003
+      objectReference: {fileID: 0}
     - target: {fileID: 5151778490710301488, guid: 2c805183cae1545409fb64ba527c24d3, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -23824,8 +23910,13 @@ PrefabInstance:
       propertyPath: cameraTransform
       value: 
       objectReference: {fileID: 1426962179}
+    - target: {fileID: 8643471029370532166, guid: 2c805183cae1545409fb64ba527c24d3, type: 3}
+      propertyPath: m_Name
+      value: 1H_Sword
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2764641726686514115, guid: 2c805183cae1545409fb64ba527c24d3, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c805183cae1545409fb64ba527c24d3, type: 3}
@@ -23894,9 +23985,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4347078921385270559, guid: 4b2721e2fbab61245aa92d0b2b9d1beb, type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 513368784993747600, guid: 4b2721e2fbab61245aa92d0b2b9d1beb, type: 3}
       propertyPath: m_Name
-      value: sword_2handed
+      value: 2H_Sword
       objectReference: {fileID: 0}
     - target: {fileID: 888346692685125674, guid: 4b2721e2fbab61245aa92d0b2b9d1beb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -23944,7 +24039,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5744974935810822987, guid: 4b2721e2fbab61245aa92d0b2b9d1beb, type: 3}
       propertyPath: type
-      value: 2H_Sword
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7812648794062591611, guid: 4b2721e2fbab61245aa92d0b2b9d1beb, type: 3}
       propertyPath: m_IsTrigger
@@ -23953,7 +24048,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 513368784993747600, guid: 4b2721e2fbab61245aa92d0b2b9d1beb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 82466823}
   m_SourcePrefab: {fileID: 100100000, guid: 4b2721e2fbab61245aa92d0b2b9d1beb, type: 3}
 --- !u!1001 &5365514046890091458
 PrefabInstance:
@@ -24093,9 +24191,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6721482016375274462, guid: 49d4943194a9ad140bc0a68a5fd7b97d, type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 2859845749591630243, guid: 49d4943194a9ad140bc0a68a5fd7b97d, type: 3}
       propertyPath: m_Name
-      value: sword_1handed
+      value: 1H_Sword
       objectReference: {fileID: 0}
     - target: {fileID: 3241437391505963801, guid: 49d4943194a9ad140bc0a68a5fd7b97d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -24147,12 +24249,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8597250656407022615, guid: 49d4943194a9ad140bc0a68a5fd7b97d, type: 3}
       propertyPath: type
-      value: 1H_Sword
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2859845749591630243, guid: 49d4943194a9ad140bc0a68a5fd7b97d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 141887586}
   m_SourcePrefab: {fileID: 100100000, guid: 49d4943194a9ad140bc0a68a5fd7b97d, type: 3}
 --- !u!1001 &8876241632728660314
 PrefabInstance:

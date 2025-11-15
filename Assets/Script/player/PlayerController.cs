@@ -1,6 +1,4 @@
-using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(Hittabel))]
@@ -35,10 +33,8 @@ public class PlayerController : MonoBehaviour
     public bool oneHandedWeapon = false;
     [SerializeField]
     public bool twoHandedWeapon = false;
-    [SerializeField]
-    public bool dualWield = false;
 
-   
+
 
 
     //private bool Dashed;
@@ -54,7 +50,7 @@ public class PlayerController : MonoBehaviour
     int onehandedAnimationParameterId;
     int twoHandedAnimationParameterId;
     int dualWieldAnimationParameterId;
-    
+
 
     private void Awake()
     {
@@ -87,7 +83,7 @@ public class PlayerController : MonoBehaviour
         {
             playerVelocity.y = 0f;
         }
-        if(inventoryOpen == true && invOpen == false)
+        if (inventoryOpen == true && invOpen == false)
         {
             invOpen = true;
             pointer.gameObject.SetActive(false);
@@ -95,7 +91,7 @@ public class PlayerController : MonoBehaviour
             Cursor.visible = true;
             inventory.gameObject.SetActive(true);
         }
-        else if(inventoryOpen == true && invOpen == true)
+        else if (inventoryOpen == true && invOpen == true)
         {
             invOpen = false;
             pointer.gameObject.SetActive(true);
@@ -119,7 +115,7 @@ public class PlayerController : MonoBehaviour
             Cursor.visible = false;
             Menu.gameObject.SetActive(false);
         }
-        if(armed == false)
+        if (armed == false)
         {
             animator.SetBool(armedAnimationParameterId, false);
 
@@ -136,7 +132,7 @@ public class PlayerController : MonoBehaviour
                 animator.SetFloat(moveZAnimationParameterId, movement.y / 2);
             }
         }
-        else if(armed == true)
+        else if (armed == true)
         {
             animator.SetBool(armedAnimationParameterId, true);
 
@@ -144,7 +140,7 @@ public class PlayerController : MonoBehaviour
             {
                 animator.SetBool(onehandedAnimationParameterId, true);
                 animator.SetBool(twoHandedAnimationParameterId, false);
-                animator.SetBool(dualWieldAnimationParameterId, false);
+
 
                 if (sprinting)
                 {
@@ -163,7 +159,7 @@ public class PlayerController : MonoBehaviour
             {
                 animator.SetBool(onehandedAnimationParameterId, false);
                 animator.SetBool(twoHandedAnimationParameterId, true);
-                animator.SetBool(dualWieldAnimationParameterId, false);
+
 
                 if (sprinting)
                 {
@@ -178,12 +174,8 @@ public class PlayerController : MonoBehaviour
                     animator.SetFloat(moveZAnimationParameterId, movement.y / 2);
                 }
             }
-            else if (dualWield == true)
+            else
             {
-                animator.SetBool(onehandedAnimationParameterId, false);
-                animator.SetBool(twoHandedAnimationParameterId, false);
-                animator.SetBool(dualWieldAnimationParameterId, true);
-
                 if (sprinting)
                 {
                     controller.Move(move * Time.deltaTime * sprintSpeed);
@@ -197,19 +189,7 @@ public class PlayerController : MonoBehaviour
                     animator.SetFloat(moveZAnimationParameterId, movement.y / 2);
                 }
             }
-        }
 
-        if (sprinting)
-        {
-            controller.Move(move * Time.deltaTime * sprintSpeed);
-            animator.SetFloat(moveXAnimationParameterId, movement.x);
-            animator.SetFloat(moveZAnimationParameterId, movement.y);
-        }
-        else if (!sprinting)
-        {
-            controller.Move(move * Time.deltaTime * playerSpeed);
-            animator.SetFloat(moveXAnimationParameterId, movement.x / 2);
-            animator.SetFloat(moveZAnimationParameterId, movement.y / 2);
         }
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);

@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
 public class Inventory : MonoBehaviour
 {
@@ -9,37 +10,70 @@ public class Inventory : MonoBehaviour
     public int consumableAmount = 0;
     public int MaxConsumables = 5;
     public TextMeshProUGUI amount;
+
     public GameObject RHand;
-    public GameObject LHand;
+    public GameObject CurentWeapon;
+
     [SerializeField]
     List<GameObject>WeaponReferences = new List<GameObject>();
     public Image image;
 
+    private PlayerController playerController;
+
     private void Awake()
     {
         amount.text = consumableAmount.ToString();
+        playerController = GetComponent<PlayerController>();
     }
 
     private void Update()
     {
-        if (consumable == null) { amount.text = "0"; }
+        if (consumable == null)
+        { 
+            amount.text = "0";
+        }
+
         else if (consumable.gameObject.TryGetComponent<Potion>(out Potion potion))
         {
             amount.text = consumableAmount.ToString();
             image.sprite = potion.SourceImage;
         }
-        else if (RHand.gameObject.TryGetComponent<Sword>(out Sword sword))
+
+        if (CurentWeapon != null && CurentWeapon.TryGetComponent<Sword>(out Sword sword))
         {
-            for (int i = 0; i < WeaponReferences.Count; i++)
+            HandleWeapon(sword);
+        }
+
+
+        
+    }
+    private void HandleWeapon(Sword sword)
+    {
+        foreach(var weapon in WeaponReferences)
+        {
+            weapon.SetActive(false);
+
+            GameObject weaponToActivate = WeaponReferences.Find(w => w.name == sword.gameObject.name);
+
+            if (weaponToActivate != null)
             {
-                if (WeaponReferences[i].name.ToString() == sword.type)
-                {
-                    Debug.Log("Sword Found");
-                    WeaponReferences[i].SetActive(true);
-                }
-                else i++;
+                weaponToActivate.SetActive(true);
+            }
+            else Debug.Log("weapon model" + sword.gameObject.name + "nebyl nalezen v seznamu");
+        }
+        if (playerController != null)
+        {
+            if(sword.type == WeaponType.OneHanded)
+            {
+                playerController.oneHandedWeapon = true;
+                playerController.twoHandedWeapon = false;
+            }
+            else if(sword.type == WeaponType.TwoHanded)
+            {
+                playerController.oneHandedWeapon = false;
+                playerController.twoHandedWeapon = true;
             }
         }
-        else { return; }
+        
     }
 }
