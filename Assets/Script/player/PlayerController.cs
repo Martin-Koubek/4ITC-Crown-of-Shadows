@@ -30,13 +30,13 @@ public class PlayerController : MonoBehaviour
 
     //Weapon State
     [SerializeField]
-    bool armed = false;
+    public bool armed = false;
     [SerializeField]
-    bool oneHandedWeapon = false;
+    public bool oneHandedWeapon = false;
     [SerializeField]
-    bool twoHandedWeapon = false;
+    public bool twoHandedWeapon = false;
     [SerializeField]
-    bool dualWield = false;
+    public bool dualWield = false;
 
    
 

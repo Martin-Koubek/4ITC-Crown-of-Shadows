@@ -4,6 +4,7 @@ public class Interaction : MonoBehaviour
 {
     private InputManager inputManager;
     private Inventory inventory;
+    private PlayerController playerController;
     [SerializeField]
     private Transform _RayCastPoint;
     private RaycastHit hit;
@@ -14,6 +15,7 @@ public class Interaction : MonoBehaviour
     {
         inputManager = InputManager.Instance;
         inventory = GetComponent<Inventory>();
+        playerController = GetComponent<PlayerController>();
     }
     private void Update()
     {
@@ -48,6 +50,24 @@ public class Interaction : MonoBehaviour
                         inventory.consumable = potion.gameObject;
                         inventory.consumableAmount++;
                         Destroy(potion);
+                    }
+                }
+                else if (hit.collider.gameObject.TryGetComponent<Sword>(out Sword sword))
+                {
+                    if(inventory.RHand == null)
+                    {
+                        Debug.Log("sword");
+                        inventory.RHand = sword.gameObject;
+                        playerController.armed = true;
+                        if (sword.oneH)
+                        {
+                            playerController.oneHandedWeapon = true;
+                        }
+                        else if (sword.twoH)
+                        {
+                            playerController.twoHandedWeapon = true;
+                        }
+                        Destroy(hit.collider.gameObject);
                     }
                 }
                 else return;
