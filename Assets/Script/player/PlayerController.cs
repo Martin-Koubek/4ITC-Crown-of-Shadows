@@ -49,7 +49,6 @@ public class PlayerController : MonoBehaviour
     int armedAnimationParameterId;
     int onehandedAnimationParameterId;
     int twoHandedAnimationParameterId;
-    int dualWieldAnimationParameterId;
 
 
     private void Awake()
@@ -66,7 +65,6 @@ public class PlayerController : MonoBehaviour
         armedAnimationParameterId = Animator.StringToHash("Armed");
         onehandedAnimationParameterId = Animator.StringToHash("1handed");
         twoHandedAnimationParameterId = Animator.StringToHash("2handed");
-        dualWieldAnimationParameterId = Animator.StringToHash("dualWield");
     }
 
     private void Update()
@@ -74,6 +72,9 @@ public class PlayerController : MonoBehaviour
         bool inventoryOpen = inputManager.GetPlayerInventory();
         bool menuOpen = inputManager.GetPlayerMenu();
         bool sprinting = inputManager.GetPlayetSprint();
+
+        bool attacked = inputManager.GetPlayerAttack();
+
         Vector2 movement = inputManager.GetPlayerMovement();
         Vector3 move = new Vector3(movement.x, 0f, movement.y);
         move = cameraTransform.right.normalized * move.x + cameraTransform.forward.normalized * move.z;
@@ -174,22 +175,6 @@ public class PlayerController : MonoBehaviour
                     animator.SetFloat(moveZAnimationParameterId, movement.y / 2);
                 }
             }
-            else
-            {
-                if (sprinting)
-                {
-                    controller.Move(move * Time.deltaTime * sprintSpeed);
-                    animator.SetFloat(moveXAnimationParameterId, movement.x);
-                    animator.SetFloat(moveZAnimationParameterId, movement.y);
-                }
-                else if (!sprinting)
-                {
-                    controller.Move(move * Time.deltaTime * playerSpeed);
-                    animator.SetFloat(moveXAnimationParameterId, movement.x / 2);
-                    animator.SetFloat(moveZAnimationParameterId, movement.y / 2);
-                }
-            }
-
         }
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);

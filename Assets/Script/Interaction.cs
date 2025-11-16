@@ -50,8 +50,8 @@ public class Interaction : MonoBehaviour
                         Debug.Log("toto je poù·k");
                         inventory.consumable = potion.gameObject;
                         inventory.consumableAmount ++;
-                        hit.collider.gameObject.SetActive(false);
-                        Destroy(potion);
+                        potion.gameObject.SetActive(false);
+                        potion.gameObject.transform.SetParent(inventory.Storage);
                     }
                 }
 
@@ -60,9 +60,13 @@ public class Interaction : MonoBehaviour
                     if (inventory.CurentWeapon == null)
                     {
                         Debug.Log("Sebral jsem meË");
-                        inventory.CurentWeapon = sword.gameObject;
-                        playerController.armed = true;
-                        Destroy(hit.collider.gameObject);
+                        PickUp(sword);
+                    }
+                    else if(inventory.CurentWeapon != null)
+                    {
+                        inventory.DropWeapon();
+                        PickUp(sword);
+                        
                     }
                 }
                 else return;
@@ -70,5 +74,13 @@ public class Interaction : MonoBehaviour
             }
         }
 
+    }
+    private void PickUp(Sword sword)
+    {
+        inventory.CurentWeapon = sword.gameObject;
+        playerController.armed = true;
+        sword.gameObject.SetActive(false);
+        sword.gameObject.transform.SetParent(inventory.Storage);
+        sword.gameObject.transform.position = inventory.Storage.position;
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class InputManager : MonoBehaviour
 {
     private static InputManager instance;
-    private static bool sprint = false;
+
 
     public static InputManager Instance
     {
@@ -18,9 +18,6 @@ public class InputManager : MonoBehaviour
         if (instance != null && instance != this) { Destroy(this.gameObject); }
         else instance = this;
         playerControls = new PlayerControls();
-
-  
-
     }
 
     private void OnEnable()

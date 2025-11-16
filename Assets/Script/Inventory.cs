@@ -14,8 +14,11 @@ public class Inventory : MonoBehaviour
     public GameObject RHand;
     public GameObject CurentWeapon;
 
+    public Transform Storage;
+    public Transform DropPoint;
+
     [SerializeField]
-    List<GameObject>WeaponReferences = new List<GameObject>();
+    List<GameObject> WeaponReferences = new List<GameObject>();
     public Image image;
 
     private PlayerController playerController;
@@ -29,7 +32,7 @@ public class Inventory : MonoBehaviour
     private void Update()
     {
         if (consumable == null)
-        { 
+        {
             amount.text = "0";
         }
 
@@ -45,11 +48,11 @@ public class Inventory : MonoBehaviour
         }
 
 
-        
+
     }
     private void HandleWeapon(Sword sword)
     {
-        foreach(var weapon in WeaponReferences)
+        foreach (var weapon in WeaponReferences)
         {
             weapon.SetActive(false);
 
@@ -61,19 +64,26 @@ public class Inventory : MonoBehaviour
             }
             else Debug.Log("weapon model" + sword.gameObject.name + "nebyl nalezen v seznamu");
         }
-        if (playerController != null)
+        if (CurentWeapon != null)
         {
-            if(sword.type == WeaponType.OneHanded)
+            if (sword.type == WeaponType.OneHanded)
             {
                 playerController.oneHandedWeapon = true;
                 playerController.twoHandedWeapon = false;
             }
-            else if(sword.type == WeaponType.TwoHanded)
+            else if (sword.type == WeaponType.TwoHanded)
             {
                 playerController.oneHandedWeapon = false;
                 playerController.twoHandedWeapon = true;
             }
         }
-        
+
+    }
+    public void DropWeapon()
+    {
+        CurentWeapon.gameObject.transform.SetParent(null);
+        CurentWeapon.gameObject.transform.position = DropPoint.position;
+        CurentWeapon.SetActive(true);
+        CurentWeapon = null;
     }
 }
