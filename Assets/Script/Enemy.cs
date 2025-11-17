@@ -5,4 +5,8 @@ public class Enemy : MonoBehaviour
 {
     public int Health = 100;
     private int Lvl = 1;
+    private void Update()
+    {
+        Debug.Log(Health);
+    }
 }

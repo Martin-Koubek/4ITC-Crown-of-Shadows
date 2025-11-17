@@ -2532,7 +2532,7 @@ ModelImporter:
     bakeAxisConversion: 0
     preserveHierarchy: 0
     skinWeightsMode: 0
-    maxBonesPerVertex: 4
+    maxBonesPerVertex: 26
     minBoneWeight: 0.001
     optimizeBones: 1
     meshOptimizationFlags: -1
@@ -2824,7 +2824,7 @@ ModelImporter:
     - name: wrist.r
       parentName: lowerarm.r
       position: {x: 0.0000000030516532, y: 0.26004383, z: 0.0000000016429189}
-      rotation: {x: 0.0000000010654018, y: -2.6743324e-10, z: 0.026658101, w: 0.99964464}
+      rotation: {x: 0, y: 0, z: 0.026656779, w: 0.99964464}
       scale: {x: 0.99999994, y: 1, z: 1}
     - name: hand.r
       parentName: wrist.r
@@ -2888,8 +2888,8 @@ ModelImporter:
       scale: {x: 1, y: 0.9999999, z: 0.9999997}
     - name: foot.r
       parentName: lowerleg.r
-      position: {x: -0.000000005432452, y: 0.14943695, z: 8.4287777e-10}
-      rotation: {x: -0.45523942, y: -0.00000015576714, z: 0.000000017729546, w: 0.8903691}
+      position: {x: -0.0000000021357387, y: 0.14943957, z: -0.000000085681705}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1.0000005, z: 0.999999}
     - name: toes.r
       parentName: foot.r

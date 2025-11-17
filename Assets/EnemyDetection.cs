@@ -13,7 +13,7 @@ public class EnemyDetection : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.TryGetComponent<Enemy>(out Enemy enemy) && collision.gameObject.GetComponent<Hittabel>())
+        if(collision.gameObject.TryGetComponent<Enemy>(out Enemy enemy))
         {
             enemy.Health =- Damage;
         }
