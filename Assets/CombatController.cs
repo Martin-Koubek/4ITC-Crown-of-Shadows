@@ -5,7 +5,7 @@ public class CombatController : MonoBehaviour
     private InputManager inputManager;
     private Animator anim;
     private AnimatorStateInfo state;
-    public float cooldownTime = 2f;
+    public float cooldownTime = 1f;
     private float nextFireTime = 0f;
     public static int noOfClicks = 0;
     float lastClickedTime = 0f;
@@ -19,7 +19,7 @@ public class CombatController : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         inputManager = InputManager.Instance;
-        
+
     }
 
     void Update()
@@ -30,32 +30,39 @@ public class CombatController : MonoBehaviour
         bool attacked = inputManager.GetPlayerAttack();
 
         Debug.Log(attacked);
-        if (state.normalizedTime > 0.99 && state.IsName("Hit1") || state.IsName("Hit1 1"))
+        if (state.normalizedTime > 0.99)
         {
-            if (anim.GetBool("Hit1"))
+            if (state.IsName("Hit1") || state.IsName("Hit1 1"))
             {
-                Debug.Log("Reset Hit1");
-                anim.SetBool("Hit1", false);
+                if (anim.GetBool("Hit1"))
+                {
+                    anim.SetBool("Hit1", false);
+                }
             }
-            
+
+
         }
-        if (state.normalizedTime > 0.99 && state.IsName("Hit2") ||  state.IsName("Hit2 1"))
+        if (state.normalizedTime > 0.99)
         {
-            if (anim.GetBool("Hit2"))
+            if (state.IsName("Hit2") || state.IsName("Hit2 1"))
             {
-                Debug.Log("Reset Hit2");
-                anim.SetBool("Hit2", false);
+                if (anim.GetBool("Hit2"))
+                {
+                    anim.SetBool("Hit2", false);
+                }
             }
+
         }
-        if (state.normalizedTime > 0.99 && state.IsName("Hit3") || state.IsName("Hit3 1"))
+        if (state.normalizedTime > 0.99)
         {
-            if (anim.GetBool("Hit3"))
+            if (state.IsName("Hit3") || state.IsName("Hit3 1"))
             {
-                Debug.Log("Reset Hit3");
-                anim.SetBool("Hit3", false);
-                noOfClicks = 0;
+                if (anim.GetBool("Hit3"))
+                {
+                    anim.SetBool("Hit3", false);
+                    noOfClicks = 0;
+                }
             }
-            //noOfClicks = 0;
         }
 
         if (Time.time - lastClickedTime > maxComboDelay)
@@ -64,14 +71,14 @@ public class CombatController : MonoBehaviour
         }
         if (Time.time > nextFireTime)
         {
-            if (attacked)
+            if (anim.GetBool("Armed"))
             {
-                if (anim.GetBool("Armed") == true)
+                if (attacked)
                 {
                     OnClick();
                     nextFireTime = Time.time + cooldownTime;
                 }
-                
+
             }
         }
 
@@ -86,13 +93,23 @@ public class CombatController : MonoBehaviour
         }
         noOfClicks = Mathf.Clamp(noOfClicks, 0, 3);
 
-        if (noOfClicks == 2 && state.normalizedTime > 0.7f && state.IsName("Hit1")|| noOfClicks == 2 && state.normalizedTime > 0.7f && state.IsName("Hit1 1"))
+        if (noOfClicks == 2)
         {
-            anim.SetBool("Hit2", true);
+            if (state.IsName("Hit1") || state.IsName("Hit1 1"))
+            {
+                anim.SetBool("Hit2", true);
+                anim.SetBool("Hit1", false);
+            }
+           
         }
-        if (noOfClicks == 3 && state.normalizedTime > 0.7f && state.IsName("Hit2") || noOfClicks == 2 && state.normalizedTime > 0.7f && state.IsName("Hit2 1"))
+        if (noOfClicks == 3)
         {
-            anim.SetBool("Hit3", true);
+            if (state.IsName("Hit2") || state.IsName("Hit2 1"))
+            {
+                anim.SetBool("Hit3", true);
+                anim.SetBool("Hit2", false);
+            }
+            
         }
 
 
