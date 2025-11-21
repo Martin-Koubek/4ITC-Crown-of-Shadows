@@ -7,5 +7,6 @@ public enum WeaponType
 }
 public class Sword : MonoBehaviour
 {
+    public int damage;
     public WeaponType type;
 }

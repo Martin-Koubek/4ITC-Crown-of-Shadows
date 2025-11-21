@@ -4,18 +4,28 @@ using System.Collections;
 public class EnemyDetection : MonoBehaviour
 {
     public int Damage;
-    public Inventory inventory;
+    private Inventory inventory;
+    private CombatController combatController;
 
     private void Awake()
     {
-        inventory = GetComponent<Inventory>();
-        Damage = 10;
+        inventory = GetComponentInParent<Inventory>();
+        combatController = GetComponentInParent<CombatController>();
     }
-    private void OnCollisionEnter(Collision collision)
+    private void Update()
     {
-        if(collision.gameObject.TryGetComponent<Enemy>(out Enemy enemy))
+        if (inventory.CurentWeapon != null && inventory.CurentWeapon.gameObject.TryGetComponent<Sword>(out Sword sword))
         {
-            enemy.Health =- Damage;
+            Damage = sword.damage;
         }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.TryGetComponent<Enemy>(out Enemy enemy) && combatController.isAttacking && !enemy.hasBeenHit)
+        {
+            enemy.Health -= Damage;
+            enemy.hasBeenHit = true;
+        }
+        else return;
     }
 }

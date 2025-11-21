@@ -11,6 +11,8 @@ public class CombatController : MonoBehaviour
     float lastClickedTime = 0f;
     float maxComboDelay = 1f;
 
+    public bool isAttacking = false;
+
     private int _hit1Id;
     private int _hit2Id;
     private int _hit3Id;
@@ -107,13 +109,29 @@ public class CombatController : MonoBehaviour
             {
                 anim.SetBool("Hit3", true);
                 anim.SetBool("Hit2", false);
-                if (state.normalizedTime>5f&&state.IsName("Hit3")||state.IsName("Hit3 1"))
-                {
-                    anim.SetBool("Hit1", false);
-                }
+                anim.SetBool("Hit1", false);
             }
         }
 
 
+    }
+    [System.Obsolete]
+    public void StartAttack()
+    {
+        isAttacking = true;
+        foreach (var enemy in FindObjectsOfType<Enemy>())
+        {
+            enemy.hasBeenHit = false;
+        }
+    }
+
+    [System.Obsolete]
+    public void StopAttack()
+    {
+        isAttacking=false;
+        foreach (var enemy in FindObjectsOfType<Enemy>())
+        {
+            enemy.hasBeenHit = false;
+        }
     }
 }
