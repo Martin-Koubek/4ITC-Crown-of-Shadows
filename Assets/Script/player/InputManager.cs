@@ -55,6 +55,10 @@ public class InputManager : MonoBehaviour
     {
         return playerControls.Player.Interact.triggered;
     }
+    public bool GetPlayerHeal()
+    {
+        return playerControls.Player.UseConsumable.triggered;
+    }
             
 
 

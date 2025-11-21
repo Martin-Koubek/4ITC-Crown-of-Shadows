@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Interaction : MonoBehaviour
@@ -5,9 +6,12 @@ public class Interaction : MonoBehaviour
     private InputManager inputManager;
     private Inventory inventory;
     private PlayerController playerController;
+    private PlayerStats playerStats;
+
     [SerializeField]
     private Transform _RayCastPoint;
     private RaycastHit hit;
+
     [SerializeField]
     private float _hitRange;
 
@@ -20,6 +24,7 @@ public class Interaction : MonoBehaviour
     private void Update()
     {
         bool interacted = inputManager.GetPlayerInteract();
+        bool Healed = inputManager.GetPlayerHeal();
         Ray ray = new Ray(_RayCastPoint.position, _RayCastPoint.forward);
 
         if (interacted)
@@ -74,7 +79,20 @@ public class Interaction : MonoBehaviour
             }
         }
 
+        if (Healed)
+        {
+            if(inventory.consumableAmount != 0)
+            {
+                inventory.consumableAmount --;
+                Heal();
+            }
+        }
     }
+
+    private void Heal()
+    {
+    }
+
     private void PickUp(Sword sword)
     {
         inventory.CurentWeapon = sword.gameObject;

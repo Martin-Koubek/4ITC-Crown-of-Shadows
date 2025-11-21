@@ -11,6 +11,9 @@ public class Inventory : MonoBehaviour
     public int MaxConsumables = 5;
     public TextMeshProUGUI amount;
 
+    public Image image;
+    public Sprite PotionDefault;
+
     public GameObject RHand;
     public GameObject CurentWeapon;
 
@@ -19,7 +22,6 @@ public class Inventory : MonoBehaviour
 
     [SerializeField]
     List<GameObject> WeaponReferences = new List<GameObject>();
-    public Image image;
 
     private PlayerController playerController;
 
@@ -27,6 +29,7 @@ public class Inventory : MonoBehaviour
     {
         amount.text = consumableAmount.ToString();
         playerController = GetComponent<PlayerController>();
+        PotionDefault = image.sprite;
     }
 
     private void Update()
@@ -34,12 +37,17 @@ public class Inventory : MonoBehaviour
         if (consumable == null)
         {
             amount.text = "0";
+            image.sprite = PotionDefault;
         }
 
         else if (consumable.gameObject.TryGetComponent<Potion>(out Potion potion))
         {
             amount.text = consumableAmount.ToString();
             image.sprite = potion.SourceImage;
+        }
+        else if(consumableAmount == 0)
+        {
+            consumable = null;
         }
 
         if (CurentWeapon != null && CurentWeapon.TryGetComponent<Sword>(out Sword sword))
