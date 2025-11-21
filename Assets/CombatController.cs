@@ -87,29 +87,31 @@ public class CombatController : MonoBehaviour
     {
         lastClickedTime = Time.time;
         noOfClicks++;
-        if (noOfClicks == 1)
+        if (noOfClicks >= 1)
         {
             anim.SetBool("Hit1", true);
         }
         noOfClicks = Mathf.Clamp(noOfClicks, 0, 3);
 
-        if (noOfClicks == 2)
+        if (noOfClicks >= 2)
         {
             if (state.IsName("Hit1") || state.IsName("Hit1 1"))
             {
                 anim.SetBool("Hit2", true);
                 anim.SetBool("Hit1", false);
             }
-           
         }
-        if (noOfClicks == 3)
+        if (noOfClicks >= 3)
         {
             if (state.IsName("Hit2") || state.IsName("Hit2 1"))
             {
                 anim.SetBool("Hit3", true);
                 anim.SetBool("Hit2", false);
+                if (state.normalizedTime>5f&&state.IsName("Hit3")||state.IsName("Hit3 1"))
+                {
+                    anim.SetBool("Hit1", false);
+                }
             }
-            
         }
 
 
