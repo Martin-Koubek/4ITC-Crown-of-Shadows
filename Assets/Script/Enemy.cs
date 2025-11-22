@@ -1,15 +1,32 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    //stats + coliders
     public int Health = 100;
     private int Lvl = 1;
     public bool hasBeenHit = false;
     private Collider coll;
 
-    private Animator anim;
+    //navigation
+    public NavMeshAgent agent;
+    public Transform Player;
+    public LayerMask whatIsGround, whatIsplayer;
+    public Vector3 walkPoint;
+    bool walkPointSet;
+    public float walkPointRange;
 
+    //attacking
+    public float timeBetweenAttacks;
+    bool alreadyAttacked;
+
+    public float inSightRange, inAttackRange;
+    public bool playerInSightRange, playerInAttackRange;
+
+    //animator
+    private Animator anim;
     private int AnimatorDeathIdle;
 
 
@@ -43,5 +60,10 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         StartCoroutine(DestroyAfterDelay(coll));
+    }
+
+    private void Move()
+    {
+        
     }
 }

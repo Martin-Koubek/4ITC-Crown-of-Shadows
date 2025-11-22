@@ -1634,12 +1634,13 @@ MonoBehaviour:
   consumableAmount: 0
   MaxConsumables: 5
   amount: {fileID: 5632718945814437992}
+  image: {fileID: 4663306440311211833}
+  PotionDefault: {fileID: 0}
   RHand: {fileID: 0}
   CurentWeapon: {fileID: 0}
   Storage: {fileID: 0}
   DropPoint: {fileID: 0}
   WeaponReferences: []
-  image: {fileID: 4663306440311211833}
 --- !u!1 &4675462417500006330 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7449716464167129137, guid: 541b487e7c10ed9449a22d639e34ccd5, type: 3}

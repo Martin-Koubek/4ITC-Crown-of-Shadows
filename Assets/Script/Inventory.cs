@@ -1,8 +1,7 @@
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 
 public class Inventory : MonoBehaviour
 {
@@ -25,7 +24,7 @@ public class Inventory : MonoBehaviour
 
     private PlayerController playerController;
 
-    private void Awake()
+    private void Start()
     {
         amount.text = consumableAmount.ToString();
         playerController = GetComponent<PlayerController>();
@@ -34,20 +33,15 @@ public class Inventory : MonoBehaviour
 
     private void Update()
     {
-        if (consumable == null)
+        if (consumableAmount == 0)
         {
             amount.text = "0";
-            image.sprite = PotionDefault;
         }
 
         else if (consumable.gameObject.TryGetComponent<Potion>(out Potion potion))
         {
             amount.text = consumableAmount.ToString();
             image.sprite = potion.SourceImage;
-        }
-        else if(consumableAmount == 0)
-        {
-            consumable = null;
         }
 
         if (CurentWeapon != null && CurentWeapon.TryGetComponent<Sword>(out Sword sword))
