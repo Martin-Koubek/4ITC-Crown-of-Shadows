@@ -1,29 +1,26 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
     //stats + coliders
-    public int Health = 100;
+    public int basicHealth = 100;
+    private int _maxHealth;
+    public float curentHealth = 100;
     private int Lvl = 1;
     public bool hasBeenHit = false;
     private Collider coll;
 
+    //UI
+    public TextMeshProUGUI health;
+    public TextMeshProUGUI lvl;
+    public Image healthFillBar;
+
     //navigation
-    public NavMeshAgent agent;
-    public Transform Player;
-    public LayerMask whatIsGround, whatIsplayer;
-    public Vector3 walkPoint;
-    bool walkPointSet;
-    public float walkPointRange;
-
-    //attacking
-    public float timeBetweenAttacks;
-    bool alreadyAttacked;
-
-    public float inSightRange, inAttackRange;
-    public bool playerInSightRange, playerInAttackRange;
+    private NavMeshAgent agent;
 
     //animator
     private Animator anim;
@@ -42,19 +39,31 @@ public class Enemy : MonoBehaviour
 
     private void Awake()
     {
+        lvl.text = "Lvl:" + Lvl;
+
+        _maxHealth = basicHealth * Lvl;
+        curentHealth = _maxHealth;
+
+        agent = GetComponent<NavMeshAgent>();
+
         anim = GetComponent<Animator>();
         coll = GetComponent<Collider>();
         AnimatorDeathIdle = Animator.StringToHash("Dead");
     }
     private void Update()
     {
-        Debug.Log(Health);
-        if(Health <= 0)
+        health.text = curentHealth + "/" + _maxHealth;
+
+        healthFillBar.fillAmount = curentHealth / _maxHealth;
+
+        if(curentHealth <= 0)
         {
             anim.SetBool(AnimatorDeathIdle, true);
             Die();
 
         }
+
+
     }
 
     private void Die()

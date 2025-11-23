@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class PlayerStats : MonoBehaviour
 {
     private int _maxHealth = 100;
-    public int curentHealth;
+    public float curentHealth;
 
     public int defence = 0;
 
@@ -22,6 +22,6 @@ public class PlayerStats : MonoBehaviour
     void Update()
     {
         health.text = curentHealth + "/" + _maxHealth;
-        healthFillBar.fillAmount = curentHealth / 100;
+        healthFillBar.fillAmount = curentHealth / _maxHealth;
     }
 }

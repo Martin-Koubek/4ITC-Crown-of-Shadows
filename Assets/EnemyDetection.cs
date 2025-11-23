@@ -23,7 +23,7 @@ public class EnemyDetection : MonoBehaviour
     {
         if (other.gameObject.TryGetComponent<Enemy>(out Enemy enemy) && combatController.isAttacking && !enemy.hasBeenHit)
         {
-            enemy.Health -= Damage;
+            enemy.curentHealth -= Damage;
             enemy.hasBeenHit = true;
         }
         else return;

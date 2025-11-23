@@ -2889,7 +2889,7 @@ ModelImporter:
     - name: foot.r
       parentName: lowerleg.r
       position: {x: -0.0000000021357387, y: 0.14943957, z: -0.000000085681705}
-      rotation: {x: 0, y: 0, z: 0, w: 1}
+      rotation: {x: -0.45524195, y: 0, z: 0, w: 0.8903678}
       scale: {x: 1, y: 1.0000005, z: 0.999999}
     - name: toes.r
       parentName: foot.r
