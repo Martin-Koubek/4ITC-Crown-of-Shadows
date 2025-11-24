@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     private int Lvl = 1;
     public bool hasBeenHit = false;
     private Collider coll;
+    private EnemyRespawn spawner;
 
     //UI
     public TextMeshProUGUI health;
@@ -45,7 +46,7 @@ public class Enemy : MonoBehaviour
         curentHealth = _maxHealth;
 
         agent = GetComponent<NavMeshAgent>();
-
+        spawner = GetComponentInParent<EnemyRespawn>();
         anim = GetComponent<Animator>();
         coll = GetComponent<Collider>();
         AnimatorDeathIdle = Animator.StringToHash("Dead");
@@ -69,6 +70,7 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         StartCoroutine(DestroyAfterDelay(coll));
+        spawner.isDead = true;
     }
 
     private void Move()
