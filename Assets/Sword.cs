@@ -7,6 +7,7 @@ public enum WeaponType
 }
 public class Sword : MonoBehaviour
 {
+    public Sprite icon;
     public int damage;
     public WeaponType type;
 }

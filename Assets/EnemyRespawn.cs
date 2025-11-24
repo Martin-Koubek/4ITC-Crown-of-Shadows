@@ -8,6 +8,7 @@ public class EnemyRespawn : MonoBehaviour
     public bool isDead = false;
     public Transform spawnSpot;
     private bool spawned = false;
+    private Enemy spawn;
     Random rnd = new();
 
     void Update()
@@ -20,7 +21,8 @@ public class EnemyRespawn : MonoBehaviour
 
     private void Respawn()
     {
-        Instantiate(enemies[1], spawnSpot);
+        spawn = Instantiate(enemies[rnd.Next(0, enemies.Count)], spawnSpot);
+        spawn.gameObject.transform.position = spawnSpot.transform.position;
         isDead = false;
     }
 }
