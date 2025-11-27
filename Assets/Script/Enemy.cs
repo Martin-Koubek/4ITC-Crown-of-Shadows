@@ -1,6 +1,5 @@
 using System.Collections;
 using TMPro;
-using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -15,6 +14,7 @@ public class Enemy : MonoBehaviour
     public bool hasBeenHit = false;
     private Collider coll;
     private EnemyRespawn spawner;
+    private bool _isMage;
 
     //UI
     public TextMeshProUGUI health;
@@ -77,10 +77,18 @@ public class Enemy : MonoBehaviour
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if (!playerInSightRange && !playerInAttackRange) Patroling();
-        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-        if(playerInSightRange && playerInAttackRange) AttackPlayer();
-
+        if (!playerInSightRange && !playerInAttackRange)
+        {
+            Patroling();
+        }
+        if (playerInSightRange && !playerInAttackRange)
+        {
+            ChasePlayer();
+        }
+        if (playerInSightRange && playerInAttackRange)
+        {
+            AttackPlayer();
+        }
         health.text = curentHealth + "/" + _maxHealth;
 
         healthFillBar.fillAmount = curentHealth / _maxHealth;
@@ -110,11 +118,11 @@ public class Enemy : MonoBehaviour
     {
         if (!walkPointSet) SearchWalkPoint();
 
-        if(walkPointSet) agent.SetDestination(walkingPoint);
+        if (walkPointSet) agent.SetDestination(walkingPoint);
 
         Vector3 distanceToWalkPoint = transform.position - walkingPoint;
 
-        if(distanceToWalkPoint.magnitude < 1f) walkPointSet=false;
+        if (distanceToWalkPoint.magnitude < 1f) walkPointSet = false;
     }
     private void SearchWalkPoint()
     {
@@ -132,13 +140,13 @@ public class Enemy : MonoBehaviour
     }
     private void ChasePlayer()
     {
-        if(Physics.Raycast(player.transform.position, -transform.up, 5f, whatIsGround))
+        if (Physics.Raycast(player.transform.position, -transform.up, 5f, whatIsGround))
         {
             anim.SetFloat(AnimatorMoveZId, 1f);
+            transform.LookAt(player);
             agent.SetDestination(player.position);
         }
-        else Patroling();
-       
+
     }
     private void AttackPlayer()
     {
@@ -148,9 +156,14 @@ public class Enemy : MonoBehaviour
 
         if (!attacked)
         {
-            //attack code
+            if (!_isMage)
+            {
 
+            }
+            else
+            {
 
+            }
 
             attacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
@@ -159,6 +172,6 @@ public class Enemy : MonoBehaviour
 
     private void ResetAttack()
     {
-        attacked=false;
+        attacked = false;
     }
 }
