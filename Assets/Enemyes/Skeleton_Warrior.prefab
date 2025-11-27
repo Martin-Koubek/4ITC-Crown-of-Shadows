@@ -760,14 +760,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   basicHealth: 150
   curentHealth: 150
+  baseDmg: 5
+  dmg: 0
   hasBeenHit: 0
+  isMage: 0
+  FireBall: {fileID: 0}
+  FirePoint: {fileID: 0}
   health: {fileID: 2232621539302479885}
   lvl: {fileID: 4398675359853068180}
   healthFillBar: {fileID: 6285593569685124074}
   player: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 4
+    m_Bits: 12
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64

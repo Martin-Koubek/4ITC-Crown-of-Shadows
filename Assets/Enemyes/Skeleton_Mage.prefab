@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &564628106004852938
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8102098321693417127}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8102098321693417127
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564628106004852938}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1120386289316462730}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1026371644827244421
 GameObject:
   m_ObjectHideFlags: 0
@@ -729,7 +760,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 040b310610d450241b65709aa484bb6e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8102098321693417127}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 040b310610d450241b65709aa484bb6e, type: 3}
 --- !u!4 &1120386289316462730 stripped
@@ -814,9 +848,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 60de331e46ee00041a6a1f9349e0cba6, type: 3}
       insertIndex: -1
       addedObject: {fileID: -5383446718889404264}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 60de331e46ee00041a6a1f9349e0cba6, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3214452859562636179}
   m_SourcePrefab: {fileID: 100100000, guid: 60de331e46ee00041a6a1f9349e0cba6, type: 3}
 --- !u!4 &4069353633293749623 stripped
 Transform:
@@ -847,17 +878,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   basicHealth: 50
   curentHealth: 50
+  baseDmg: 5
+  dmg: 0
   hasBeenHit: 0
+  isMage: 0
+  FireBall: {fileID: 2355742632498850859, guid: 897dbe1134b955341922fc89c5cb13b0, type: 3}
+  FirePoint: {fileID: 8102098321693417127}
   health: {fileID: 5080444217291418702}
   lvl: {fileID: 7745608922315384556}
   healthFillBar: {fileID: 929950484410327308}
   player: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   whatIsPlayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   walkingPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 15
   timeBetweenAttacks: 0.8
@@ -960,15 +996,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 122
   m_CollisionDetection: 0
---- !u!114 &3214452859562636179
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6504953723320352520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4189bb8be21bd04ba680149fc9b80f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

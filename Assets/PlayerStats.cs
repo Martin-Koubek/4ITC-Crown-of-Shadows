@@ -7,6 +7,8 @@ public class PlayerStats : MonoBehaviour
     private int _maxHealth = 100;
     public float curentHealth;
 
+    public bool hasBeenHit = false;
+
     public int defence = 0;
 
     public TextMeshProUGUI health;
