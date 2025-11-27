@@ -19,7 +19,7 @@ public class EnemyRespawn : MonoBehaviour
         }
     }
 
-    private void Respawn()
+    public void Respawn()
     {
         spawn = Instantiate(enemies[rnd.Next(0, enemies.Count)], spawnSpot);
         spawn.gameObject.transform.position = spawnSpot.transform.position;

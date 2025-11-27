@@ -25,11 +25,11 @@ Transform:
   m_GameObject: {fileID: 564628106004852938}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.44, y: 1.29, z: 1.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1120386289316462730}
+  m_Father: {fileID: 5840584183670203826}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1026371644827244421
 GameObject:
@@ -760,10 +760,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 040b310610d450241b65709aa484bb6e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8102098321693417127}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 040b310610d450241b65709aa484bb6e, type: 3}
 --- !u!4 &1120386289316462730 stripped
@@ -828,6 +825,9 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 60de331e46ee00041a6a1f9349e0cba6, type: 3}
       insertIndex: 0
+      addedObject: {fileID: 8102098321693417127}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 60de331e46ee00041a6a1f9349e0cba6, type: 3}
+      insertIndex: 1
       addedObject: {fileID: 6218053795632645102}
     - targetCorrespondingSourceObject: {fileID: 7997947301047521070, guid: 60de331e46ee00041a6a1f9349e0cba6, type: 3}
       insertIndex: -1
@@ -881,9 +881,12 @@ MonoBehaviour:
   baseDmg: 5
   dmg: 0
   hasBeenHit: 0
-  isMage: 0
-  FireBall: {fileID: 2355742632498850859, guid: 897dbe1134b955341922fc89c5cb13b0, type: 3}
+  shootForce: 50
+  isMage: 1
+  FireBall: {fileID: 4733914213168165253, guid: 897dbe1134b955341922fc89c5cb13b0, type: 3}
   FirePoint: {fileID: 8102098321693417127}
+  cantAttack: 0
+  isAttacking: 0
   health: {fileID: 5080444217291418702}
   lvl: {fileID: 7745608922315384556}
   healthFillBar: {fileID: 929950484410327308}
@@ -894,9 +897,12 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
+  wall:
+    serializedVersion: 2
+    m_Bits: 128
   walkingPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 15
-  timeBetweenAttacks: 0.8
+  timeBetweenAttacks: 2
   attacked: 0
   sightRange: 17
   attackRange: 11
@@ -994,5 +1000,5 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 112
   m_CollisionDetection: 0

@@ -763,9 +763,12 @@ MonoBehaviour:
   baseDmg: 5
   dmg: 0
   hasBeenHit: 0
+  shootForce: 0
   isMage: 0
   FireBall: {fileID: 0}
   FirePoint: {fileID: 0}
+  cantAttack: 0
+  isAttacking: 0
   health: {fileID: 2232621539302479885}
   lvl: {fileID: 4398675359853068180}
   healthFillBar: {fileID: 6285593569685124074}
@@ -776,6 +779,9 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
+  wall:
+    serializedVersion: 2
+    m_Bits: 128
   walkingPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 15
   timeBetweenAttacks: 1
@@ -876,7 +882,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!4 &4606294515080037196 stripped
 Transform:

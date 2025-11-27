@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Runtime.CompilerServices;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -17,11 +15,13 @@ public class Enemy : MonoBehaviour
     public float dmg;
     private int Lvl = 1;
     public bool hasBeenHit = false;
+    public float shootForce = 50f;
     private Collider coll;
     private EnemyRespawn spawner;
     public bool isMage;
-    public GameObject FireBall;
+    public FireBall FireBall;
     public Transform FirePoint;
+    public bool cantAttack;
 
     public bool isAttacking = false;
 
@@ -33,7 +33,7 @@ public class Enemy : MonoBehaviour
     //navigation
     private NavMeshAgent agent;
     public Transform player;
-    public LayerMask whatIsGround, whatIsPlayer;
+    public LayerMask whatIsGround, whatIsPlayer, wall;
 
     //patroling
     public Vector3 walkingPoint;
@@ -54,13 +54,14 @@ public class Enemy : MonoBehaviour
     private int AnimatorMoveZId;
     private int AnimatorAttackId;
     private int AnimatorIsMage;
+    private int AnimatorHitId;
 
 
 
     private IEnumerator DestroyAfterDelay(Collider collider)
     {
         yield return new WaitForSeconds(5f);
-        Destroy(gameObject);
+        Destroy(this);
     }
 
     private void Awake()
@@ -82,11 +83,12 @@ public class Enemy : MonoBehaviour
         AnimatorIsMage = Animator.StringToHash("isMage");
         AnimatorAttackId = Animator.StringToHash("attacked");
         AnimatorMoveZId = Animator.StringToHash("MoveZ");
+        AnimatorHitId = Animator.StringToHash("cantAttack");
         AnimatorDeathIdle = Animator.StringToHash("Dead");
 
         coll = GetComponent<Collider>();
 
-        if(isMage)anim.SetBool(AnimatorIsMage, true);
+        if (isMage) anim.SetBool(AnimatorIsMage, true);
         else anim.SetBool(AnimatorIsMage, false);
     }
     private void Update()
@@ -98,11 +100,11 @@ public class Enemy : MonoBehaviour
         {
             Patroling();
         }
-        if (playerInSightRange && !playerInAttackRange)
+        else if (playerInSightRange && !playerInAttackRange)
         {
             ChasePlayer();
         }
-        if (playerInSightRange && playerInAttackRange)
+        else if (playerInSightRange && playerInAttackRange)
         {
             AttackPlayer();
         }
@@ -112,9 +114,10 @@ public class Enemy : MonoBehaviour
 
         if (curentHealth <= 0)
         {
-            anim.SetBool(AnimatorDeathIdle, true);
-            Die();
-
+            /*anim.SetBool(AnimatorDeathIdle, true);
+            Die();*/
+            Destroy(gameObject);
+            spawner.Respawn();
         }
 
 
@@ -122,15 +125,9 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
-        StartCoroutine(DestroyAfterDelay(coll));
         spawner.isDead = true;
+        StartCoroutine(DestroyAfterDelay(coll));
     }
-
-    private void Move()
-    {
-
-    }
-
     private void Patroling()
     {
         if (!walkPointSet) SearchWalkPoint();
@@ -157,24 +154,35 @@ public class Enemy : MonoBehaviour
     }
     private void ChasePlayer()
     {
-        if (Physics.Raycast(player.transform.position, -transform.up, 5f, whatIsGround))
+        if (Physics.Raycast(transform.position, player.position, sightRange, wall) || Physics.Raycast(transform.position, player.position, sightRange, wall))
         {
-            anim.SetFloat(AnimatorMoveZId, 1f);
-            Vector3 playerView = new Vector3(player.position.x, player.position.y + 2, player.position.z);
-            transform.LookAt(playerView);
-            agent.SetDestination(player.position);
+            Patroling();
         }
+        else
+        {
+            if (Physics.Raycast(player.transform.position, -transform.up, 5f, whatIsGround))
+            {
+                anim.SetFloat(AnimatorMoveZId, 1f);
+                transform.LookAt(player);
+                agent.SetDestination(player.position);
+            }
+        }
+
 
     }
     private void AttackPlayer()
     {
-        agent.SetDestination(transform.position);
-
-        transform.LookAt(player);
-
-        if (!attacked && player.TryGetComponent<PlayerStats>(out PlayerStats playerS))
+        Vector3 distanceToPlayer = transform.position - player.position;
+        if (isMage && Physics.Raycast(transform.position, player.position, attackRange, wall))
         {
-            if (!playerS.hasBeenHit)
+            Patroling();
+        }
+
+        if (distanceToPlayer.magnitude < attackRange) agent.SetDestination(transform.position);
+
+        if (!attacked && player.TryGetComponent<PlayerStats>(out PlayerStats playerS) && !cantAttack)
+        {
+            if (!playerS.PlayerBeenHit)
             {
                 if (!isMage)
                 {
@@ -186,18 +194,29 @@ public class Enemy : MonoBehaviour
                 {
                     //vystøelí fireBall
                     anim.SetTrigger(AnimatorAttackId);
-
-                    GameObject fireball;
-                    fireball = Instantiate(FireBall, FirePoint);
-                    fireball.TryGetComponent<Rigidbody>(out Rigidbody rig);
-                    rig.AddForce(player.transform.position, ForceMode.Impulse);
-
                     attacked = true;
                     Invoke(nameof(ResetAttack), timeBetweenAttacks);
                 }
             }
             else return;
         }
+    }
+
+    private void CastFireBall()
+    {
+        FireBall fireball;
+        fireball = Instantiate(FireBall, FirePoint.position, FirePoint.rotation);
+        fireball.transform.LookAt(player);
+
+        fireball.TryGetComponent<Rigidbody>(out Rigidbody rig);
+        fireball.TryGetComponent<FireBall>(out FireBall fire);
+
+        fire.dmg = dmg;
+        fire.attackRange = attackRange;
+
+        Vector3 direction = (player.position - FirePoint.position).normalized;
+
+        rig.AddForce(direction * shootForce, ForceMode.Impulse);
     }
 
     private void ResetAttack()
@@ -211,7 +230,7 @@ public class Enemy : MonoBehaviour
         isAttacking = true;
         foreach (var player in FindObjectsOfType<PlayerStats>())
         {
-            player.hasBeenHit = false;
+            player.PlayerBeenHit = false;
         }
     }
 
@@ -221,8 +240,19 @@ public class Enemy : MonoBehaviour
         isAttacking = false;
         foreach (var player in FindObjectsOfType<PlayerStats>())
         {
-            player.hasBeenHit = false;
+            player.PlayerBeenHit = false;
             anim.ResetTrigger(AnimatorAttackId);
         }
+    }
+    public void NockBack()
+    {
+        anim.SetTrigger(AnimatorHitId);
+        cantAttack = true;
+    }
+
+    public void EndStun()
+    {
+        cantAttack = false;
+        anim.ResetTrigger(AnimatorHitId);
     }
 }

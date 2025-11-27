@@ -6,6 +6,8 @@ public class EnemyDetection : MonoBehaviour
     public int Damage;
     private Inventory inventory;
     private CombatController combatController;
+    public Transform player;
+
 
     private void Awake()
     {
@@ -23,8 +25,11 @@ public class EnemyDetection : MonoBehaviour
     {
         if (other.gameObject.TryGetComponent<Enemy>(out Enemy enemy) && combatController.isAttacking && !enemy.hasBeenHit)
         {
+            enemy.TryGetComponent<Rigidbody>(out Rigidbody rig);
             enemy.curentHealth -= Damage;
             enemy.hasBeenHit = true;
+            enemy.cantAttack = true;
+            enemy.NockBack();
         }
         else return;
     }
