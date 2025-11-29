@@ -1,3 +1,4 @@
+using Unity.Cinemachine;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
@@ -34,13 +35,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     public bool twoHandedWeapon = false;
 
-
-
-
-    //private bool Dashed;
     private InputManager inputManager;
     [SerializeField]
     private Transform cameraTransform;
+    public CinemachineCamera camera;
+
     //animations
     [Header("Animator")]
     private Animator animator;
@@ -87,6 +86,7 @@ public class PlayerController : MonoBehaviour
         if (inventoryOpen == true && invOpen == false)
         {
             invOpen = true;
+            Time.timeScale = 0f;
             pointer.gameObject.SetActive(false);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -95,6 +95,7 @@ public class PlayerController : MonoBehaviour
         else if (inventoryOpen == true && invOpen == true)
         {
             invOpen = false;
+            Time.timeScale = 1f;
             pointer.gameObject.SetActive(true);
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
@@ -103,6 +104,7 @@ public class PlayerController : MonoBehaviour
         if (menuOpen == true && menOpen == false)
         {
             menOpen = true;
+            Time.timeScale = 0f;
             pointer.gameObject.SetActive(false);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -111,6 +113,7 @@ public class PlayerController : MonoBehaviour
         else if (menuOpen == true && menOpen == true)
         {
             menOpen = false;
+            Time.timeScale = 1f;
             pointer.gameObject.SetActive(true);
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;

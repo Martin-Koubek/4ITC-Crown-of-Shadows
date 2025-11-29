@@ -13,6 +13,11 @@ public class Inventory : MonoBehaviour
     public Image image;
     public Sprite PotionDefault;
 
+    public Image RHSlot;
+    public Image LHSlot;
+    public Color defColor;
+
+
     public GameObject RHand;
     public GameObject CurentWeapon;
 

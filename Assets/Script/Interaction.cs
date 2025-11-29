@@ -64,7 +64,6 @@ public class Interaction : MonoBehaviour
                 {
                     if (inventory.CurentWeapon == null)
                     {
-                        Debug.Log("Sebral jsem meè");
                         PickUp(sword);
                     }
                     else if(inventory.CurentWeapon != null)
@@ -100,5 +99,20 @@ public class Interaction : MonoBehaviour
         sword.gameObject.SetActive(false);
         sword.gameObject.transform.SetParent(inventory.Storage);
         sword.gameObject.transform.position = inventory.Storage.position;
+
+        if (sword.type == WeaponType.TwoHanded)
+        {
+            inventory.RHSlot.sprite = sword.icon;
+            inventory.LHSlot.sprite = sword.icon;
+            inventory.RHSlot.color = Color.white;
+            inventory.LHSlot.color = Color.white;
+        }
+        else if (sword.type == WeaponType.OneHanded)
+        {
+            inventory.RHSlot.sprite = sword.icon;
+            inventory.LHSlot.sprite = null;
+            inventory.RHSlot.color = Color.white;
+            inventory.LHSlot.color = inventory.defColor;
+        }
     }
 }
