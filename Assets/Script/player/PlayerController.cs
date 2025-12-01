@@ -101,23 +101,13 @@ public class PlayerController : MonoBehaviour
             Cursor.visible = false;
             inventory.gameObject.SetActive(false);
         }
-        if (menuOpen == true && menOpen == false)
+        if (menuOpen == true)
         {
-            menOpen = true;
-            Time.timeScale = 0f;
-            pointer.gameObject.SetActive(false);
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            Menu.gameObject.SetActive(true);
+            OpenMenu();
         }
-        else if (menuOpen == true && menOpen == true)
+        else if (menuOpen == true)
         {
-            menOpen = false;
-            Time.timeScale = 1f;
-            pointer.gameObject.SetActive(true);
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-            Menu.gameObject.SetActive(false);
+            OpenMenu();
         }
         if (armed == false)
         {
@@ -184,11 +174,31 @@ public class PlayerController : MonoBehaviour
 
         Quaternion targetRotation = Quaternion.Euler(0, cameraTransform.eulerAngles.y, 0);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-
-
-        //if(inputManager.PlayerDashed() && !Dashed)
-        //{
-
-        //}
     }
+
+    public void OpenMenu()
+    {
+        if (menOpen == false)
+        {
+            menOpen = true;
+            Time.timeScale = 0f;
+            pointer.gameObject.SetActive(false);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            Menu.gameObject.SetActive(true);
+        }
+        else if (menOpen == true)
+        {
+            menOpen = false;
+            Time.timeScale = 1f;
+            pointer.gameObject.SetActive(true);
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            Menu.gameObject.SetActive(false);
+        }
+    }
+
 }
+
+
+
