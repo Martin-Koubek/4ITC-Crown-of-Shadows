@@ -4783,7 +4783,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: ccafa7cd3bc8d3e4a8d85feeb09440cd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5625,13 +5625,58 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: d49ce15d9a9032945a3cb0ec7860866b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 459477604}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d49ce15d9a9032945a3cb0ec7860866b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 533128817}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d49ce15d9a9032945a3cb0ec7860866b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 533128818}
   m_SourcePrefab: {fileID: 100100000, guid: d49ce15d9a9032945a3cb0ec7860866b, type: 3}
 --- !u!4 &533128815 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d49ce15d9a9032945a3cb0ec7860866b, type: 3}
   m_PrefabInstance: {fileID: 533128814}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &533128816 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d49ce15d9a9032945a3cb0ec7860866b, type: 3}
+  m_PrefabInstance: {fileID: 533128814}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &533128817
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 533128816}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6746500233450193087, guid: d49ce15d9a9032945a3cb0ec7860866b, type: 3}
+--- !u!114 &533128818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 533128816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e4b0993906244f4a9a3e520c377d307, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &533181204
 GameObject:
   m_ObjectHideFlags: 0

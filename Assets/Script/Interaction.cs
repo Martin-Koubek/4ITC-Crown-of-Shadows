@@ -73,6 +73,11 @@ public class Interaction : MonoBehaviour
                         
                     }
                 }
+                else if (hit.collider.gameObject.TryGetComponent<EndTutorial>(out EndTutorial end))
+                {
+                    end.LoadLevel("MainGame");
+                }
+
                 else return;
 
             }
