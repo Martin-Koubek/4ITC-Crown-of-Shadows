@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
@@ -29,7 +29,7 @@ public class MapGenerator : MonoBehaviour
     public void NewFloor()
     {
         int roomCount = rnd.Next(5, 11);
-        for (int i = 0; i < roomCount + 1; i++)
+        for (int i = 0; i < roomCount; i++)
         {
             if (i == 0)
             {
@@ -41,12 +41,12 @@ public class MapGenerator : MonoBehaviour
                 _connectionPointEnd = newRoom.connectionPoint;
 
                 spawnedRooms.Add(newRoom);
-                //Hall Gen script
+                CreateHallway(_connectionPointStart.position, _connectionPointEnd.position);
                 lastRoom = newRoom;
 
 
             }
-            else if (i == roomCount + 1)
+            else if (i == roomCount)
             {
                 Vector3 roomPos = GetValidPos();
                 newRoom = Instantiate(endRoom, roomPos, Quaternion.identity);
@@ -54,7 +54,7 @@ public class MapGenerator : MonoBehaviour
                 _connectionPointEnd = endRoom.connectionPoint;
 
                 spawnedRooms.Add(newRoom);
-                //Hall Gen script
+                CreateHallway(_connectionPointStart.position, _connectionPointEnd.position);
             }
             else
             {
@@ -63,7 +63,7 @@ public class MapGenerator : MonoBehaviour
                 _connectionPointStart = lastRoom.connectionPoint;
                 _connectionPointEnd = newRoom.connectionPoint;
 
-                //Hall Gen script
+                CreateHallway(_connectionPointStart.position, _connectionPointEnd.position);
 
                 spawnedRooms.Add(newRoom);
                 lastRoom = newRoom;
@@ -78,7 +78,7 @@ public class MapGenerator : MonoBehaviour
         Vector3 pos;
         do
         {
-            pos = new Vector3(rnd.Next(50,101), 0, rnd.Next(50, 101));
+            pos = new Vector3(rnd.Next(-200,201), 0, rnd.Next(50, 201));
         } while (isTooClose(pos, spawnedRooms, minDistance));
 
         return pos;
@@ -94,5 +94,30 @@ public class MapGenerator : MonoBehaviour
             }
         }
         return false;
+    }
+    void CreateHallway(Vector3 start, Vector3 end)
+    {
+        // Uděláme L-tvar: nejdřív X osa → pak Z osa
+        Vector3 corner = new Vector3(end.x, start.y, start.z);
+
+        CreateSegment(start, corner);
+        CreateSegment(corner, end);
+    }
+
+    void CreateSegment(Vector3 a, Vector3 b)
+    {
+        Vector3 dir = (b - a).normalized;
+        float distance = Vector3.Distance(a, b);
+        int steps = Mathf.RoundToInt(distance);
+
+        for (int i = 0; i < steps; i++)
+        {
+            Vector3 pos = a + dir * i;
+
+            // Podlaha chodby
+            Instantiate(_FloorTile, pos, Quaternion.identity);
+
+          
+        }
     }
 }

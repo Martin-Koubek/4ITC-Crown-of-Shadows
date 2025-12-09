@@ -398,10 +398,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startRoom: {fileID: 1599602068}
-  endRoom: {fileID: 0}
-  rooms: []
+  endRoom: {fileID: 6127146416206307616, guid: ad445a6772e91364fb5e3534994f57e0, type: 3}
+  minDistance: 50
+  rooms:
+  - {fileID: 4749486507394268575, guid: e32e43e0a63a17546a35f596e1d99ede, type: 3}
   _FloorTile: {fileID: 6761167916000341063, guid: da4bbf977f965c1478a2e21f5a12c279, type: 3}
   _Wall: {fileID: 5609366612712596396, guid: a7383f51b49066a4f9216805d69be1e5, type: 3}
+  spawnedRooms: []
 --- !u!114 &1953768969
 MonoBehaviour:
   m_ObjectHideFlags: 0
