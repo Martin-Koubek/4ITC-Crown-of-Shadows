@@ -482,6 +482,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2116995881120393434}
   - component: {fileID: 6127146416206307616}
+  - component: {fileID: 3731559903375880714}
   m_Layer: 0
   m_Name: EndRoom
   m_TagString: Untagged
@@ -522,6 +523,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   connectionPoint: {fileID: 2775879549892995350}
+--- !u!65 &3731559903375880714
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7187998821826347014}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 20, y: 5, z: 20}
+  m_Center: {x: 0, y: 2.5, z: 0}
 --- !u!1 &8175994495335325643
 GameObject:
   m_ObjectHideFlags: 0

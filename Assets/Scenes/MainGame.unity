@@ -177,7 +177,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2308825529286135904, guid: 2c805183cae1545409fb64ba527c24d3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2.13
       objectReference: {fileID: 0}
     - target: {fileID: 2308825529286135904, guid: 2c805183cae1545409fb64ba527c24d3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -363,6 +363,7 @@ GameObject:
   - component: {fileID: 1953768967}
   - component: {fileID: 1953768969}
   - component: {fileID: 1953768968}
+  - component: {fileID: 1953768970}
   m_Layer: 0
   m_Name: MapGenerator
   m_TagString: Untagged
@@ -403,7 +404,6 @@ MonoBehaviour:
   rooms:
   - {fileID: 4749486507394268575, guid: e32e43e0a63a17546a35f596e1d99ede, type: 3}
   _FloorTile: {fileID: 8406808869162807362, guid: 24de3947361f78f44afd08409bed14d9, type: 3}
-  _Wall: {fileID: 5609366612712596396, guid: a7383f51b49066a4f9216805d69be1e5, type: 3}
   spawnedRooms: []
 --- !u!114 &1953768969
 MonoBehaviour:
@@ -437,6 +437,21 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 0}
   m_BuildHeightMesh: 0
+--- !u!114 &1953768970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953768966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e25a7ef66d8685479461332f5ba3a0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileSize: 4
+  width: 200
+  height: 200
 --- !u!1001 &360768054886557653
 PrefabInstance:
   m_ObjectHideFlags: 0
