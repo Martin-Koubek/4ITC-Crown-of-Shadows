@@ -25,7 +25,7 @@ public class MapGenerator : MonoBehaviour
     public void NewFloor()
     {
         int roomCount = rnd.Next(5, 11);
-        MarkStartRoomAsObstacle();
+        //MarkStartRoomAsObstacle();
         for (int i = 0; i <= roomCount; i++)
         {
             Vector3 roomPos = GetValidPos();
@@ -42,10 +42,10 @@ public class MapGenerator : MonoBehaviour
             }
 
             spawnedRooms.Add(newRoom);
-            MarkRoomAsObstacle(newRoom);
+            //MarkRoomAsObstacle(newRoom);
 
             // --- FIRST ROOM → connect to startRoom ---
-            if (i == 0)
+            /*if (i == 0)
             {
                 CreateHallway(startRoom.connectionPoint.position, newRoom.connectionPoint.position);
             }
@@ -54,7 +54,7 @@ public class MapGenerator : MonoBehaviour
                 // Other rooms connect to previous room
                 CreateHallway(spawnedRooms[i - 1].connectionPoint.position,
                               newRoom.connectionPoint.position);
-            }
+            }*/
 
             lastRoom = newRoom;
         }
@@ -62,14 +62,14 @@ public class MapGenerator : MonoBehaviour
 
         // ---------- HELPERS BELOW ----------
 
-        void MarkRoomAsObstacle(Room room)
+        /*void MarkRoomAsObstacle(Room room)
         {
             Bounds b = room.GetComponent<Collider>().bounds;
             Rect r = new Rect(b.min.x, b.min.z, b.size.x, b.size.z);
             ObstacleGrid.Instance.MarkRoom(r);
         }
 
-        Vector3 GetValidPos()
+       */Vector3 GetValidPos()
         {
             Vector3 pos;
             do
@@ -90,7 +90,7 @@ public class MapGenerator : MonoBehaviour
             }
             return false;
         }
-
+        /*
         void CreateHallway(Vector3 start, Vector3 end)
         {
             List<Vector3> path = AStarPathfinder.FindPath(start, end);
@@ -118,6 +118,6 @@ public class MapGenerator : MonoBehaviour
             Bounds b = startRoom.GetComponent<Collider>().bounds;
             Rect r = new Rect(b.min.x, b.min.z, b.size.x, b.size.z);
             ObstacleGrid.Instance.MarkRoom(r);
-        }
+        }*/
     }
 }
