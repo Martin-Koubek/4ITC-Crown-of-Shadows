@@ -341,15 +341,15 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
---- !u!114 &1599602068 stripped
+--- !u!114 &1599602071 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8010248391045347620, guid: cae3c906149cf664584e33d1626b446b, type: 3}
+  m_CorrespondingSourceObject: {fileID: 5028275873022684698, guid: cae3c906149cf664584e33d1626b446b, type: 3}
   m_PrefabInstance: {fileID: 360768054886557653}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef274de28ef96864d868189f434ff16a, type: 3}
+  m_Script: {fileID: 11500000, guid: 7ba03bc5526b6a04b97650b25ee7443c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1953768966
@@ -363,6 +363,7 @@ GameObject:
   - component: {fileID: 1953768967}
   - component: {fileID: 1953768969}
   - component: {fileID: 1953768968}
+  - component: {fileID: 1953768971}
   - component: {fileID: 1953768970}
   m_Layer: 0
   m_Name: MapGenerator
@@ -398,13 +399,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25627606a60a50b4191071d356056cea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startRoom: {fileID: 1599602068}
+  startRoom: {fileID: 5028275873022684698, guid: cae3c906149cf664584e33d1626b446b, type: 3}
   endRoom: {fileID: 6127146416206307616, guid: ad445a6772e91364fb5e3534994f57e0, type: 3}
   minDistance: 50
   rooms:
   - {fileID: 4749486507394268575, guid: e32e43e0a63a17546a35f596e1d99ede, type: 3}
   _FloorTile: {fileID: 8406808869162807362, guid: 24de3947361f78f44afd08409bed14d9, type: 3}
-  spawnedRooms: []
+  spawnedRooms:
+  - {fileID: 1599602071}
+  pathfinder: {fileID: 1953768970}
 --- !u!114 &1953768969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -446,12 +449,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1953768966}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e25a7ef66d8685479461332f5ba3a0c, type: 3}
+  m_Script: {fileID: 11500000, guid: bee6244ab6c2b4844a758a83596a4090, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileSize: 4
-  width: 200
-  height: 200
+  grid: {fileID: 1953768971}
+--- !u!114 &1953768971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953768966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 238e7634acfac824f9a40a4ba29a41c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridWorldSize: {x: 400, y: 400}
+  nodeRadius: 1
 --- !u!1001 &360768054886557653
 PrefabInstance:
   m_ObjectHideFlags: 0

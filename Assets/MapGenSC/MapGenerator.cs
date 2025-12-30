@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
 {
-    public startRoom startRoom;
+    public Room startRoom;
     public Room endRoom;
 
     private Room lastRoom;
@@ -17,15 +17,17 @@ public class MapGenerator : MonoBehaviour
 
     System.Random rnd = new();
 
+    [SerializeField] private Pathfinding pathfinder;
+
     private void Awake()
     {
         NewFloor();
+
     }
 
     public void NewFloor()
     {
         int roomCount = rnd.Next(5, 11);
-        //MarkStartRoomAsObstacle();
         for (int i = 0; i <= roomCount; i++)
         {
             Vector3 roomPos = GetValidPos();
@@ -42,34 +44,13 @@ public class MapGenerator : MonoBehaviour
             }
 
             spawnedRooms.Add(newRoom);
-            //MarkRoomAsObstacle(newRoom);
-
-            // --- FIRST ROOM → connect to startRoom ---
-            /*if (i == 0)
-            {
-                CreateHallway(startRoom.connectionPoint.position, newRoom.connectionPoint.position);
-            }
-            else
-            {
-                // Other rooms connect to previous room
-                CreateHallway(spawnedRooms[i - 1].connectionPoint.position,
-                              newRoom.connectionPoint.position);
-            }*/
 
             lastRoom = newRoom;
         }
+        CreateCorridors();
 
 
-        // ---------- HELPERS BELOW ----------
-
-        /*void MarkRoomAsObstacle(Room room)
-        {
-            Bounds b = room.GetComponent<Collider>().bounds;
-            Rect r = new Rect(b.min.x, b.min.z, b.size.x, b.size.z);
-            ObstacleGrid.Instance.MarkRoom(r);
-        }
-
-       */Vector3 GetValidPos()
+        Vector3 GetValidPos()
         {
             Vector3 pos;
             do
@@ -90,34 +71,37 @@ public class MapGenerator : MonoBehaviour
             }
             return false;
         }
-        /*
-        void CreateHallway(Vector3 start, Vector3 end)
+
+        void CreateCorridors()
         {
-            List<Vector3> path = AStarPathfinder.FindPath(start, end);
-            if (path == null) return;
-
-            float spacing = 6f;
-
-            for (int i = 0; i < path.Count - 1; i++)
+            for (int i = 0; i < spawnedRooms.Count - 1; i++)
             {
-                Vector3 a = path[i];
-                Vector3 b = path[i + 1];
+                Room fromRoom = spawnedRooms[i];
+                Room toRoom = spawnedRooms[i + 1];
 
-                float dist = Vector3.Distance(a, b);
-                int steps = Mathf.CeilToInt(dist / spacing);
+                ConnectionPoint fromDoor = fromRoom.GetFreeConnectionPoint();
+                ConnectionPoint toDoor = toRoom.GetFreeConnectionPoint();
 
-                for (int s = 0; s < steps; s++)
+                if (fromDoor == null || toDoor == null)
                 {
-                    Vector3 pos = Vector3.Lerp(a, b, s / (float)steps);
-                    Instantiate(_FloorTile, pos, Quaternion.identity);
+                    Debug.LogWarning("Room has no free connections");
+                    continue;
+                }
+
+                fromDoor.used = true;
+                toDoor.used = true;
+
+                Vector3 start = fromDoor.transform.position;
+                Vector3 end = toDoor.transform.position;
+
+                var path = pathfinder.FindPath(start, end);
+
+                foreach (var node in path)
+                {
+                    Instantiate(_FloorTile, node.worldPos, Quaternion.identity);
                 }
             }
         }
-        void MarkStartRoomAsObstacle()
-        {
-            Bounds b = startRoom.GetComponent<Collider>().bounds;
-            Rect r = new Rect(b.min.x, b.min.z, b.size.x, b.size.z);
-            ObstacleGrid.Instance.MarkRoom(r);
-        }*/
     }
+
 }
