@@ -19,9 +19,11 @@ public class MapGenerator : MonoBehaviour
 
     [SerializeField] private Pathfinding pathfinder;
 
-    private void Awake()
+    private void Start()
     {
+
         NewFloor();
+        CreateCorridors();
 
     }
 
@@ -47,7 +49,7 @@ public class MapGenerator : MonoBehaviour
 
             lastRoom = newRoom;
         }
-        CreateCorridors();
+
 
 
         Vector3 GetValidPos()
@@ -72,34 +74,35 @@ public class MapGenerator : MonoBehaviour
             return false;
         }
 
-        void CreateCorridors()
+
+    }
+    void CreateCorridors()
+    {
+        for (int i = 0; i < spawnedRooms.Count - 1; i++)
         {
-            for (int i = 0; i < spawnedRooms.Count - 1; i++)
+            Room fromRoom = spawnedRooms[i];
+            Room toRoom = spawnedRooms[i + 1];
+
+            ConnectionPoint fromDoor = fromRoom.GetFreeConnectionPoint();
+            ConnectionPoint toDoor = toRoom.GetFreeConnectionPoint();
+
+            if (fromDoor == null || toDoor == null)
             {
-                Room fromRoom = spawnedRooms[i];
-                Room toRoom = spawnedRooms[i + 1];
+                Debug.LogWarning("Room has no free connections");
+                continue;
+            }
 
-                ConnectionPoint fromDoor = fromRoom.GetFreeConnectionPoint();
-                ConnectionPoint toDoor = toRoom.GetFreeConnectionPoint();
+            fromDoor.used = true;
+            toDoor.used = true;
 
-                if (fromDoor == null || toDoor == null)
-                {
-                    Debug.LogWarning("Room has no free connections");
-                    continue;
-                }
+            Vector3 start = fromDoor.transform.position;
+            Vector3 end = toDoor.transform.position;
 
-                fromDoor.used = true;
-                toDoor.used = true;
+            var path = pathfinder.FindPath(start, end);
 
-                Vector3 start = fromDoor.transform.position;
-                Vector3 end = toDoor.transform.position;
-
-                var path = pathfinder.FindPath(start, end);
-
-                foreach (var node in path)
-                {
-                    Instantiate(_FloorTile, node.worldPos, Quaternion.identity);
-                }
+            foreach (var node in path)
+            {
+                Instantiate(_FloorTile, node.worldPos, Quaternion.identity);
             }
         }
     }

@@ -475,6 +475,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 358239057369150091, guid: cae3c906149cf664584e33d1626b446b, type: 3}
+      propertyPath: m_Size.x
+      value: 0.67755044
+      objectReference: {fileID: 0}
+    - target: {fileID: 358239057369150091, guid: cae3c906149cf664584e33d1626b446b, type: 3}
+      propertyPath: m_Center.x
+      value: 1.6612256
+      objectReference: {fileID: 0}
     - target: {fileID: 1137122888077671903, guid: cae3c906149cf664584e33d1626b446b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -515,9 +523,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3096764679680187863, guid: cae3c906149cf664584e33d1626b446b, type: 3}
+      propertyPath: m_Size.x
+      value: 0.8103249
+      objectReference: {fileID: 0}
+    - target: {fileID: 3096764679680187863, guid: cae3c906149cf664584e33d1626b446b, type: 3}
+      propertyPath: m_Center.x
+      value: -1.5948385
+      objectReference: {fileID: 0}
     - target: {fileID: 3910554395848990678, guid: cae3c906149cf664584e33d1626b446b, type: 3}
       propertyPath: m_Name
       value: StartRoom
+      objectReference: {fileID: 0}
+    - target: {fileID: 5786048050199910262, guid: cae3c906149cf664584e33d1626b446b, type: 3}
+      propertyPath: m_Size.y
+      value: 1.0094128
+      objectReference: {fileID: 0}
+    - target: {fileID: 5786048050199910262, guid: cae3c906149cf664584e33d1626b446b, type: 3}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5786048050199910262, guid: cae3c906149cf664584e33d1626b446b, type: 3}
+      propertyPath: m_Center.y
+      value: 3.4952936
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
