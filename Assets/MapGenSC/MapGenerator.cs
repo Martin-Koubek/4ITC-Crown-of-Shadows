@@ -6,8 +6,6 @@ public class MapGenerator : MonoBehaviour
     public Room startRoom;
     public Room endRoom;
 
-    private Room lastRoom;
-
     public float minDistance = 50f;
 
     [SerializeField] private List<Room> rooms = new List<Room>();
@@ -15,42 +13,41 @@ public class MapGenerator : MonoBehaviour
 
     [SerializeField] private List<Room> spawnedRooms = new List<Room>();
 
-    System.Random rnd = new();
-
     [SerializeField] private Pathfinding pathfinder;
+
+    private System.Random rnd = new();
+
+    [SerializeField] private float floorOffset = 2f;
+
 
     private void Start()
     {
-
+        // 1️⃣ Vytvoření místností
         NewFloor();
-        CreateCorridors();
 
+        // 2️⃣ Přestavění gridu po spawnování místností
+        pathfinder.grid.RebuildGrid();
+
+        // 3️⃣ Vytvoření chodbiček mezi všemi místnostmi
+        CreateCorridors();
     }
 
     public void NewFloor()
     {
         int roomCount = rnd.Next(5, 11);
+
         for (int i = 0; i <= roomCount; i++)
         {
             Vector3 roomPos = GetValidPos();
             Room newRoom;
 
-            // EndRoom
             if (i == roomCount)
-            {
                 newRoom = Instantiate(endRoom, roomPos, Quaternion.identity);
-            }
             else
-            {
                 newRoom = Instantiate(rooms[rnd.Next(rooms.Count)], roomPos, Quaternion.identity);
-            }
 
             spawnedRooms.Add(newRoom);
-
-            lastRoom = newRoom;
         }
-
-
 
         Vector3 GetValidPos()
         {
@@ -73,38 +70,62 @@ public class MapGenerator : MonoBehaviour
             }
             return false;
         }
-
-
     }
-    void CreateCorridors()
+
+    private void CreateCorridors()
     {
+        // Smyčka přes všechny sousední místnosti
         for (int i = 0; i < spawnedRooms.Count - 1; i++)
         {
             Room fromRoom = spawnedRooms[i];
             Room toRoom = spawnedRooms[i + 1];
 
-            ConnectionPoint fromDoor = fromRoom.GetFreeConnectionPoint();
-            ConnectionPoint toDoor = toRoom.GetFreeConnectionPoint();
-
-            if (fromDoor == null || toDoor == null)
-            {
-                Debug.LogWarning("Room has no free connections");
-                continue;
-            }
-
-            fromDoor.used = true;
-            toDoor.used = true;
-
-            Vector3 start = fromDoor.transform.position;
-            Vector3 end = toDoor.transform.position;
-
-            var path = pathfinder.FindPath(start, end);
-
-            foreach (var node in path)
-            {
-                Instantiate(_FloorTile, node.worldPos, Quaternion.identity);
-            }
+            CreateCorridorBetween(fromRoom, toRoom);
         }
     }
 
+    // Funkce, která vytvoří chodbu mezi dvěma místnostmi
+    private void CreateCorridorBetween(Room fromRoom, Room toRoom)
+    {
+        ConnectionPoint fromDoor = fromRoom.GetFreeConnectionPoint();
+        ConnectionPoint toDoor = toRoom.GetFreeConnectionPoint();
+
+        if (fromDoor == null || toDoor == null)
+        {
+            Debug.LogWarning("Room has no free connections");
+            return;
+        }
+
+        fromDoor.used = true;
+        toDoor.used = true;
+
+        // Automatický posun start/end ven z místnosti podle směru dveří
+        Vector3 start = fromDoor.GetCorridorStart();
+        Vector3 end = toDoor.GetCorridorStart();
+
+        Node startNode = pathfinder.grid.NodeFromWorldPoint(start);
+        Node targetNode = pathfinder.grid.NodeFromWorldPoint(end);
+
+        Debug.Log($"FROM door: {fromDoor.transform.position}, startNode walkable: {startNode.walkable}");
+        Debug.Log($"TO door: {toDoor.transform.position}, targetNode walkable: {targetNode.walkable}");
+
+        if (!startNode.walkable || !targetNode.walkable)
+        {
+            Debug.LogWarning("Skipping corridor: start or target not walkable");
+            return;
+        }
+
+        var path = pathfinder.FindPath(start, end);
+
+        if (path == null || path.Count == 0)
+        {
+            Debug.LogWarning("Pathfinding returned null or empty path");
+            return;
+        }
+
+        foreach (var node in path)
+        {
+            Instantiate(_FloorTile, node.worldPos, Quaternion.identity);
+        }
+    }
 }

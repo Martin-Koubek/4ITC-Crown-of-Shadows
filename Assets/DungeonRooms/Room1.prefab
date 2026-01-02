@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 465234010801142114}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1093656155758067680}
   - component: {fileID: 3047721673547120584}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ConnectionPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,7 +84,7 @@ Transform:
   m_GameObject: {fileID: 1036846340351730210}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7, y: 0, z: -10}
+  m_LocalPosition: {x: -7, y: 0, z: -11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -103,6 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   used: 0
+  direction: {x: 0, y: 0, z: -1}
 --- !u!1 &4207412274123476637
 GameObject:
   m_ObjectHideFlags: 0
@@ -114,7 +115,7 @@ GameObject:
   - component: {fileID: 3025925420434896234}
   - component: {fileID: 4749486507394268575}
   - component: {fileID: 1065316060506057040}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Room1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,9 +170,9 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -186,7 +187,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8245339307306850457}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Decor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,7 +227,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3227791466071128106}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -286,7 +287,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6627342202817104551}
   - component: {fileID: 4641757887306740121}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ConnectionPoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -302,7 +303,7 @@ Transform:
   m_GameObject: {fileID: 8709867895209465545}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 0, z: 10}
+  m_LocalPosition: {x: 2, y: 0, z: 11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -321,6 +322,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   used: 0
+  direction: {x: 0, y: 0, z: 1}
 --- !u!1001 &64165911627901120
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -372,6 +374,26 @@ PrefabInstance:
     - target: {fileID: 3155936162750876552, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
       propertyPath: m_Name
       value: BigTile (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155936162750876552, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4138409835045942878, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789447517105248036, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7796677412544722962, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003934419008695935, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -435,6 +457,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: pillar (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2149032522201162369, guid: 8c1b1a5ec579a074d8f395b2c5bdcaac, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -497,6 +523,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTile (25)
       objectReference: {fileID: 0}
+    - target: {fileID: 3155936162750876552, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4138409835045942878, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789447517105248036, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7796677412544722962, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003934419008695935, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -518,6 +564,10 @@ PrefabInstance:
     - target: {fileID: 1355958964085312166, guid: 0d650b7315e53ea49bca1e3ae9947df5, type: 3}
       propertyPath: m_Name
       value: wall_corner_small (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1355958964085312166, guid: 0d650b7315e53ea49bca1e3ae9947df5, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1844934138562318364, guid: 0d650b7315e53ea49bca1e3ae9947df5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -621,6 +671,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTile (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 3155936162750876552, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4138409835045942878, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789447517105248036, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7796677412544722962, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003934419008695935, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -682,6 +752,10 @@ PrefabInstance:
     - target: {fileID: 5609366612712596396, guid: a7383f51b49066a4f9216805d69be1e5, type: 3}
       propertyPath: m_Name
       value: wall (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5609366612712596396, guid: a7383f51b49066a4f9216805d69be1e5, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -745,6 +819,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTile (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 3155936162750876552, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4138409835045942878, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789447517105248036, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7796677412544722962, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003934419008695935, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -807,6 +901,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 5609366612712596396, guid: a7383f51b49066a4f9216805d69be1e5, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -868,6 +966,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f448ba6700e7d8b4ea6dd17231a04a74, type: 3}
       propertyPath: m_Name
       value: keg
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f448ba6700e7d8b4ea6dd17231a04a74, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -960,6 +1062,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTile (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 3155936162750876552, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4138409835045942878, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789447517105248036, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7796677412544722962, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003934419008695935, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1021,6 +1143,26 @@ PrefabInstance:
     - target: {fileID: 3155936162750876552, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
       propertyPath: m_Name
       value: BigTile (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155936162750876552, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4138409835045942878, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789447517105248036, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7796677412544722962, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003934419008695935, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1084,6 +1226,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: crates_stacked
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7cd25c0d8ebcbb44fb94a1ad79c75f26, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1145,6 +1291,26 @@ PrefabInstance:
     - target: {fileID: 3155936162750876552, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
       propertyPath: m_Name
       value: BigTile (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155936162750876552, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4138409835045942878, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789447517105248036, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7796677412544722962, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003934419008695935, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1208,6 +1374,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall_corner
       objectReference: {fileID: 0}
+    - target: {fileID: 6911333697580228331, guid: 7f9b0da474f7abe4d94484c970b016cb, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1270,6 +1440,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTile (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 3155936162750876552, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4138409835045942878, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789447517105248036, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7796677412544722962, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003934419008695935, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1331,6 +1521,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f448ba6700e7d8b4ea6dd17231a04a74, type: 3}
       propertyPath: m_Name
       value: keg (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f448ba6700e7d8b4ea6dd17231a04a74, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1423,6 +1617,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTile (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 3155936162750876552, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4138409835045942878, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789447517105248036, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7796677412544722962, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003934419008695935, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1484,6 +1698,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 5528d2431605cd14c80844867659433f, type: 3}
       propertyPath: m_Name
       value: box_large (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5528d2431605cd14c80844867659433f, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1576,6 +1794,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5609366612712596396, guid: a7383f51b49066a4f9216805d69be1e5, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1637,6 +1859,10 @@ PrefabInstance:
     - target: {fileID: 4111283995652653708, guid: 1fb2dcc14f84ed94b8e8caa88be01c5f, type: 3}
       propertyPath: m_Name
       value: wall_open_scaffold (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4111283995652653708, guid: 1fb2dcc14f84ed94b8e8caa88be01c5f, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1700,6 +1926,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 5609366612712596396, guid: a7383f51b49066a4f9216805d69be1e5, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1761,6 +1991,10 @@ PrefabInstance:
     - target: {fileID: 2149032522201162369, guid: 8c1b1a5ec579a074d8f395b2c5bdcaac, type: 3}
       propertyPath: m_Name
       value: pillar
+      objectReference: {fileID: 0}
+    - target: {fileID: 2149032522201162369, guid: 8c1b1a5ec579a074d8f395b2c5bdcaac, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1824,6 +2058,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTile (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3155936162750876552, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4138409835045942878, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789447517105248036, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7796677412544722962, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003934419008695935, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1845,6 +2099,10 @@ PrefabInstance:
     - target: {fileID: 1355958964085312166, guid: 0d650b7315e53ea49bca1e3ae9947df5, type: 3}
       propertyPath: m_Name
       value: wall_corner_small (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1355958964085312166, guid: 0d650b7315e53ea49bca1e3ae9947df5, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1844934138562318364, guid: 0d650b7315e53ea49bca1e3ae9947df5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1948,6 +2206,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTile (26)
       objectReference: {fileID: 0}
+    - target: {fileID: 3155936162750876552, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4138409835045942878, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789447517105248036, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7796677412544722962, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003934419008695935, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2009,6 +2287,10 @@ PrefabInstance:
     - target: {fileID: 5609366612712596396, guid: a7383f51b49066a4f9216805d69be1e5, type: 3}
       propertyPath: m_Name
       value: wall (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5609366612712596396, guid: a7383f51b49066a4f9216805d69be1e5, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2072,6 +2354,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: pillar (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 2149032522201162369, guid: 8c1b1a5ec579a074d8f395b2c5bdcaac, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2093,6 +2379,10 @@ PrefabInstance:
     - target: {fileID: 1355958964085312166, guid: 0d650b7315e53ea49bca1e3ae9947df5, type: 3}
       propertyPath: m_Name
       value: wall_corner_small
+      objectReference: {fileID: 0}
+    - target: {fileID: 1355958964085312166, guid: 0d650b7315e53ea49bca1e3ae9947df5, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1844934138562318364, guid: 0d650b7315e53ea49bca1e3ae9947df5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2196,6 +2486,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTile (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 3155936162750876552, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4138409835045942878, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789447517105248036, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7796677412544722962, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003934419008695935, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2257,6 +2567,26 @@ PrefabInstance:
     - target: {fileID: 3155936162750876552, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
       propertyPath: m_Name
       value: BigTile (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155936162750876552, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4138409835045942878, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789447517105248036, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7796677412544722962, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003934419008695935, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2320,6 +2650,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 5609366612712596396, guid: a7383f51b49066a4f9216805d69be1e5, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2381,6 +2715,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 5528d2431605cd14c80844867659433f, type: 3}
       propertyPath: m_Name
       value: box_large
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5528d2431605cd14c80844867659433f, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2473,6 +2811,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 5609366612712596396, guid: a7383f51b49066a4f9216805d69be1e5, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2534,6 +2876,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e1db68bdc3f974444b057f9375703710, type: 3}
       propertyPath: m_Name
       value: table_long_tablecloth_decorated_A
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e1db68bdc3f974444b057f9375703710, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2626,6 +2972,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTile (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 3155936162750876552, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4138409835045942878, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789447517105248036, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7796677412544722962, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003934419008695935, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2687,6 +3053,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 5528d2431605cd14c80844867659433f, type: 3}
       propertyPath: m_Name
       value: box_large (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5528d2431605cd14c80844867659433f, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2779,6 +3149,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall_open_scaffold
       objectReference: {fileID: 0}
+    - target: {fileID: 4111283995652653708, guid: 1fb2dcc14f84ed94b8e8caa88be01c5f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2840,6 +3214,26 @@ PrefabInstance:
     - target: {fileID: 3155936162750876552, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
       propertyPath: m_Name
       value: BigTile (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155936162750876552, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4138409835045942878, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789447517105248036, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7796677412544722962, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003934419008695935, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2903,6 +3297,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTile (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 3155936162750876552, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4138409835045942878, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789447517105248036, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7796677412544722962, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003934419008695935, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2964,6 +3378,10 @@ PrefabInstance:
     - target: {fileID: 5609366612712596396, guid: a7383f51b49066a4f9216805d69be1e5, type: 3}
       propertyPath: m_Name
       value: wall (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5609366612712596396, guid: a7383f51b49066a4f9216805d69be1e5, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3027,6 +3445,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTile (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 3155936162750876552, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4138409835045942878, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789447517105248036, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7796677412544722962, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003934419008695935, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3088,6 +3526,26 @@ PrefabInstance:
     - target: {fileID: 3155936162750876552, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
       propertyPath: m_Name
       value: BigTile (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155936162750876552, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4138409835045942878, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789447517105248036, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7796677412544722962, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003934419008695935, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3151,6 +3609,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: pillar (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 2149032522201162369, guid: 8c1b1a5ec579a074d8f395b2c5bdcaac, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3212,6 +3674,10 @@ PrefabInstance:
     - target: {fileID: 2149032522201162369, guid: 8c1b1a5ec579a074d8f395b2c5bdcaac, type: 3}
       propertyPath: m_Name
       value: pillar (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2149032522201162369, guid: 8c1b1a5ec579a074d8f395b2c5bdcaac, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3275,6 +3741,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTile (24)
       objectReference: {fileID: 0}
+    - target: {fileID: 3155936162750876552, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4138409835045942878, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789447517105248036, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7796677412544722962, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003934419008695935, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3336,6 +3822,26 @@ PrefabInstance:
     - target: {fileID: 3155936162750876552, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
       propertyPath: m_Name
       value: BigTile (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155936162750876552, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4138409835045942878, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789447517105248036, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7796677412544722962, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003934419008695935, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3399,6 +3905,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTile (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 3155936162750876552, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4138409835045942878, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789447517105248036, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7796677412544722962, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003934419008695935, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3460,6 +3986,10 @@ PrefabInstance:
     - target: {fileID: 5609366612712596396, guid: a7383f51b49066a4f9216805d69be1e5, type: 3}
       propertyPath: m_Name
       value: wall (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5609366612712596396, guid: a7383f51b49066a4f9216805d69be1e5, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3523,6 +4053,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 5609366612712596396, guid: a7383f51b49066a4f9216805d69be1e5, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3584,6 +4118,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f448ba6700e7d8b4ea6dd17231a04a74, type: 3}
       propertyPath: m_Name
       value: keg (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f448ba6700e7d8b4ea6dd17231a04a74, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3676,6 +4214,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTile
       objectReference: {fileID: 0}
+    - target: {fileID: 3155936162750876552, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4138409835045942878, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789447517105248036, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7796677412544722962, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003934419008695935, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3737,6 +4295,26 @@ PrefabInstance:
     - target: {fileID: 3155936162750876552, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
       propertyPath: m_Name
       value: BigTile (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155936162750876552, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4138409835045942878, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789447517105248036, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7796677412544722962, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003934419008695935, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3800,6 +4378,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall_corner (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6911333697580228331, guid: 7f9b0da474f7abe4d94484c970b016cb, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3861,6 +4443,26 @@ PrefabInstance:
     - target: {fileID: 3155936162750876552, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
       propertyPath: m_Name
       value: BigTile (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155936162750876552, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4138409835045942878, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789447517105248036, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7796677412544722962, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003934419008695935, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3924,6 +4526,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTile (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 3155936162750876552, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4138409835045942878, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789447517105248036, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7796677412544722962, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003934419008695935, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3985,6 +4607,10 @@ PrefabInstance:
     - target: {fileID: 5609366612712596396, guid: a7383f51b49066a4f9216805d69be1e5, type: 3}
       propertyPath: m_Name
       value: wall (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5609366612712596396, guid: a7383f51b49066a4f9216805d69be1e5, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4048,6 +4674,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTile (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3155936162750876552, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4138409835045942878, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789447517105248036, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7796677412544722962, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003934419008695935, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4109,6 +4755,10 @@ PrefabInstance:
     - target: {fileID: 5609366612712596396, guid: a7383f51b49066a4f9216805d69be1e5, type: 3}
       propertyPath: m_Name
       value: wall (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5609366612712596396, guid: a7383f51b49066a4f9216805d69be1e5, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4172,6 +4822,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5609366612712596396, guid: a7383f51b49066a4f9216805d69be1e5, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4234,6 +4888,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTile (22)
       objectReference: {fileID: 0}
+    - target: {fileID: 3155936162750876552, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4138409835045942878, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789447517105248036, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7796677412544722962, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003934419008695935, guid: 918dd82638b301643a39456a069b3cd7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4295,6 +4969,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 5528d2431605cd14c80844867659433f, type: 3}
       propertyPath: m_Name
       value: box_large (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5528d2431605cd14c80844867659433f, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4387,6 +5065,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: pillar (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 2149032522201162369, guid: 8c1b1a5ec579a074d8f395b2c5bdcaac, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4449,6 +5131,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall
       objectReference: {fileID: 0}
+    - target: {fileID: 5609366612712596396, guid: a7383f51b49066a4f9216805d69be1e5, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4510,6 +5196,10 @@ PrefabInstance:
     - target: {fileID: 6911333697580228331, guid: 7f9b0da474f7abe4d94484c970b016cb, type: 3}
       propertyPath: m_Name
       value: wall_corner (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6911333697580228331, guid: 7f9b0da474f7abe4d94484c970b016cb, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

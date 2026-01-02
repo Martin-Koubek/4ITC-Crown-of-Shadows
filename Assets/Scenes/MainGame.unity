@@ -171,6 +171,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 930066066589518258, guid: 2c805183cae1545409fb64ba527c24d3, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2308825529286135904, guid: 2c805183cae1545409fb64ba527c24d3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -381,7 +385,7 @@ Transform:
   m_GameObject: {fileID: 1953768966}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -408,6 +412,7 @@ MonoBehaviour:
   spawnedRooms:
   - {fileID: 1599602071}
   pathfinder: {fileID: 1953768970}
+  floorOffset: 6
 --- !u!114 &1953768969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -465,8 +470,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 238e7634acfac824f9a40a4ba29a41c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridWorldSize: {x: 400, y: 400}
-  nodeRadius: 1
+  gridWorldSize: {x: 500, y: 500}
+  nodeRadius: 0.5
+  unwalkableMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1001 &360768054886557653
 PrefabInstance:
   m_ObjectHideFlags: 0

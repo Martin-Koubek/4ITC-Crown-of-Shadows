@@ -10,6 +10,29 @@ public class Pathfinding : MonoBehaviour
         Node startNode = grid.NodeFromWorldPoint(startPos);
         Node targetNode = grid.NodeFromWorldPoint(targetPos);
 
+        if (startNode == null || targetNode == null)
+        {
+            Debug.LogError("Start or target node is null!");
+            return null;
+        }
+
+        if (!startNode.walkable || !targetNode.walkable)
+        {
+            Debug.LogError($"Start or target NOT walkable | start: {startNode.walkable}, target: {targetNode.walkable}");
+            return null;
+        }
+
+        // ? DÙLEŽITÉ – reset node dat
+        foreach (Node node in grid.AllNodes)
+        {
+            node.gCost = int.MaxValue;
+            node.hCost = 0;
+            node.parent = null;
+        }
+
+        startNode.gCost = 0;
+        startNode.hCost = GetDistance(startNode, targetNode);
+
         List<Node> openSet = new();
         HashSet<Node> closedSet = new();
 
@@ -19,9 +42,16 @@ public class Pathfinding : MonoBehaviour
         {
             Node currentNode = openSet[0];
 
-            foreach (var node in openSet)
-                if (node.fCost < currentNode.fCost)
-                    currentNode = node;
+            // ? lepší výbìr node (fCost + hCost)
+            for (int i = 1; i < openSet.Count; i++)
+            {
+                if (openSet[i].fCost < currentNode.fCost ||
+                    openSet[i].fCost == currentNode.fCost &&
+                    openSet[i].hCost < currentNode.hCost)
+                {
+                    currentNode = openSet[i];
+                }
+            }
 
             openSet.Remove(currentNode);
             closedSet.Add(currentNode);
@@ -34,10 +64,9 @@ public class Pathfinding : MonoBehaviour
                 if (!neighbour.walkable || closedSet.Contains(neighbour))
                     continue;
 
-                int newCost = currentNode.gCost +
-                              GetDistance(currentNode, neighbour);
+                int newCost = currentNode.gCost + GetDistance(currentNode, neighbour);
 
-                if (newCost < neighbour.gCost || !openSet.Contains(neighbour))
+                if (newCost < neighbour.gCost)
                 {
                     neighbour.gCost = newCost;
                     neighbour.hCost = GetDistance(neighbour, targetNode);
@@ -48,6 +77,8 @@ public class Pathfinding : MonoBehaviour
                 }
             }
         }
+
+        Debug.LogWarning("Path NOT found");
         return null;
     }
 
@@ -60,7 +91,14 @@ public class Pathfinding : MonoBehaviour
         {
             path.Add(current);
             current = current.parent;
+
+            if (current == null)
+            {
+                Debug.LogError("Broken path (parent is null)");
+                return null;
+            }
         }
+
         path.Reverse();
         return path;
     }
