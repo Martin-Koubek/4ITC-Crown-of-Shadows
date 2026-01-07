@@ -1,12 +1,25 @@
 using System.Collections.Generic;
 using UnityEngine;
-
+using Random = System.Random;
 public class Room : MonoBehaviour
 {
+    [Header("Enemy Spawns")]
+    [SerializeField]
+    private bool _Spawnable;
+
+    [SerializeField]
+    private List<Enemy> enemyL = new();
+
+    [SerializeField]
+    private Transform _SpawnPoint;
+
     [Header("Connection points (doors)")]
+    [SerializeField]
+    private int _maxCount;
     public List<ConnectionPoint> connectionPoints = new();
 
-    private void Awake()
+    Random rnd = new();
+    private void Start()
     {
         // Automaticky najde všechny ConnectionPoint komponenty v childech
         if (connectionPoints.Count == 0)
@@ -15,6 +28,8 @@ public class Room : MonoBehaviour
                 GetComponentsInChildren<ConnectionPoint>()
             );
         }
+
+        SpawnEnemy();
     }
 
     public ConnectionPoint GetFreeConnectionPoint()
@@ -29,5 +44,26 @@ public class Room : MonoBehaviour
         }
 
         return null; // žádné volné dveøe
+    }
+
+    private void SpawnEnemy()
+    {
+        int index = rnd.Next(0, enemyL.Count);
+        int SpawnCount = rnd.Next(0, _maxCount);
+        if (_Spawnable)
+        {
+            if (SpawnCount == 0)
+            {
+                return;
+            }
+            else
+            {
+
+                for (int i = 0; i < SpawnCount; i++)
+                {
+                    Instantiate(enemyL[i], _SpawnPoint);
+                }
+            }
+        }
     }
 }

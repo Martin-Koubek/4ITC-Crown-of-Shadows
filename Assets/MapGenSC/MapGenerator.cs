@@ -1,10 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class MapGenerator : MonoBehaviour
 {
     public Room startRoom;
     public Room endRoom;
+
+    [SerializeField]
+    private NavMeshSurface _navMeshSurface;
+
+    [SerializeField]
+    private Transform mapGen;
 
     public float minDistance = 50f;
 
@@ -22,14 +31,10 @@ public class MapGenerator : MonoBehaviour
 
     private void Start()
     {
-        // 1️⃣ Vytvoření místností
         NewFloor();
-
-        // 2️⃣ Přestavění gridu po spawnování místností
         pathfinder.grid.RebuildGrid();
-
-        // 3️⃣ Vytvoření chodbiček mezi všemi místnostmi
         CreateCorridors();
+        _navMeshSurface.BuildNavMesh();
     }
 
     public void NewFloor()
@@ -42,7 +47,7 @@ public class MapGenerator : MonoBehaviour
             Room newRoom;
 
             if (i == roomCount)
-                newRoom = Instantiate(endRoom, roomPos, Quaternion.identity);
+                newRoom = Instantiate(endRoom,roomPos, Quaternion.identity);
             else
                 newRoom = Instantiate(rooms[rnd.Next(rooms.Count)], roomPos, Quaternion.identity);
 
@@ -82,6 +87,7 @@ public class MapGenerator : MonoBehaviour
 
             CreateCorridorBetween(fromRoom, toRoom);
         }
+
     }
 
     // Funkce, která vytvoří chodbu mezi dvěma místnostmi
