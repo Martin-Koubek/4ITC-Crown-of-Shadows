@@ -4,7 +4,8 @@ using UnityEngine;
 public class GridGenerator : MonoBehaviour
 {
     public Vector2 gridWorldSize = new(400, 400);
-    public float nodeRadius = 1f;
+    public float nodeRadius = 3f;
+    public float checkDistance;
     public LayerMask unwalkableMask;
 
     public Node[,] grid;
@@ -89,25 +90,29 @@ public class GridGenerator : MonoBehaviour
     {
         List<Node> neighbours = new();
 
-        for (int x = -1; x <= 1; x++)
+        int[,] dirs = new int[,]
         {
-            for (int y = -1; y <= 1; y++)
+        { 1, 0 },
+        { -1, 0 },
+        { 0, 1 },
+        { 0, -1 }
+        };
+
+        for (int i = 0; i < 4; i++)
+        {
+            int checkX = node.gridX + dirs[i, 0];
+            int checkY = node.gridY + dirs[i, 1];
+
+            if (checkX >= 0 && checkX < gridSizeX &&
+                checkY >= 0 && checkY < gridSizeY)
             {
-                if (x == 0 && y == 0) continue;
-
-                int checkX = node.gridX + x;
-                int checkY = node.gridY + y;
-
-                if (checkX >= 0 && checkX < gridSizeX &&
-                    checkY >= 0 && checkY < gridSizeY)
-                {
-                    neighbours.Add(grid[checkX, checkY]);
-                }
+                neighbours.Add(grid[checkX, checkY]);
             }
         }
 
         return neighbours;
     }
+
 
     public void RebuildGrid()
     {
