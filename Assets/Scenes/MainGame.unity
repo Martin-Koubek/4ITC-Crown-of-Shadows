@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &59618188 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2308825529286135904, guid: 2c805183cae1545409fb64ba527c24d3, type: 3}
+  m_PrefabInstance: {fileID: 620071908}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &181447921
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,6 +224,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2391692661616251294, guid: 2c805183cae1545409fb64ba527c24d3, type: 3}
+      propertyPath: mapGenerator
+      value: 
+      objectReference: {fileID: 1953768968}
     - target: {fileID: 2880242377576016445, guid: 2c805183cae1545409fb64ba527c24d3, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -235,6 +244,10 @@ PrefabInstance:
       propertyPath: menu
       value: 
       objectReference: {fileID: 692466895}
+    - target: {fileID: 7856130467741012822, guid: 2c805183cae1545409fb64ba527c24d3, type: 3}
+      propertyPath: playerSpeed
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 8681634178315070891, guid: 2c805183cae1545409fb64ba527c24d3, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
@@ -394,11 +407,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ba03bc5526b6a04b97650b25ee7443c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1774263510 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1137122888077671903, guid: cae3c906149cf664584e33d1626b446b, type: 3}
-  m_PrefabInstance: {fileID: 360768054886557653}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1953768966
 GameObject:
   m_ObjectHideFlags: 0
@@ -431,8 +439,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1774263510}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1953768968
@@ -447,9 +454,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25627606a60a50b4191071d356056cea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerRef: {fileID: 59618188}
   startRoom: {fileID: 5028275873022684698, guid: cae3c906149cf664584e33d1626b446b, type: 3}
   endRoom: {fileID: 6127146416206307616, guid: ad445a6772e91364fb5e3534994f57e0, type: 3}
   _navMeshSurface: {fileID: 1953768969}
+  _currentLevel: 1
   mapGen: {fileID: 1953768967}
   minDistance: 50
   rooms:
@@ -517,8 +526,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridWorldSize: {x: 500, y: 500}
-  nodeRadius: 0.5
-  checkDistance: 0.5
+  nodeRadius: 1
+  checkDistance: 0.001
   unwalkableMask:
     serializedVersion: 2
     m_Bits: 256
@@ -528,7 +537,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1953768967}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 112253400075461329, guid: cae3c906149cf664584e33d1626b446b, type: 3}
       propertyPath: m_Layer
@@ -564,7 +573,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1137122888077671903, guid: cae3c906149cf664584e33d1626b446b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -125
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1137122888077671903, guid: cae3c906149cf664584e33d1626b446b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -685,6 +694,10 @@ PrefabInstance:
     - target: {fileID: 5002824279190870742, guid: cae3c906149cf664584e33d1626b446b, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5028275873022684698, guid: cae3c906149cf664584e33d1626b446b, type: 3}
+      propertyPath: SpawnPoint
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5028275873022684698, guid: cae3c906149cf664584e33d1626b446b, type: 3}
       propertyPath: _SpawnPoint
@@ -816,6 +829,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1157244951}
+  - {fileID: 360768054886557653}
   - {fileID: 1953768967}
   - {fileID: 181447923}
   - {fileID: 620071908}

@@ -11,11 +11,11 @@ public class Room : MonoBehaviour
     private List<Enemy> enemyL = new();
 
     [SerializeField]
-    private Transform _SpawnPoint;
+    public Transform SpawnPoint;
 
     [Header("Connection points (doors)")]
     [SerializeField]
-    private int _maxCount;
+    public int _maxCount;
     public List<ConnectionPoint> connectionPoints = new();
 
     Random rnd = new();
@@ -61,7 +61,7 @@ public class Room : MonoBehaviour
 
                 for (int i = 0; i < SpawnCount; i++)
                 {
-                    Instantiate(enemyL[i], _SpawnPoint);
+                    Instantiate(enemyL[i], SpawnPoint);
                 }
             }
         }

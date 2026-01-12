@@ -6,18 +6,22 @@ using UnityEngine.AI;
 
 public class MapGenerator : MonoBehaviour
 {
+    public Transform PlayerRef;
+
     public Room startRoom;
     public Room endRoom;
 
     [SerializeField]
     private NavMeshSurface _navMeshSurface;
 
+    public int _currentLevel = 1;
+
     [SerializeField]
     private Transform mapGen;
 
     public float minDistance = 50f;
 
-    [SerializeField] private List<Room> rooms = new List<Room>();
+    [SerializeField] public List<Room> rooms = new List<Room>();
     [SerializeField] private GameObject _FloorTile;
 
     [SerializeField] private List<Room> spawnedRooms = new List<Room>();
@@ -34,12 +38,12 @@ public class MapGenerator : MonoBehaviour
         NewFloor();
         pathfinder.grid.RebuildGrid();
         CreateCorridors();
-       // _navMeshSurface.BuildNavMesh();
+        _navMeshSurface.BuildNavMesh();
     }
 
     public void NewFloor()
     {
-        int roomCount = rnd.Next(5, 11);
+        int roomCount = rnd.Next(5, 6 + _currentLevel);
 
         for (int i = 0; i <= roomCount; i++)
         {
@@ -59,7 +63,7 @@ public class MapGenerator : MonoBehaviour
             Vector3 pos;
             do
             {
-                pos = new Vector3(rnd.Next(-200, 201), 0, rnd.Next(50, 201));
+                pos = new Vector3(rnd.Next(-100, 151), 0, rnd.Next(50, 200));
             }
             while (isTooClose(pos, spawnedRooms, minDistance));
 
@@ -133,5 +137,28 @@ public class MapGenerator : MonoBehaviour
         {
             Instantiate(_FloorTile, node.worldPos, Quaternion.identity, mapGen);
         }
+    }
+    public void NewFloorGen()
+    {
+        NewFloor();
+        pathfinder.grid.RebuildGrid();
+        CreateCorridors();
+        _navMeshSurface.BuildNavMesh();
+    }
+
+    public IEnumerator NewFloorGenerator()
+    {
+        //blindfold
+        NewFloor();
+        pathfinder.grid.RebuildGrid();
+        CreateCorridors();
+        _navMeshSurface.BuildNavMesh();
+        yield return new WaitForEndOfFrame();
+        //unblind
+    }
+
+    public void resetPlayer()
+    {
+        PlayerRef.transform.position = Vector3.zero;
     }
 }

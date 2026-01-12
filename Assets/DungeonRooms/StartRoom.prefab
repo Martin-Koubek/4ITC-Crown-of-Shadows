@@ -202,7 +202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Spawnable: 0
   enemyL: []
-  _SpawnPoint: {fileID: 0}
+  SpawnPoint: {fileID: 0}
   _maxCount: 0
   connectionPoints:
   - {fileID: 1469069096839915246}

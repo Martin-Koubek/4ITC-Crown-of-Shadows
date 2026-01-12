@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class Interaction : MonoBehaviour
@@ -11,6 +12,8 @@ public class Interaction : MonoBehaviour
     [SerializeField]
     private Transform _RayCastPoint;
     private RaycastHit hit;
+
+    [SerializeField] private MapGenerator mapGenerator;
 
     [SerializeField]
     private float _hitRange;
@@ -54,7 +57,7 @@ public class Interaction : MonoBehaviour
                     {
                         Debug.Log("toto je poù·k");
                         inventory.consumable = potion.gameObject;
-                        inventory.consumableAmount ++;
+                        inventory.consumableAmount++;
                         potion.gameObject.SetActive(false);
                         potion.gameObject.transform.SetParent(inventory.Storage);
                     }
@@ -66,11 +69,11 @@ public class Interaction : MonoBehaviour
                     {
                         PickUp(sword);
                     }
-                    else if(inventory.CurentWeapon != null)
+                    else if (inventory.CurentWeapon != null)
                     {
                         inventory.DropWeapon();
                         PickUp(sword);
-                        
+
                     }
                 }
                 else if (hit.collider.gameObject.TryGetComponent<EndTutorial>(out EndTutorial end))
@@ -78,6 +81,15 @@ public class Interaction : MonoBehaviour
                     end.LoadLevel("MainGame");
                 }
 
+                else if (hit.collider.gameObject.GetComponent<exit>())
+                {
+                    Debug.Log("Exit Pressed");
+                    mapGenerator.resetPlayer();
+                    mapGenerator._currentLevel++;
+                    StartCoroutine(DestoruFloor());
+                    StartCoroutine(mapGenerator.NewFloorGenerator());
+
+                }
                 else return;
 
             }
@@ -119,5 +131,16 @@ public class Interaction : MonoBehaviour
             inventory.RHSlot.color = Color.white;
             inventory.LHSlot.color = inventory.defColor;
         }
+    }
+
+    private IEnumerator DestoruFloor()
+    {
+        for (int i = 1; i < mapGenerator.rooms.Count; i++)
+        {
+            Destroy(mapGenerator.rooms[i]);
+            mapGenerator.rooms[i] = null;
+            yield return new WaitForEndOfFrame();
+        }
+
     }
 }

@@ -160,7 +160,7 @@ MonoBehaviour:
   - {fileID: 4280934520609100584, guid: 16768328c79f0b64e9611f81982356bb, type: 3}
   - {fileID: 72587289980882393, guid: 5ed6eb8c1c53e0d40a9e7d268e1f0468, type: 3}
   - {fileID: 4084869966106925517, guid: 9e80a8f4854d67d419755e38b05a6de9, type: 3}
-  _SpawnPoint: {fileID: 4310702202920714184}
+  SpawnPoint: {fileID: 4310702202920714184}
   _maxCount: 2
   connectionPoints:
   - {fileID: 3047721673547120584}
@@ -179,7 +179,7 @@ BoxCollider:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 64
-  m_LayerOverridePriority: 0
+  m_LayerOverridePriority: 3
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1

@@ -42,7 +42,7 @@ public class GridGenerator : MonoBehaviour
 
                 bool walkable = !Physics.CheckSphere(
                     worldPoint,
-                    nodeRadius,
+                    checkDistance,
                     unwalkableMask
                 );
 
@@ -103,8 +103,7 @@ public class GridGenerator : MonoBehaviour
             int checkX = node.gridX + dirs[i, 0];
             int checkY = node.gridY + dirs[i, 1];
 
-            if (checkX >= 0 && checkX < gridSizeX &&
-                checkY >= 0 && checkY < gridSizeY)
+            if (checkX >= 0 && checkX < gridSizeX && checkY >= 0 && checkY < gridSizeY)
             {
                 neighbours.Add(grid[checkX, checkY]);
             }
@@ -122,9 +121,6 @@ public class GridGenerator : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireCube(
-            transform.position,
-            new Vector3(gridWorldSize.x, 1, gridWorldSize.y)
-        );
+        Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, 1, gridWorldSize.y));
     }
 }
