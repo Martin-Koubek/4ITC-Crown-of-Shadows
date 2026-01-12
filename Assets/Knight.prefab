@@ -972,7 +972,7 @@ GameObject:
   - component: {fileID: 6210314161422229289}
   - component: {fileID: 6745791427566473981}
   - component: {fileID: 2685814292293820744}
-  - component: {fileID: 6563152715394781050}
+  - component: {fileID: 2982861777896539605}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -1065,7 +1065,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &6563152715394781050
+--- !u!114 &2982861777896539605
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1077,7 +1077,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dc0355e0a1cfe848a1dc85152e78d12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menu: {fileID: 0}
+  menu: {fileID: 2880242377576016445}
 --- !u!1 &3059043511684282879
 GameObject:
   m_ObjectHideFlags: 0
@@ -1199,10 +1199,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6563152715394781050}
+      - m_Target: {fileID: 2982861777896539605}
         m_TargetAssemblyTypeName: GameQuit, Assembly-CSharp
-        m_MethodName: LoadLevel
-        m_Mode: 5
+        m_MethodName: QuitGame
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3146,7 +3146,7 @@ Transform:
   m_GameObject: {fileID: 8749077023249784137}
   serializedVersion: 2
   m_LocalRotation: {x: 0.1521234, y: 0, z: 0, w: 0.98836154}
-  m_LocalPosition: {x: 1.12, y: 2.7028234, z: -2.8148677}
+  m_LocalPosition: {x: 1.12, y: 4.6328235, z: -2.8148677}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

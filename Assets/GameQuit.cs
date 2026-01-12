@@ -4,8 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class GameQuit : MonoBehaviour
 {
-    [SerializeField]private GameObject menu;
-
     IEnumerator LoadLevelAsync(string levelToLoad)
     {
         AsyncOperation loadOperation = SceneManager.LoadSceneAsync(levelToLoad);
@@ -15,5 +13,9 @@ public class GameQuit : MonoBehaviour
     public void LoadLevel(string levelToLoad)
     { 
         StartCoroutine(LoadLevelAsync(levelToLoad));
+    }
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

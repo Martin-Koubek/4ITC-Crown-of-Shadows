@@ -34,7 +34,7 @@ public class MapGenerator : MonoBehaviour
         NewFloor();
         pathfinder.grid.RebuildGrid();
         CreateCorridors();
-        _navMeshSurface.BuildNavMesh();
+       // _navMeshSurface.BuildNavMesh();
     }
 
     public void NewFloor()
@@ -47,9 +47,9 @@ public class MapGenerator : MonoBehaviour
             Room newRoom;
 
             if (i == roomCount)
-                newRoom = Instantiate(endRoom,roomPos, Quaternion.identity);
+                newRoom = Instantiate(endRoom,roomPos, Quaternion.identity, mapGen);
             else
-                newRoom = Instantiate(rooms[rnd.Next(rooms.Count)], roomPos, Quaternion.identity);
+                newRoom = Instantiate(rooms[rnd.Next(rooms.Count)], roomPos, Quaternion.identity, mapGen);
 
             spawnedRooms.Add(newRoom);
         }
@@ -131,7 +131,7 @@ public class MapGenerator : MonoBehaviour
 
         foreach (var node in path)
         {
-            Instantiate(_FloorTile, node.worldPos, Quaternion.identity);
+            Instantiate(_FloorTile, node.worldPos, Quaternion.identity, mapGen);
         }
     }
 }
