@@ -19,7 +19,7 @@ public class Room : MonoBehaviour
     public List<ConnectionPoint> connectionPoints = new();
 
     Random rnd = new();
-    private void Start()
+    /*private void Start()
     {
         // Automaticky najde všechny ConnectionPoint komponenty v childech
         if (connectionPoints.Count == 0)
@@ -30,6 +30,14 @@ public class Room : MonoBehaviour
         }
 
         SpawnEnemy();
+    }*/
+
+    public void InicializujMistnost()
+    {
+        if (connectionPoints.Count == 0)
+        {
+            connectionPoints.AddRange(GetComponentsInChildren<ConnectionPoint>());
+        }
     }
 
     public ConnectionPoint GetFreeConnectionPoint()

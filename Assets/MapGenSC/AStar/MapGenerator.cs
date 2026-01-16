@@ -63,7 +63,7 @@ public class MapGenerator : MonoBehaviour
             Vector3 pos;
             do
             {
-                pos = new Vector3(rnd.Next(-100, 151), 0, rnd.Next(50, 200));
+                pos = new Vector3(rnd.Next(-100, 111), 0, rnd.Next(50, 150));
             }
             while (isTooClose(pos, spawnedRooms, minDistance));
 
@@ -100,42 +100,54 @@ public class MapGenerator : MonoBehaviour
         ConnectionPoint fromDoor = fromRoom.GetFreeConnectionPoint();
         ConnectionPoint toDoor = toRoom.GetFreeConnectionPoint();
 
-        if (fromDoor == null || toDoor == null)
-        {
-            Debug.LogWarning("Room has no free connections");
-            return;
-        }
+        if (fromDoor == null || toDoor == null) return;
 
         fromDoor.used = true;
         toDoor.used = true;
 
-        // Automatický posun start/end ven z místnosti podle směru dveří
-        Vector3 start = fromDoor.GetCorridorStart();
-        Vector3 end = toDoor.GetCorridorStart();
+        // 1. Získání bodů
+        Vector3 doorPosStart = fromDoor.transform.position;
+        Vector3 corridorStart = fromDoor.GetCorridorStart(); // Bod vysunutý ven z místnosti
 
-        Node startNode = pathfinder.grid.NodeFromWorldPoint(start);
-        Node targetNode = pathfinder.grid.NodeFromWorldPoint(end);
+        Vector3 doorPosEnd = toDoor.transform.position;
+        Vector3 corridorEnd = toDoor.GetCorridorStart();
 
-        Debug.Log($"FROM door: {fromDoor.transform.position}, startNode walkable: {startNode.walkable}");
-        Debug.Log($"TO door: {toDoor.transform.position}, targetNode walkable: {targetNode.walkable}");
+        // 2. NAPE VNO PŘIDAT DLAŽDICE PŘED DVEŘE (vytvoření spojovacího krčku)
+        // Tento cyklus položí dlaždice od dveří až k bodu, kde začíná pathfinding
+        FillGapWithTiles(doorPosStart, corridorStart);
+        FillGapWithTiles(doorPosEnd, corridorEnd);
 
-        if (!startNode.walkable || !targetNode.walkable)
+        // 3. Vynucení průchodnosti v gridu (aby pathfinding tyto body nezahodil)
+        Node startNode = pathfinder.grid.NodeFromWorldPoint(corridorStart);
+        Node targetNode = pathfinder.grid.NodeFromWorldPoint(corridorEnd);
+        if (startNode != null) startNode.walkable = true;
+        if (targetNode != null) targetNode.walkable = true;
+
+        // 4. Samotný pathfinding
+        var path = pathfinder.FindPath(corridorStart, corridorEnd);
+
+        if (path != null)
         {
-            Debug.LogWarning("Skipping corridor: start or target not walkable");
-            return;
+            foreach (var node in path)
+            {
+                Instantiate(_FloorTile, node.worldPos, Quaternion.identity, mapGen);
+            }
         }
+    }
 
-        var path = pathfinder.FindPath(start, end);
+    // Pomocná metoda pro vyplnění mezery mezi dveřmi a gridem
+    private void FillGapWithTiles(Vector3 start, Vector3 end)
+    {
+        float distance = Vector3.Distance(start, end);
+        // Počet dlaždic závisí na vzdálenosti, dáváme dlaždici každé 2 jednotky (nebo dle velikosti tile)
+        int steps = Mathf.CeilToInt(distance / 2f);
 
-        if (path == null || path.Count == 0)
+        for (int i = 0; i <= steps; i++)
         {
-            Debug.LogWarning("Pathfinding returned null or empty path");
-            return;
-        }
-
-        foreach (var node in path)
-        {
-            Instantiate(_FloorTile, node.worldPos, Quaternion.identity, mapGen);
+            Vector3 pos = Vector3.Lerp(start, end, (float)i / steps);
+            // Zarovnání na Y (případně přidat floorOffset)
+            pos.y = 0;
+            Instantiate(_FloorTile, pos, Quaternion.identity, mapGen);
         }
     }
     public void NewFloorGen()
