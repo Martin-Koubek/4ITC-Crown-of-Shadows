@@ -7,7 +7,7 @@ public class Interaction : MonoBehaviour
     private InputManager inputManager;
     private Inventory inventory;
     private PlayerController playerController;
-    private PlayerStats playerStats;
+    public PlayerStats playerStats;
 
     [SerializeField]
     private Transform _RayCastPoint;
@@ -97,16 +97,20 @@ public class Interaction : MonoBehaviour
 
         if (Healed)
         {
-            if(inventory.consumableAmount != 0)
+            if (inventory.consumableAmount != 0)
             {
-                inventory.consumableAmount --;
+
+                inventory.consumableAmount--;
                 Heal();
             }
+            else return;
         }
     }
 
     private void Heal()
     {
+        TryGetComponent<PlayerStats>(out PlayerStats stats);
+        stats.curentHealth += 25;
     }
 
     private void PickUp(Sword sword)

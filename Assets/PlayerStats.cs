@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
-    private int _maxHealth = 100;
+    public int _maxHealth = 100;
     public float curentHealth;
 
     public bool PlayerBeenHit = false;
