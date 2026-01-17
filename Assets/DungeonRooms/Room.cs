@@ -15,11 +15,11 @@ public class Room : MonoBehaviour
 
     [Header("Connection points (doors)")]
     [SerializeField]
-    public int _maxCount;
+    public int maxCount;
     public List<ConnectionPoint> connectionPoints = new();
 
     Random rnd = new();
-    /*private void Start()
+    private void Start()
     {
         // Automaticky najde všechny ConnectionPoint komponenty v childech
         if (connectionPoints.Count == 0)
@@ -30,7 +30,7 @@ public class Room : MonoBehaviour
         }
 
         SpawnEnemy();
-    }*/
+    }
 
     public void InicializujMistnost()
     {
@@ -57,7 +57,7 @@ public class Room : MonoBehaviour
     private void SpawnEnemy()
     {
         int index = rnd.Next(0, enemyL.Count);
-        int SpawnCount = rnd.Next(0, _maxCount);
+        int SpawnCount = rnd.Next(0, maxCount+1);
         if (_Spawnable)
         {
             if (SpawnCount == 0)

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Unity.AI.Navigation;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class MapGenerator : MonoBehaviour
 {
@@ -44,14 +43,13 @@ public class MapGenerator : MonoBehaviour
     public void NewFloor()
     {
         int roomCount = rnd.Next(5, 6 + _currentLevel);
-
         for (int i = 0; i <= roomCount; i++)
         {
             Vector3 roomPos = GetValidPos();
             Room newRoom;
 
             if (i == roomCount)
-                newRoom = Instantiate(endRoom,roomPos, Quaternion.identity, mapGen);
+                newRoom = Instantiate(endRoom, roomPos, Quaternion.identity, mapGen);
             else
                 newRoom = Instantiate(rooms[rnd.Next(rooms.Count)], roomPos, Quaternion.identity, mapGen);
 
@@ -105,25 +103,20 @@ public class MapGenerator : MonoBehaviour
         fromDoor.used = true;
         toDoor.used = true;
 
-        // 1. Získání bodů
         Vector3 doorPosStart = fromDoor.transform.position;
-        Vector3 corridorStart = fromDoor.GetCorridorStart(); // Bod vysunutý ven z místnosti
+        Vector3 corridorStart = fromDoor.GetCorridorStart();
 
         Vector3 doorPosEnd = toDoor.transform.position;
         Vector3 corridorEnd = toDoor.GetCorridorStart();
 
-        // 2. NAPE VNO PŘIDAT DLAŽDICE PŘED DVEŘE (vytvoření spojovacího krčku)
-        // Tento cyklus položí dlaždice od dveří až k bodu, kde začíná pathfinding
         FillGapWithTiles(doorPosStart, corridorStart);
         FillGapWithTiles(doorPosEnd, corridorEnd);
 
-        // 3. Vynucení průchodnosti v gridu (aby pathfinding tyto body nezahodil)
         Node startNode = pathfinder.grid.NodeFromWorldPoint(corridorStart);
         Node targetNode = pathfinder.grid.NodeFromWorldPoint(corridorEnd);
         if (startNode != null) startNode.walkable = true;
         if (targetNode != null) targetNode.walkable = true;
 
-        // 4. Samotný pathfinding
         var path = pathfinder.FindPath(corridorStart, corridorEnd);
 
         if (path != null)
@@ -135,17 +128,14 @@ public class MapGenerator : MonoBehaviour
         }
     }
 
-    // Pomocná metoda pro vyplnění mezery mezi dveřmi a gridem
     private void FillGapWithTiles(Vector3 start, Vector3 end)
     {
         float distance = Vector3.Distance(start, end);
-        // Počet dlaždic závisí na vzdálenosti, dáváme dlaždici každé 2 jednotky (nebo dle velikosti tile)
         int steps = Mathf.CeilToInt(distance / 2f);
 
         for (int i = 0; i <= steps; i++)
         {
             Vector3 pos = Vector3.Lerp(start, end, (float)i / steps);
-            // Zarovnání na Y (případně přidat floorOffset)
             pos.y = 0;
             Instantiate(_FloorTile, pos, Quaternion.identity, mapGen);
         }
