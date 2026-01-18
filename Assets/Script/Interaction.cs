@@ -55,7 +55,6 @@ public class Interaction : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log("toto je poù·k");
                         inventory.consumable = potion.gameObject;
                         inventory.consumableAmount++;
                         potion.gameObject.SetActive(false);

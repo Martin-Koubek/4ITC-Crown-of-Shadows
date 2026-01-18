@@ -28,10 +28,8 @@ public class Room : MonoBehaviour
                 GetComponentsInChildren<ConnectionPoint>()
             );
         }
-
         SpawnEnemy();
     }
-
     public void InicializujMistnost()
     {
         if (connectionPoints.Count == 0)
@@ -39,7 +37,6 @@ public class Room : MonoBehaviour
             connectionPoints.AddRange(GetComponentsInChildren<ConnectionPoint>());
         }
     }
-
     public ConnectionPoint GetFreeConnectionPoint()
     {
         foreach (var point in connectionPoints)
@@ -50,14 +47,12 @@ public class Room : MonoBehaviour
                 return point;
             }
         }
-
         return null; // žádné volné dveøe
     }
-
     private void SpawnEnemy()
     {
         int index = rnd.Next(0, enemyL.Count);
-        int SpawnCount = rnd.Next(0, maxCount+1);
+        int SpawnCount = rnd.Next(0, maxCount + 1);
         if (_Spawnable)
         {
             if (SpawnCount == 0)
@@ -66,7 +61,6 @@ public class Room : MonoBehaviour
             }
             else
             {
-
                 for (int i = 0; i < SpawnCount; i++)
                 {
                     Instantiate(enemyL[i], SpawnPoint);
