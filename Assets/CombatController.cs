@@ -41,8 +41,6 @@ public class CombatController : MonoBehaviour
                     anim.SetBool("Hit1", false);
                 }
             }
-
-
         }
         if (state.normalizedTime > 0.99)
         {
@@ -53,7 +51,6 @@ public class CombatController : MonoBehaviour
                     anim.SetBool("Hit2", false);
                 }
             }
-
         }
         if (state.normalizedTime > 0.99)
         {
@@ -66,7 +63,6 @@ public class CombatController : MonoBehaviour
                 }
             }
         }
-
         if (Time.time - lastClickedTime > maxComboDelay)
         {
             noOfClicks = 0;
@@ -80,7 +76,6 @@ public class CombatController : MonoBehaviour
                     OnClick();
                     nextFireTime = Time.time + cooldownTime;
                 }
-
             }
         }
 
