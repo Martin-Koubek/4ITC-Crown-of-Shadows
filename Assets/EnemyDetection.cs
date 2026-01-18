@@ -25,7 +25,6 @@ public class EnemyDetection : MonoBehaviour
     {
         if (other.gameObject.TryGetComponent<Enemy>(out Enemy enemy) && combatController.isAttacking && !enemy.hasBeenHit)
         {
-            enemy.TryGetComponent<Rigidbody>(out Rigidbody rig);
             enemy.curentHealth -= Damage;
             enemy.hasBeenHit = true;
             enemy.cantAttack = true;

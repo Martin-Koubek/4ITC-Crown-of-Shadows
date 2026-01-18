@@ -52,7 +52,7 @@ public class Room : MonoBehaviour
     private void SpawnEnemy()
     {
         int index = rnd.Next(0, enemyL.Count);
-        int SpawnCount = rnd.Next(0, maxCount + 1);
+        int SpawnCount = rnd.Next(1, maxCount + 1);
         if (_Spawnable)
         {
             if (SpawnCount == 0)

@@ -44,8 +44,6 @@ public class GridGenerator : MonoBehaviour
 
         Debug.Log($"Grid created: {gridSizeX} x {gridSizeY}");
     }
-
-    // ✅ TADY JE TO, CO JSI CHTĚL
     public IEnumerable<Node> AllNodes
     {
         get

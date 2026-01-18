@@ -91,8 +91,6 @@ public class MapGenerator : MonoBehaviour
         }
 
     }
-
-    // Funkce, která vytvoří chodbu mezi dvěma místnostmi
     private void CreateCorridorBetween(Room fromRoom, Room toRoom)
     {
         ConnectionPoint fromDoor = fromRoom.GetFreeConnectionPoint();
@@ -127,7 +125,6 @@ public class MapGenerator : MonoBehaviour
             }
         }
     }
-
     private void FillGapWithTiles(Vector3 start, Vector3 end)
     {
         float distance = Vector3.Distance(start, end);
