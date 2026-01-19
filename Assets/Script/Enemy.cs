@@ -244,7 +244,7 @@ public class Enemy : MonoBehaviour
             anim.ResetTrigger(AnimatorAttackId);
         }
     }
-    public void NockBack()
+    public void KnockBack()
     {
         anim.SetTrigger(AnimatorHitId);
         cantAttack = true;

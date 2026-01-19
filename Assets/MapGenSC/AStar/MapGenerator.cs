@@ -25,7 +25,7 @@ public class MapGenerator : MonoBehaviour
 
     [SerializeField] private List<Room> spawnedRooms = new List<Room>();
 
-    [SerializeField] private Pathfinding pathfinder;
+    [SerializeField] private PathFinding pathFinder;
 
     private System.Random rnd = new();
 
@@ -35,7 +35,7 @@ public class MapGenerator : MonoBehaviour
     private void Start()
     {
         NewFloor();
-        pathfinder.grid.RebuildGrid();
+        pathFinder.grid.RebuildGrid();
         CreateCorridors();
         _navMeshSurface.BuildNavMesh();
     }
@@ -110,12 +110,12 @@ public class MapGenerator : MonoBehaviour
         FillGapWithTiles(doorPosStart, corridorStart);
         FillGapWithTiles(doorPosEnd, corridorEnd);
 
-        Node startNode = pathfinder.grid.NodeFromWorldPoint(corridorStart);
-        Node targetNode = pathfinder.grid.NodeFromWorldPoint(corridorEnd);
+        Node startNode = pathFinder.grid.NodeFromWorldPoint(corridorStart);
+        Node targetNode = pathFinder.grid.NodeFromWorldPoint(corridorEnd);
         if (startNode != null) startNode.walkable = true;
         if (targetNode != null) targetNode.walkable = true;
 
-        var path = pathfinder.FindPath(corridorStart, corridorEnd);
+        var path = pathFinder.FindPath(corridorStart, corridorEnd);
 
         if (path != null)
         {
@@ -140,7 +140,7 @@ public class MapGenerator : MonoBehaviour
     public void NewFloorGen()
     {
         NewFloor();
-        pathfinder.grid.RebuildGrid();
+        pathFinder.grid.RebuildGrid();
         CreateCorridors();
         _navMeshSurface.BuildNavMesh();
     }
@@ -149,7 +149,7 @@ public class MapGenerator : MonoBehaviour
     {
         //blindfold
         NewFloor();
-        pathfinder.grid.RebuildGrid();
+        pathFinder.grid.RebuildGrid();
         CreateCorridors();
         _navMeshSurface.BuildNavMesh();
         yield return new WaitForEndOfFrame();

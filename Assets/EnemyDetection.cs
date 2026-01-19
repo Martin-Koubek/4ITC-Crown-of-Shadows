@@ -27,8 +27,7 @@ public class EnemyDetection : MonoBehaviour
         {
             enemy.curentHealth -= Damage;
             enemy.hasBeenHit = true;
-            enemy.cantAttack = true;
-            enemy.NockBack();
+            enemy.KnockBack();
         }
         else return;
     }
