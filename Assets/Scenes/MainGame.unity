@@ -304,6 +304,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2391692661616251294, guid: 2c805183cae1545409fb64ba527c24d3, type: 3}
+      propertyPath: mapGenerator
+      value: 
+      objectReference: {fileID: 1953768968}
     - target: {fileID: 3116851833407294170, guid: 2c805183cae1545409fb64ba527c24d3, type: 3}
       propertyPath: m_Name
       value: Knight

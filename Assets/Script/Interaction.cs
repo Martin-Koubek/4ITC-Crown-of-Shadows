@@ -110,6 +110,11 @@ public class Interaction : MonoBehaviour
     {
         TryGetComponent<PlayerStats>(out PlayerStats stats);
         stats.curentHealth += 25;
+        if (stats.curentHealth > stats._maxHealth)
+        {
+            stats.curentHealth = stats._maxHealth;
+        }
+        else return;
     }
 
     private void PickUp(Sword sword)
