@@ -239,7 +239,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Spawnable: 1
-  enemyL: []
+  enemyL:
+  - {fileID: 72587289980882393, guid: 5ed6eb8c1c53e0d40a9e7d268e1f0468, type: 3}
+  - {fileID: 4280934520609100584, guid: 16768328c79f0b64e9611f81982356bb, type: 3}
+  - {fileID: 4084869966106925517, guid: 9e80a8f4854d67d419755e38b05a6de9, type: 3}
   SpawnPoint: {fileID: 5488021429560963714}
   maxCount: 3
   connectionPoints:

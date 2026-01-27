@@ -1,4 +1,6 @@
+using NUnit.Framework;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
@@ -6,6 +8,14 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
+    public bool tutEnemy;
+
+    public Transform dropPoint;
+
+    public List<GameObject> dropList;
+
+    public GameObject worldRef;
+
     //stats + coliders
     public int basicHealth = 100;
     private int _maxHealth;
@@ -60,13 +70,15 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator DestroyAfterDelay(Collider collider)
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForEndOfFrame();
         Destroy(this);
     }
 
-    private void Awake()
+    private void Start()
     {
         lvl.text = "Lvl:" + Lvl;
+
+        worldRef = GameObject.Find("MapGenerator");
 
         _maxHealth = basicHealth * Lvl;
         curentHealth = _maxHealth;
@@ -114,10 +126,19 @@ public class Enemy : MonoBehaviour
 
         if (curentHealth <= 0)
         {
-            /*anim.SetBool(AnimatorDeathIdle, true);
-            Die();*/
-            Destroy(gameObject);
-            spawner.Respawn();
+            if (tutEnemy == true)
+            {
+                anim.SetBool(AnimatorDeathIdle, true);
+                Die();
+                Destroy(gameObject);
+                spawner.Respawn();
+            }
+            else
+            {
+                anim.SetBool(AnimatorDeathIdle, true);
+                Die();
+                Destroy(gameObject);
+            }
         }
 
 
@@ -125,8 +146,20 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
-        spawner.isDead = true;
-        StartCoroutine(DestroyAfterDelay(coll));
+        if (tutEnemy == true)
+        {
+            spawner.isDead = true;
+            StartCoroutine(DestroyAfterDelay(coll));
+        }
+        else
+        {
+            int index = Random.Range(0, dropList.Count);
+            GameObject drop = Instantiate(dropList[1], dropPoint);
+            drop.transform.parent = null;
+            drop.transform.position = dropPoint.transform.position;
+            //StartCoroutine(DestroyAfterDelay(coll));
+        }
+       
     }
     private void Patroling()
     {

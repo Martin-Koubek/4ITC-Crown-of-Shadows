@@ -89,6 +89,11 @@ public class Interaction : MonoBehaviour
                     StartCoroutine(mapGenerator.NewFloorGenerator());
 
                 }
+                else if (hit.collider.gameObject.TryGetComponent<Chest>(out Chest chest))
+                {
+                    chest.OpenChest();
+                }
+
                 else return;
 
             }

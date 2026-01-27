@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &547799370102850512
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3108424767250733197}
+  m_Layer: 0
+  m_Name: DropPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3108424767250733197
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547799370102850512}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4606294515080037196}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3756887189677297697
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,6 +752,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: bf1f9335e65f77e428c8b6bd3b09e8ce, type: 3}
       insertIndex: 0
       addedObject: {fileID: 226347831434608383}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: bf1f9335e65f77e428c8b6bd3b09e8ce, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3108424767250733197}
     - targetCorrespondingSourceObject: {fileID: 7997947301047521070, guid: bf1f9335e65f77e428c8b6bd3b09e8ce, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5144784440033358005}
@@ -758,6 +792,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf9838ddaed05514a89570a121d87ac0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tutEnemy: 0
+  dropPoint: {fileID: 3108424767250733197}
+  dropList:
+  - {fileID: 3327009885802365614, guid: 4b08f0675ea13c04ebec1d9f98e5538f, type: 3}
+  - {fileID: 1565142019344830774, guid: d97f5c2ddced09046af71f74d8ae12ce, type: 3}
+  - {fileID: 7953699712745463165, guid: 61dc74ceed70df745a6dbb40dbc104c2, type: 3}
   basicHealth: 150
   curentHealth: 150
   baseDmg: 5
