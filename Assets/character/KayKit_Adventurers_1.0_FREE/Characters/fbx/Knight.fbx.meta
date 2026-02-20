@@ -302,7 +302,18 @@ ModelImporter:
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
-    extraExposedTransformPaths: []
+    extraExposedTransformPaths:
+    - Knight_ArmLeft
+    - Knight_ArmRight
+    - Knight_Body
+    - Knight_Head
+    - Knight_LegLeft
+    - Knight_LegRight
+    - Rig/root/hips/spine/chest/upperarm.l/lowerarm.l/wrist.l/hand.l/handslot.l/1H_Sword_Offhand
+    - Rig/root/hips/spine/chest/upperarm.r/lowerarm.r/wrist.r/hand.r/handslot.r
+    - Rig/root/hips/spine/chest/upperarm.r/lowerarm.r/wrist.r/hand.r/handslot.r/1H_Sword
+    - Rig/root/hips/spine/chest/upperarm.r/lowerarm.r/wrist.r/hand.r/handslot.r/2H_Sword
+    - Rig/root/hips/spine/chest/upperarm.l/lowerarm.l/wrist.l/hand.l/handslot.l
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
@@ -2523,7 +2534,7 @@ ModelImporter:
       maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
@@ -2852,7 +2863,12 @@ ModelImporter:
       scale: {x: 1, y: 1, z: 1}
     - name: 2H_Sword
       parentName: handslot.r
-      position: {x: 0.000000059604645, y: 0.03330931, z: -0.00000023864456}
+      position: {x: 0, y: 0, z: -0.00000023864456}
+      rotation: {x: 0.000000056966357, y: -0.000000002276496, z: -0.000000030214018, w: 1}
+      scale: {x: 1.0000005, y: 1.0000005, z: 1.0000001}
+    - name: 2H_Sword (1)
+      parentName: handslot.r
+      position: {x: 0, y: 0, z: 0}
       rotation: {x: 0.000000056966357, y: -0.000000002276496, z: -0.000000030214018, w: 1}
       scale: {x: 1.0000005, y: 1.0000005, z: 1.0000001}
     - name: 1H_Sword
