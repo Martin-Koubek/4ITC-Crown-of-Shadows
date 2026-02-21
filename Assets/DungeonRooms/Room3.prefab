@@ -184,8 +184,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2747293906962023530}
-  - component: {fileID: 8248806589341570562}
   - component: {fileID: 3915236973421643708}
+  - component: {fileID: -2283977785632733132}
   m_Layer: 8
   m_Name: Room3
   m_TagString: Untagged
@@ -215,28 +215,6 @@ Transform:
   - {fileID: 3714733172404253986}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8248806589341570562
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5751937092783318913}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ba03bc5526b6a04b97650b25ee7443c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _Spawnable: 1
-  enemyL:
-  - {fileID: 72587289980882393, guid: 5ed6eb8c1c53e0d40a9e7d268e1f0468, type: 3}
-  - {fileID: 4280934520609100584, guid: 16768328c79f0b64e9611f81982356bb, type: 3}
-  - {fileID: 4084869966106925517, guid: 9e80a8f4854d67d419755e38b05a6de9, type: 3}
-  SpawnPoint: {fileID: 5488021429560963714}
-  maxCount: 3
-  connectionPoints:
-  - {fileID: 1831904468372622008}
-  - {fileID: 4180922339878704196}
 --- !u!65 &3915236973421643708
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -258,6 +236,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 22, y: 5, z: 22}
   m_Center: {x: 0, y: 2, z: 0}
+--- !u!114 &-2283977785632733132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5751937092783318913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ba03bc5526b6a04b97650b25ee7443c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Spawnable: 1
+  enemyL:
+  - {fileID: 72587289980882393, guid: 5ed6eb8c1c53e0d40a9e7d268e1f0468, type: 3}
+  - {fileID: 4280934520609100584, guid: 16768328c79f0b64e9611f81982356bb, type: 3}
+  - {fileID: 4084869966106925517, guid: 9e80a8f4854d67d419755e38b05a6de9, type: 3}
+  SpawnPoint: {fileID: 5488021429560963714}
+  maxCount: 0
+  connectionPoints:
+  - {fileID: 1831904468372622008}
+  - {fileID: 4180922339878704196}
 --- !u!1 &7901906221388497308
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.AI.Navigation;
 using UnityEngine;
 
 public class Interaction : MonoBehaviour
@@ -12,6 +13,8 @@ public class Interaction : MonoBehaviour
     [SerializeField]
     private Transform _RayCastPoint;
     private RaycastHit hit;
+
+    public Transform PlayerRef;
 
     [SerializeField] private MapGenerator mapGenerator;
 
@@ -80,13 +83,21 @@ public class Interaction : MonoBehaviour
                     end.LoadLevel("MainGame");
                 }
 
-                else if (hit.collider.gameObject.GetComponent<exit>())
+                else if (hit.collider.gameObject.GetComponent<Exit>())
                 {
-                    Debug.Log("Exit Pressed");
-                    mapGenerator.resetPlayer();
-                    mapGenerator._currentLevel++;
-                    StartCoroutine(DestoruFloor());
-                    StartCoroutine(mapGenerator.NewFloorGenerator());
+                    
+                    for (int i = 0; i < mapGenerator.spawnedRooms.Count; i++)
+                    {
+                        Destroy(mapGenerator.spawnedRooms[i].gameObject);
+                    }
+                    for (int j = 0; j < mapGenerator.spawnedFloors.Count; j++)
+                    {
+                        Destroy(mapGenerator.spawnedFloors[j]);
+                    }
+                    mapGenerator.spawnedRooms.Clear();
+                    mapGenerator.spawnedFloors.Clear();
+                    mapGenerator.NewFloorGen();
+                    ResetPlayer(PlayerRef.gameObject);
 
                 }
                 else if (hit.collider.gameObject.TryGetComponent<Chest>(out Chest chest))
@@ -148,12 +159,15 @@ public class Interaction : MonoBehaviour
 
     private IEnumerator DestoruFloor()
     {
-        for (int i = 1; i < mapGenerator.rooms.Count; i++)
-        {
-            Destroy(mapGenerator.rooms[i]);
-            mapGenerator.rooms[i] = null;
-            yield return new WaitForEndOfFrame();
-        }
 
+        yield return null;
+    }
+    private void ResetPlayer(GameObject player)
+    {
+        CharacterController cc = player.GetComponent<CharacterController>();
+
+        cc.enabled = false; // Vypneme controller
+        player.transform.position = Vector3.zero; // Teleport na 0,0,0
+        cc.enabled = true; // Zase ho zapneme
     }
 }

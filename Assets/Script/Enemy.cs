@@ -154,7 +154,7 @@ public class Enemy : MonoBehaviour
         else
         {
             int index = Random.Range(0, dropList.Count);
-            GameObject drop = Instantiate(dropList[1], dropPoint);
+            GameObject drop = Instantiate(dropList[index], dropPoint);
             drop.transform.parent = null;
             drop.transform.position = dropPoint.transform.position;
             //StartCoroutine(DestroyAfterDelay(coll));
@@ -169,7 +169,7 @@ public class Enemy : MonoBehaviour
 
         Vector3 distanceToWalkPoint = transform.position - walkingPoint;
 
-        if (distanceToWalkPoint.magnitude < 1f) walkPointSet = false;
+        if (distanceToWalkPoint.magnitude == 0) walkPointSet = false;
     }
     private void SearchWalkPoint()
     {
@@ -178,11 +178,14 @@ public class Enemy : MonoBehaviour
         float randomX = Random.Range(-walkPointRange, walkPointRange);
 
         walkingPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-        //walkPointSet = true;
         if (Physics.Raycast(walkingPoint, -transform.up, 5f, whatIsGround))
         {
-            anim.SetFloat(AnimatorMoveZId, 0.5f);
+            if(anim != null)
+            {
+                anim.SetFloat(AnimatorMoveZId, 0.5f);
+            }
             walkPointSet = true;
+
         }
     }
     private void ChasePlayer()

@@ -23,7 +23,8 @@ public class MapGenerator : MonoBehaviour
     [SerializeField] public List<Room> rooms = new List<Room>();
     [SerializeField] private GameObject _FloorTile;
 
-    [SerializeField] private List<Room> spawnedRooms = new List<Room>();
+    [SerializeField] public List<Room> spawnedRooms = new List<Room>();
+    public List<GameObject> spawnedFloors = new List<GameObject>();
 
     [SerializeField] private PathFinding pathFinder;
 
@@ -31,7 +32,7 @@ public class MapGenerator : MonoBehaviour
 
     [SerializeField] private float floorOffset = 2f;
 
-
+    private Vector3 startRoomPos = Vector3.zero;
     private void Start()
     {
         NewFloor();
@@ -121,7 +122,8 @@ public class MapGenerator : MonoBehaviour
         {
             foreach (var node in path)
             {
-                Instantiate(_FloorTile, node.worldPos, Quaternion.identity, mapGen);
+                GameObject newTile = Instantiate(_FloorTile, node.worldPos, Quaternion.identity, mapGen);
+                spawnedFloors.Add(newTile);
             }
         }
     }
@@ -134,15 +136,18 @@ public class MapGenerator : MonoBehaviour
         {
             Vector3 pos = Vector3.Lerp(start, end, (float)i / steps);
             pos.y = 0;
-            Instantiate(_FloorTile, pos, Quaternion.identity, mapGen);
+            GameObject newTile = Instantiate(_FloorTile, pos, Quaternion.identity, mapGen);
+            spawnedFloors.Add(newTile);
         }
     }
     public void NewFloorGen()
     {
         NewFloor();
+        Instantiate(startRoom, startRoomPos, Quaternion.identity);
         pathFinder.grid.RebuildGrid();
         CreateCorridors();
         _navMeshSurface.BuildNavMesh();
+
     }
 
     public IEnumerator NewFloorGenerator()
@@ -160,4 +165,5 @@ public class MapGenerator : MonoBehaviour
     {
         PlayerRef.transform.position = Vector3.zero;
     }
+
 }

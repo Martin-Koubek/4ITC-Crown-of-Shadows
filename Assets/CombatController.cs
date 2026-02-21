@@ -26,12 +26,10 @@ public class CombatController : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(noOfClicks);
         state = anim.GetCurrentAnimatorStateInfo(0);
 
         bool attacked = inputManager.GetPlayerAttack();
 
-        Debug.Log(attacked);
         if (state.normalizedTime > 0.99)
         {
             if (state.IsName("Hit1") || state.IsName("Hit1 1"))
