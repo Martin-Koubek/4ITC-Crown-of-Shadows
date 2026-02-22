@@ -16,7 +16,7 @@ public class Interaction : MonoBehaviour
 
     public Transform PlayerRef;
 
-    [SerializeField] private MapGenerator mapGenerator;
+    [SerializeField] public MapGenerator mapGenerator;
 
     [SerializeField]
     private float _hitRange;
@@ -85,8 +85,8 @@ public class Interaction : MonoBehaviour
 
                 else if (hit.collider.gameObject.GetComponent<Exit>())
                 {
-                    
-                    for (int i = 0; i < mapGenerator.spawnedRooms.Count; i++)
+
+                    /*for (int i = 0; i < mapGenerator.spawnedRooms.Count; i++)
                     {
                         Destroy(mapGenerator.spawnedRooms[i].gameObject);
                     }
@@ -97,7 +97,8 @@ public class Interaction : MonoBehaviour
                     mapGenerator.spawnedRooms.Clear();
                     mapGenerator.spawnedFloors.Clear();
                     mapGenerator.NewFloorGen();
-                    ResetPlayer(PlayerRef.gameObject);
+                    ResetPlayer(PlayerRef.gameObject);*/
+                    StartCoroutine(DestoryFloor());
 
                 }
                 else if (hit.collider.gameObject.TryGetComponent<Chest>(out Chest chest))
@@ -157,10 +158,18 @@ public class Interaction : MonoBehaviour
         }
     }
 
-    private IEnumerator DestoruFloor()
+    private IEnumerator DestoryFloor()
     {
-
-        yield return null;
+        foreach (Transform child in mapGenerator.gameObject.transform)
+        {
+            Destroy(child.gameObject);
+        }
+        mapGenerator.spawnedRooms.Clear();
+        mapGenerator.spawnedFloors.Clear();
+        yield return new WaitForEndOfFrame();
+        mapGenerator.NewFloorGen();
+        yield return new WaitForEndOfFrame();
+        ResetPlayer(PlayerRef.gameObject);
     }
     private void ResetPlayer(GameObject player)
     {

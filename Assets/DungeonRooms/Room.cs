@@ -28,13 +28,22 @@ public class Room : MonoBehaviour
                 GetComponentsInChildren<ConnectionPoint>()
             );
         }
+        for (int i = 0; i<connectionPoints.Count; i++)
+        {
+            connectionPoints[i].gameObject.TryGetComponent<ConnectionPoint>(out ConnectionPoint point);
+            //point.used = false;
+        }
         SpawnEnemy();
     }
     public void InicializujMistnost()
     {
+        // Vyèistíme stará data pro jistotu a najdeme všechny dveøe hned teï
+        connectionPoints.Clear();
+        connectionPoints.AddRange(GetComponentsInChildren<ConnectionPoint>());
+
         if (connectionPoints.Count == 0)
         {
-            connectionPoints.AddRange(GetComponentsInChildren<ConnectionPoint>());
+            Debug.LogError($"Místnost {gameObject.name} nemá žádné ConnectionPointy v childech!");
         }
     }
     public ConnectionPoint GetFreeConnectionPoint()

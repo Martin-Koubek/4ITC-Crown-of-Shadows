@@ -2411,7 +2411,7 @@ MonoBehaviour:
   _RayCastPoint: {fileID: 1087551120}
   PlayerRef: {fileID: 1114119281}
   mapGenerator: {fileID: 1953768968}
-  _hitRange: 7
+  _hitRange: 5
 --- !u!114 &1114119277
 MonoBehaviour:
   m_ObjectHideFlags: 0

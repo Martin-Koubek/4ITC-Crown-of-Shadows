@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Unity.AI.Navigation;
 using UnityEngine;
 
@@ -40,7 +39,6 @@ public class MapGenerator : MonoBehaviour
         CreateCorridors();
         _navMeshSurface.BuildNavMesh();
     }
-
     public void NewFloor()
     {
         int roomCount = rnd.Next(5, 6 + _currentLevel);
@@ -60,9 +58,12 @@ public class MapGenerator : MonoBehaviour
         Vector3 GetValidPos()
         {
             Vector3 pos;
+            int safetyNet = 0; // Pojistka
             do
             {
                 pos = new Vector3(rnd.Next(-100, 111), 0, rnd.Next(50, 150));
+                safetyNet++;
+                if (safetyNet > 100) break; // Pokud nenajde místo po 100 pokusech, prostě to zkusí tady
             }
             while (isTooClose(pos, spawnedRooms, minDistance));
 
@@ -118,6 +119,9 @@ public class MapGenerator : MonoBehaviour
 
         var path = pathFinder.FindPath(corridorStart, corridorEnd);
 
+        path = pathFinder.FindPath(corridorStart, corridorEnd);
+        if (path == null) Debug.LogWarning($"Cesta nenalezena mezi {fromRoom.name} a {toRoom.name}");
+
         if (path != null)
         {
             foreach (var node in path)
@@ -142,28 +146,22 @@ public class MapGenerator : MonoBehaviour
     }
     public void NewFloorGen()
     {
+        spawnedRooms.Clear();
+        spawnedFloors.Clear();
+
+        Room newStartRoom = Instantiate(startRoom, startRoomPos, Quaternion.identity);
+        newStartRoom.InicializujMistnost();
+        spawnedRooms.Insert(0, newStartRoom);
+
+
         NewFloor();
-        Instantiate(startRoom, startRoomPos, Quaternion.identity);
+
+        Physics.SyncTransforms();
         pathFinder.grid.RebuildGrid();
         CreateCorridors();
         _navMeshSurface.BuildNavMesh();
 
-    }
 
-    public IEnumerator NewFloorGenerator()
-    {
-        //blindfold
-        NewFloor();
-        pathFinder.grid.RebuildGrid();
-        CreateCorridors();
-        _navMeshSurface.BuildNavMesh();
-        yield return new WaitForEndOfFrame();
-        //unblind
-    }
 
-    public void resetPlayer()
-    {
-        PlayerRef.transform.position = Vector3.zero;
     }
-
 }
