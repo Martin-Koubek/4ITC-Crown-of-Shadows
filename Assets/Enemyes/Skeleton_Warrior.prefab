@@ -795,11 +795,10 @@ MonoBehaviour:
   tutEnemy: 0
   dropPoint: {fileID: 3108424767250733197}
   dropList:
-  - {fileID: 3327009885802365614, guid: 4b08f0675ea13c04ebec1d9f98e5538f, type: 3}
-  - {fileID: 1565142019344830774, guid: d97f5c2ddced09046af71f74d8ae12ce, type: 3}
   - {fileID: 7953699712745463165, guid: 61dc74ceed70df745a6dbb40dbc104c2, type: 3}
-  basicHealth: 150
-  curentHealth: 150
+  worldRef: {fileID: 0}
+  basicHealth: 100
+  curentHealth: 100
   baseDmg: 5
   dmg: 0
   hasBeenHit: 0

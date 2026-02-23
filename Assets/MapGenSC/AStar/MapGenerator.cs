@@ -7,12 +7,13 @@ public class MapGenerator : MonoBehaviour
     public Transform PlayerRef;
 
     public Room startRoom;
+    public Room BossWeaponRoom;
     public Room endRoom;
 
     [SerializeField]
     private NavMeshSurface _navMeshSurface;
 
-    public int _currentLevel = 1;
+    public int currentLevel = 1;
 
     [SerializeField]
     private Transform mapGen;
@@ -41,34 +42,61 @@ public class MapGenerator : MonoBehaviour
     }
     public void NewFloor()
     {
-        int roomCount = rnd.Next(5, 6 + _currentLevel);
-        for (int i = 0; i <= roomCount; i++)
+        if (currentLevel == 1)
         {
-            Vector3 roomPos = GetValidPos();
-            Room newRoom;
-
-            if (i == roomCount)
-                newRoom = Instantiate(endRoom, roomPos, Quaternion.identity, mapGen);
-            else
-                newRoom = Instantiate(rooms[rnd.Next(rooms.Count)], roomPos, Quaternion.identity, mapGen);
-
-            spawnedRooms.Add(newRoom);
-        }
-
-        Vector3 GetValidPos()
-        {
-            Vector3 pos;
-            int safetyNet = 0; // Pojistka
-            do
+            int roomCount = rnd.Next(5, 6);
+            for (int i = 0; i <= roomCount; i++)
             {
-                pos = new Vector3(rnd.Next(-100, 111), 0, rnd.Next(50, 150));
-                safetyNet++;
-                if (safetyNet > 100) break; // Pokud nenajde místo po 100 pokusech, prostě to zkusí tady
-            }
-            while (isTooClose(pos, spawnedRooms, minDistance));
+                Vector3 roomPos = GetValidPos();
+                Room newRoom;
 
-            return pos;
+                if (i == roomCount)
+                    newRoom = Instantiate(endRoom, roomPos, Quaternion.identity, mapGen);
+                else if(i == roomCount - 1)
+                {
+                    newRoom = Instantiate(BossWeaponRoom, roomPos, Quaternion.identity, mapGen);
+                }
+                else
+                    newRoom = Instantiate(rooms[rnd.Next(rooms.Count)], roomPos, Quaternion.identity, mapGen);
+
+                spawnedRooms.Add(newRoom);
+            }
         }
+        else if (currentLevel == 3)
+        {
+            //instantiate BossRoom;
+        }
+        else
+        {
+            int roomCount = rnd.Next(5, 6);
+            for (int i = 0; i <= roomCount; i++)
+            {
+                Vector3 roomPos = GetValidPos();
+                Room newRoom;
+
+                if (i == roomCount)
+                    newRoom = Instantiate(endRoom, roomPos, Quaternion.identity, mapGen);
+                else
+                    newRoom = Instantiate(rooms[rnd.Next(rooms.Count)], roomPos, Quaternion.identity, mapGen);
+
+                spawnedRooms.Add(newRoom);
+            }
+        }
+
+            Vector3 GetValidPos()
+            {
+                Vector3 pos;
+                int safetyNet = 0; // Pojistka
+                do
+                {
+                    pos = new Vector3(rnd.Next(-100, 111), 0, rnd.Next(50, 150));
+                    safetyNet++;
+                    if (safetyNet > 100) break; // Pokud nenajde místo po 100 pokusech, prostě to zkusí tady
+                }
+                while (isTooClose(pos, spawnedRooms, minDistance));
+
+                return pos;
+            }
 
         bool isTooClose(Vector3 pos, List<Room> spawnedRooms, float minDistance)
         {
@@ -149,7 +177,7 @@ public class MapGenerator : MonoBehaviour
         spawnedRooms.Clear();
         spawnedFloors.Clear();
 
-        Room newStartRoom = Instantiate(startRoom, startRoomPos, Quaternion.identity);
+        Room newStartRoom = Instantiate(startRoom, startRoomPos, Quaternion.identity, mapGen);
         newStartRoom.InicializujMistnost();
         spawnedRooms.Insert(0, newStartRoom);
 

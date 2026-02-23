@@ -85,21 +85,8 @@ public class Interaction : MonoBehaviour
 
                 else if (hit.collider.gameObject.GetComponent<Exit>())
                 {
-
-                    /*for (int i = 0; i < mapGenerator.spawnedRooms.Count; i++)
-                    {
-                        Destroy(mapGenerator.spawnedRooms[i].gameObject);
-                    }
-                    for (int j = 0; j < mapGenerator.spawnedFloors.Count; j++)
-                    {
-                        Destroy(mapGenerator.spawnedFloors[j]);
-                    }
-                    mapGenerator.spawnedRooms.Clear();
-                    mapGenerator.spawnedFloors.Clear();
-                    mapGenerator.NewFloorGen();
-                    ResetPlayer(PlayerRef.gameObject);*/
                     StartCoroutine(DestoryFloor());
-
+                    mapGenerator.currentLevel++;
                 }
                 else if (hit.collider.gameObject.TryGetComponent<Chest>(out Chest chest))
                 {
@@ -115,7 +102,6 @@ public class Interaction : MonoBehaviour
         {
             if (inventory.consumableAmount != 0)
             {
-
                 inventory.consumableAmount--;
                 Heal();
             }
@@ -166,7 +152,7 @@ public class Interaction : MonoBehaviour
         }
         mapGenerator.spawnedRooms.Clear();
         mapGenerator.spawnedFloors.Clear();
-        yield return new WaitForEndOfFrame();
+        yield return null;
         mapGenerator.NewFloorGen();
         yield return new WaitForEndOfFrame();
         ResetPlayer(PlayerRef.gameObject);
@@ -175,8 +161,8 @@ public class Interaction : MonoBehaviour
     {
         CharacterController cc = player.GetComponent<CharacterController>();
 
-        cc.enabled = false; // Vypneme controller
-        player.transform.position = Vector3.zero; // Teleport na 0,0,0
-        cc.enabled = true; // Zase ho zapneme
+        cc.enabled = false;
+        player.transform.position = Vector3.zero;
+        cc.enabled = true;
     }
 }
