@@ -143,6 +143,18 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0.015604258
       objectReference: {fileID: 0}
+    - target: {fileID: 500509521601008055, guid: cae3c906149cf664584e33d1626b446b, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 570240758545434837, guid: cae3c906149cf664584e33d1626b446b, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 671148450346897312, guid: cae3c906149cf664584e33d1626b446b, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 1137122888077671903, guid: cae3c906149cf664584e33d1626b446b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -207,9 +219,17 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0.12946016
       objectReference: {fileID: 0}
+    - target: {fileID: 3473914757181571017, guid: cae3c906149cf664584e33d1626b446b, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 3910554395848990678, guid: cae3c906149cf664584e33d1626b446b, type: 3}
       propertyPath: m_Name
       value: StartRoom
+      objectReference: {fileID: 0}
+    - target: {fileID: 5179277910623519282, guid: cae3c906149cf664584e33d1626b446b, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5786048050199910262, guid: cae3c906149cf664584e33d1626b446b, type: 3}
       propertyPath: m_Size.y
@@ -2423,9 +2443,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fdd2d9d1d318404c98cceea94fed50a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 8
   playerStats: {fileID: 1114119275}
   _RayCastPoint: {fileID: 1087551120}
   PlayerRef: {fileID: 1114119281}
+  grondCheck: {fileID: 1428370226}
   mapGenerator: {fileID: 1953768968}
   _hitRange: 5
 --- !u!114 &1114119277
@@ -2440,11 +2464,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c687feee8a089e7419467524f5ab0ddc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 20
+  playerSpeed: 5
   dashDistance: 5
   rotationSpeed: 4
   sprintSpeed: 7
-  gravityValue: -1500
+  gravityValue: -2000
   inventory: {fileID: 1569290461}
   pointer: {fileID: 1939647643}
   Menu: {fileID: 853947920}
@@ -3313,6 +3337,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1114119281}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1428370225
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1428370226}
+  m_Layer: 6
+  m_Name: groundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1428370226
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428370225}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1114119281}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1435168990
 GameObject:
   m_ObjectHideFlags: 0
@@ -3819,30 +3874,33 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 541b487e7c10ed9449a22d639e34ccd5, type: 3}
       insertIndex: 0
-      addedObject: {fileID: 1569290464}
+      addedObject: {fileID: 1428370226}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 541b487e7c10ed9449a22d639e34ccd5, type: 3}
       insertIndex: 1
-      addedObject: {fileID: 853947924}
+      addedObject: {fileID: 1569290464}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 541b487e7c10ed9449a22d639e34ccd5, type: 3}
       insertIndex: 2
-      addedObject: {fileID: 263605502}
+      addedObject: {fileID: 853947924}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 541b487e7c10ed9449a22d639e34ccd5, type: 3}
       insertIndex: 3
-      addedObject: {fileID: 1087551120}
+      addedObject: {fileID: 263605502}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 541b487e7c10ed9449a22d639e34ccd5, type: 3}
       insertIndex: 4
-      addedObject: {fileID: 1939647640}
+      addedObject: {fileID: 1087551120}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 541b487e7c10ed9449a22d639e34ccd5, type: 3}
       insertIndex: 5
-      addedObject: {fileID: 1435168991}
+      addedObject: {fileID: 1939647640}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 541b487e7c10ed9449a22d639e34ccd5, type: 3}
       insertIndex: 6
-      addedObject: {fileID: 1412502702}
+      addedObject: {fileID: 1435168991}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 541b487e7c10ed9449a22d639e34ccd5, type: 3}
       insertIndex: 7
-      addedObject: {fileID: 1068570636}
+      addedObject: {fileID: 1412502702}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 541b487e7c10ed9449a22d639e34ccd5, type: 3}
       insertIndex: 8
+      addedObject: {fileID: 1068570636}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 541b487e7c10ed9449a22d639e34ccd5, type: 3}
+      insertIndex: 9
       addedObject: {fileID: 1377630175}
     - targetCorrespondingSourceObject: {fileID: 7653086443560924788, guid: 541b487e7c10ed9449a22d639e34ccd5, type: 3}
       insertIndex: -1
@@ -4783,6 +4841,7 @@ MonoBehaviour:
   startRoom: {fileID: 5028275873022684698, guid: cae3c906149cf664584e33d1626b446b, type: 3}
   BossWeaponRoom: {fileID: 2856190068365313573, guid: 31654885aae1d3a44b7426ffa4c1e62e, type: 3}
   endRoom: {fileID: 6127146416206307616, guid: ad445a6772e91364fb5e3534994f57e0, type: 3}
+  BossRoom: {fileID: 3030453923028714030, guid: e0bef75b7960b12478f29ddb80bcf9eb, type: 3}
   _navMeshSurface: {fileID: 1953768969}
   currentLevel: 1
   mapGen: {fileID: 1953768967}

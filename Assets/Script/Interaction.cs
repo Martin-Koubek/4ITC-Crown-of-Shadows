@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Interaction : MonoBehaviour
 {
+    public LayerMask whatIsGround;
+
     private InputManager inputManager;
     private Inventory inventory;
     private PlayerController playerController;
@@ -15,6 +17,7 @@ public class Interaction : MonoBehaviour
     private RaycastHit hit;
 
     public Transform PlayerRef;
+    public Transform grondCheck;
 
     [SerializeField] public MapGenerator mapGenerator;
 
@@ -29,6 +32,11 @@ public class Interaction : MonoBehaviour
     }
     private void Update()
     {
+        if (!Physics.Raycast(grondCheck.position, -transform.up, 5f, whatIsGround) && grondCheck.position.y < -10f)
+        {
+            ResetPlayer(PlayerRef.gameObject);
+        }
+
         bool interacted = inputManager.GetPlayerInteract();
         bool Healed = inputManager.GetPlayerHeal();
         Ray ray = new Ray(_RayCastPoint.position, _RayCastPoint.forward);
@@ -162,7 +170,7 @@ public class Interaction : MonoBehaviour
         CharacterController cc = player.GetComponent<CharacterController>();
 
         cc.enabled = false;
-        player.transform.position = Vector3.zero;
+        player.transform.position = new Vector3(0,1,0);
         cc.enabled = true;
     }
 }

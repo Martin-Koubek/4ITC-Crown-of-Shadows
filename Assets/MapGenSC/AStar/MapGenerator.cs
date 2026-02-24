@@ -9,6 +9,8 @@ public class MapGenerator : MonoBehaviour
     public Room startRoom;
     public Room BossWeaponRoom;
     public Room endRoom;
+    public GameObject BossRoom;
+
 
     [SerializeField]
     private NavMeshSurface _navMeshSurface;
@@ -64,7 +66,8 @@ public class MapGenerator : MonoBehaviour
         }
         else if (currentLevel == 3)
         {
-            //instantiate BossRoom;
+            Instantiate(BossRoom, Vector3.zero, Quaternion.identity, mapGen);
+            Instantiate(startRoom, Vector3.zero, Quaternion.identity, mapGen);
         }
         else
         {

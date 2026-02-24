@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 1521454113684962924}
   - component: {fileID: 2856190068365313573}
   - component: {fileID: 3594988103315861182}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BossWeaponRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
