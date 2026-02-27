@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BossDetection : MonoBehaviour
 {
-        public int Damage;
+    public int Damage;
     private Inventory inventory;
     private CombatController combatController;
     public Transform player;

@@ -4684,7 +4684,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 10
-  player: {fileID: 0}
+  player: {fileID: 1114119281}
 --- !u!1 &1939647639
 GameObject:
   m_ObjectHideFlags: 0
@@ -4981,10 +4981,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8212767517602528851, guid: 52faa79e6f439c247b5ecfef1f2b717f, type: 3}
+      propertyPath: Damage
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8212767517602528851, guid: 52faa79e6f439c247b5ecfef1f2b717f, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1114119281}
     - target: {fileID: 8342661785536272654, guid: 52faa79e6f439c247b5ecfef1f2b717f, type: 3}
       propertyPath: Damage
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 8342661785536272654, guid: 52faa79e6f439c247b5ecfef1f2b717f, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1114119281}
     m_RemovedComponents:
     - {fileID: 0}
     m_RemovedGameObjects: []
@@ -5238,7 +5250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 7
-  player: {fileID: 0}
+  player: {fileID: 1114119281}
 --- !u!1001 &2577329096811806256
 PrefabInstance:
   m_ObjectHideFlags: 0
