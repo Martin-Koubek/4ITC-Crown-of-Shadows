@@ -5,7 +5,7 @@ public class BossDetection : MonoBehaviour
     public int Damage;
     private Inventory inventory;
     private CombatController combatController;
-    public Transform player;
+    //public Transform player;
     private void Awake()
     {
         inventory = GetComponentInParent<Inventory>();
@@ -17,6 +17,10 @@ public class BossDetection : MonoBehaviour
         if (inventory.CurentWeapon != null && inventory.CurentWeapon.gameObject.TryGetComponent<Sword>(out Sword sword))
         {
             Damage = sword.damage;
+        }
+        else if (inventory.CurentWeapon == null)
+        {
+            return;
         }
     }
     private void OnTriggerEnter(Collider other)

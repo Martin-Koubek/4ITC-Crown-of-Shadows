@@ -24,15 +24,22 @@ public class Interaction : MonoBehaviour
     [SerializeField]
     private float _hitRange;
 
+    public bool toReset;
+
     private void Awake()
     {
         inputManager = InputManager.Instance;
         inventory = GetComponent<Inventory>();
         playerController = GetComponent<PlayerController>();
+        toReset = false;
     }
     private void Update()
     {
-        if (!Physics.Raycast(grondCheck.position, -transform.up, 5f, whatIsGround) && grondCheck.position.y < -10f)
+        /*if (!Physics.Raycast(grondCheck.position, -transform.up, 5f, whatIsGround) && grondCheck.position.y < -10f)
+        {
+            ResetPlayer(PlayerRef.gameObject);
+        }*/
+        if (toReset)
         {
             ResetPlayer(PlayerRef.gameObject);
         }
@@ -165,12 +172,13 @@ public class Interaction : MonoBehaviour
         yield return new WaitForEndOfFrame();
         ResetPlayer(PlayerRef.gameObject);
     }
-    private void ResetPlayer(GameObject player)
+    public void ResetPlayer(GameObject player)
     {
         CharacterController cc = player.GetComponent<CharacterController>();
 
         cc.enabled = false;
         player.transform.position = new Vector3(0,1,0);
         cc.enabled = true;
+        toReset = false;
     }
 }

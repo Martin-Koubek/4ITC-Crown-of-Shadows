@@ -18,12 +18,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private Canvas inventory;
     [SerializeField]
-    private Canvas pointer;
+    public Canvas pointer;
     [SerializeField]
-    private Canvas Menu;
+    public Canvas menu;
     private bool grounded = true;
     private bool invOpen = false;
-    private bool menOpen = false;
+    public bool menOpen = false;
     private Vector3 playerVelocity;
     private CharacterController controller;
 
@@ -185,7 +185,7 @@ public class PlayerController : MonoBehaviour
             pointer.gameObject.SetActive(false);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            Menu.gameObject.SetActive(true);
+            menu.gameObject.SetActive(true);
         }
         else if (menOpen == true)
         {
@@ -194,7 +194,7 @@ public class PlayerController : MonoBehaviour
             pointer.gameObject.SetActive(true);
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-            Menu.gameObject.SetActive(false);
+            menu.gameObject.SetActive(false);
         }
     }
 
