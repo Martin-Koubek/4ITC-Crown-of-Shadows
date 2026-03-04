@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lootList: []
   dropSpot: {fileID: 0}
+  hitBox: {fileID: 0}
 --- !u!1 &2519060330266804574
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,9 +349,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lootList:
   - {fileID: 7953699712745463165, guid: 61dc74ceed70df745a6dbb40dbc104c2, type: 3}
-  - {fileID: 3327009885802365614, guid: 4b08f0675ea13c04ebec1d9f98e5538f, type: 3}
-  - {fileID: 1565142019344830774, guid: d97f5c2ddced09046af71f74d8ae12ce, type: 3}
   dropSpot: {fileID: 6751767288310251539}
+  hitBox: {fileID: 4574468189903766286}
 --- !u!65 &4574468189903766286
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -370,5 +370,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.3668737, y: 1.03974, z: 1}
-  m_Center: {x: -0.015403032, y: 0.019869983, z: 0}
+  m_Size: {x: 1.3668737, y: 2.6417093, z: 1}
+  m_Center: {x: -0.015403032, y: 0.8208549, z: 0}
