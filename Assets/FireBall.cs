@@ -25,10 +25,12 @@ public class FireBall : MonoBehaviour
             player.curentHealth -= dmg;
             Destroy(gameObject);
         }
-        else if (other.gameObject.layer == wall)
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.layer == wall)
         {
             Destroy(gameObject);
         }
-        else return;
     }
 }
