@@ -28,7 +28,6 @@ public class GameQuit : MonoBehaviour
     [System.Obsolete]
     public void OpenMenu()
     {
-        Debug.Log("1. Tlaèítko bylo fyzicky stisknuto!");
         PlayerController playerController = GameObject.FindObjectOfType<PlayerController>();
 
         if (playerController.menOpen == false)
