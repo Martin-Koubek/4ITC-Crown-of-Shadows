@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Threading;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
-using UnityEditor.Rendering;
 using UnityEngine;
 
 public class BossFireBall : MonoBehaviour
