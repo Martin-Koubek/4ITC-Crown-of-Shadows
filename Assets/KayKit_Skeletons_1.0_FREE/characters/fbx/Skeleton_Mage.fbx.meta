@@ -1620,7 +1620,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.9278403
+      - time: 0.926637
         functionName: EndStun
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: cf9838ddaed05514a89570a121d87ac0, type: 3}

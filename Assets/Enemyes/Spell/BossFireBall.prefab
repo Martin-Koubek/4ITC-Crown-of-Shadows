@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 952530128664091367}
   - component: {fileID: 1738197638711089185}
   - component: {fileID: 5274112515636802752}
-  - component: {fileID: 6163379212781727549}
   - component: {fileID: 8311852792150546316}
   m_Layer: 0
   m_Name: BossFireBall
@@ -111,7 +110,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.6
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &5274112515636802752
 Rigidbody:
@@ -140,27 +139,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!135 &6163379212781727549
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2958821015095444237}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.49999997
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8311852792150546316
 MonoBehaviour:
   m_ObjectHideFlags: 0

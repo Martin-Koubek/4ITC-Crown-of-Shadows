@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Analytics;
 
 public class CombatController : MonoBehaviour
 {
@@ -116,6 +117,11 @@ public class CombatController : MonoBehaviour
         {
             enemy.hasBeenHit = false;
         }
+        foreach (var enemy in FindObjectsOfType<Boss>())
+        {
+            enemy.hasBeenHit = false;
+        }
+
     }
 
     [System.Obsolete]
@@ -123,6 +129,10 @@ public class CombatController : MonoBehaviour
     {
         isAttacking=false;
         foreach (var enemy in FindObjectsOfType<Enemy>())
+        {
+            enemy.hasBeenHit = false;
+        }
+        foreach (var enemy in FindObjectsOfType<Boss>())
         {
             enemy.hasBeenHit = false;
         }

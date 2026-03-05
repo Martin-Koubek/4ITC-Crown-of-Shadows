@@ -28,7 +28,8 @@ public class BossDetection : MonoBehaviour
         if (other.gameObject.TryGetComponent<Boss>(out Boss boss) && combatController.isAttacking && !boss.hasBeenHit)
         {
             boss.curentHealth -= Damage;
-            //boss.hasBeenHit = true;
+            boss.hasBeenHit = true;
+            boss.KnockBack();
         }
         else return;
     }

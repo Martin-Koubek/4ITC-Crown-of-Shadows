@@ -231,7 +231,7 @@ Transform:
   m_GameObject: {fileID: 4986486486354143080}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: 0.7}
+  m_LocalPosition: {x: 0, y: 4.8, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3900,15 +3900,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2427226795101462277, guid: dcbcd2ba8377bc342a507aad6e0be1ce, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2427226795101462277, guid: dcbcd2ba8377bc342a507aad6e0be1ce, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2427226795101462277, guid: dcbcd2ba8377bc342a507aad6e0be1ce, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2427226795101462277, guid: dcbcd2ba8377bc342a507aad6e0be1ce, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4044,15 +4044,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 7a83accfb9dd8c447bd4c854444a6508, type: 3}
       propertyPath: m_LocalScale.x
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7a83accfb9dd8c447bd4c854444a6508, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7a83accfb9dd8c447bd4c854444a6508, type: 3}
       propertyPath: m_LocalScale.z
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7a83accfb9dd8c447bd4c854444a6508, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4097,6 +4097,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 7a83accfb9dd8c447bd4c854444a6508, type: 3}
       propertyPath: m_Name
       value: Skeleton_Rogue
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 7a83accfb9dd8c447bd4c854444a6508, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 877094f4ee3c4ab49844cf57deeec296, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 7a83accfb9dd8c447bd4c854444a6508, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4150,6 +4158,7 @@ MonoBehaviour:
   basicHealth: 200
   curentHealth: 200
   canAttack: 1
+  stuned: 0
   baseDmg: 10
   dmg: 10
   shootForce: 50
@@ -4159,6 +4168,7 @@ MonoBehaviour:
   timeBetweenAttacks: 0
   attacked: 0
   bUIReference: {fileID: 0}
+  ui: {fileID: 0}
   areaMarker: {fileID: 8470860394433892860, guid: 4562ff664464fbe44b6588e129e02262, type: 3}
   area: {fileID: 0}
   FireBall: {fileID: 8311852792150546316, guid: 0d70095e027a0a34bbccc7961e2487cb, type: 3}
