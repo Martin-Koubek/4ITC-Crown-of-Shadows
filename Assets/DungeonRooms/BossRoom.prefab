@@ -4149,6 +4149,7 @@ MonoBehaviour:
   playerInRoom: 0
   basicHealth: 200
   curentHealth: 200
+  canAttack: 1
   baseDmg: 10
   dmg: 10
   shootForce: 50
@@ -4157,7 +4158,9 @@ MonoBehaviour:
   hasBeenHit: 0
   timeBetweenAttacks: 0
   attacked: 0
-  areaMarker: {fileID: 4361530453543703101, guid: 4d606dcfc9d1ac04db8e75289cfb40ed, type: 3}
+  bUIReference: {fileID: 0}
+  areaMarker: {fileID: 8470860394433892860, guid: 4562ff664464fbe44b6588e129e02262, type: 3}
+  area: {fileID: 0}
   FireBall: {fileID: 8311852792150546316, guid: 0d70095e027a0a34bbccc7961e2487cb, type: 3}
   FirePoint: {fileID: 285965998176237780}
 --- !u!136 &2155738440328172600

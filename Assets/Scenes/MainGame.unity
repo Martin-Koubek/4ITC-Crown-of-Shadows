@@ -2644,7 +2644,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Retunr to game
+  m_text: 'Return to game
 
 '
   m_isRightToLeft: 0
