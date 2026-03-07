@@ -17,6 +17,7 @@ public class GameQuit : MonoBehaviour
 
     public void LoadLevel(string levelToLoad)
     {
+        Time.timeScale = 1.0f;
         StartCoroutine(LoadLevelAsync(levelToLoad));
     }
     public void QuitGame()

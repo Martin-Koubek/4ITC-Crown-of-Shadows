@@ -7,6 +7,12 @@ public class Menu : MonoBehaviour
 {
     [SerializeField] private GameObject LoadingScreen;
     [SerializeField] private GameObject mainMenu;
+    [SerializeField] private GameObject Controls;
+
+    private bool controlsOpen;
+
+
+    public int PlayedTutorial = 0;
 
     [SerializeField] private Image loadingBar;
 
@@ -22,11 +28,43 @@ public class Menu : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        PlayerPrefs.DeleteAll();
+        PlayedTutorial = PlayerPrefs.GetInt("playedTut");
+    }
+
     public void LoadLevel(string levelToLoad)
     {
-        mainMenu.SetActive(false);
-        LoadingScreen.SetActive(true);
-        StartCoroutine(LoadLevelAsync(levelToLoad));
+        if (PlayedTutorial >= 1)
+        {
+            mainMenu.SetActive(false);
+            LoadingScreen.SetActive(true);
+            levelToLoad = "MainGame";
+            StartCoroutine(LoadLevelAsync(levelToLoad));
+        }
+        else
+        {
+            mainMenu.SetActive(false);
+            LoadingScreen.SetActive(true);
+            StartCoroutine(LoadLevelAsync(levelToLoad));
+        }
+            
+    }
+    public void openControls()
+    {
+        if (controlsOpen)
+        {
+            controlsOpen = false;
+            Controls.gameObject.SetActive(false);
+            mainMenu.gameObject.SetActive(true);
+        }
+        else
+        {
+            controlsOpen = true;
+            mainMenu.gameObject.SetActive(false);
+            Controls.gameObject.SetActive(true);
+        }
     }
 
     public void QuitGame()

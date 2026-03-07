@@ -26,6 +26,8 @@ public class Interaction : MonoBehaviour
 
     public bool toReset;
 
+    public Menu menu;
+
     private void Awake()
     {
         inputManager = InputManager.Instance;
@@ -95,6 +97,7 @@ public class Interaction : MonoBehaviour
                 }
                 else if (hit.collider.gameObject.TryGetComponent<EndTutorial>(out EndTutorial end))
                 {
+                    PlayerPrefs.SetInt("playedTut", 1);
                     end.LoadLevel("MainGame");
                 }
 

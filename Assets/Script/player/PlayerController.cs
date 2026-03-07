@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     public bool menOpen = false;
     private Vector3 playerVelocity;
     private CharacterController controller;
+    private PlayerStats playerStats;
 
     //Weapon State
     [SerializeField]
@@ -56,6 +57,7 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         controller = gameObject.GetComponent<CharacterController>();
+        playerStats = gameObject.GetComponent<PlayerStats>();
         inputManager = InputManager.Instance;
         cameraTransform = Camera.main.transform;
         animator = GetComponent<Animator>();
@@ -68,6 +70,15 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (playerStats.curentHealth <= 0)
+        {
+            Time.timeScale = 0;
+            pointer.gameObject.SetActive(false);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            playerStats.DeathScreen.gameObject.SetActive(true);
+        }
+
         bool inventoryOpen = inputManager.GetPlayerInventory();
         bool menuOpen = inputManager.GetPlayerMenu();
         bool sprinting = inputManager.GetPlayetSprint();

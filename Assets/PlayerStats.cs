@@ -14,6 +14,8 @@ public class PlayerStats : MonoBehaviour
     public TextMeshProUGUI health;
     public Image healthFillBar;
 
+    public Canvas DeathScreen;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
