@@ -31,6 +31,7 @@ public class Boss : MonoBehaviour
 
     public GameObject bUIReference;
     public BossUI ui;
+    public GameObject screenManager;
 
     public GameObject areaMarker;
     public GameObject area;
@@ -48,7 +49,6 @@ public class Boss : MonoBehaviour
         player.TryGetComponent<BossUI>(out BossUI bossUI);
         bUIReference = bossUI.UIReference;
         ui = bossUI;
-
         AnimatorHitId = Animator.StringToHash("cantAttack");
     }
 
@@ -72,8 +72,12 @@ public class Boss : MonoBehaviour
 
         if(curentHealth <= 0)
         {
+            player.TryGetComponent<VictoryScreenManager>(out VictoryScreenManager manager);
+            canAttack = false;
+            manager.menu.SetActive(true);
             bUIReference.SetActive(false);
             Destroy(gameObject);
+
         }
 
     }
