@@ -1,9 +1,9 @@
-Ôªøusing System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GridGenerator : MonoBehaviour
 {
-    public Vector2 gridWorldSize = new(400, 400);
+    public Vector2 gridWorldSize = new(402, 402); // Snaps perfectly centered locally to node size 6
     public float nodeRadius = 3f;
     public float checkDistance;
     public LayerMask unwalkableMask;
@@ -19,7 +19,7 @@ public class GridGenerator : MonoBehaviour
         gridSizeX = Mathf.FloorToInt(gridWorldSize.x / nodeDiameter);
         gridSizeY = Mathf.FloorToInt(gridWorldSize.y / nodeDiameter);
 
-        CreateGrid(); // ‚ùó D≈ÆLE≈ΩIT√â
+        CreateGrid(); // ? DŸLEéIT…
     }
 
     void CreateGrid()

@@ -66,6 +66,24 @@ public class PathFinding : MonoBehaviour
 
                 int newCost = currentNode.gCost + GetDistance(currentNode, neighbour);
 
+                // Add turn penalty to favor straight paths
+                if (currentNode.parent != null)
+                {
+                    Vector2 currentDir = new Vector2(currentNode.gridX - currentNode.parent.gridX, currentNode.gridY - currentNode.parent.gridY);
+                    Vector2 newDir = new Vector2(neighbour.gridX - currentNode.gridX, neighbour.gridY - currentNode.gridY);
+                    
+                    if (currentDir != newDir)
+                    {
+                        newCost += 5;
+                    }
+                }
+                
+                // Add a heavy penalty to unpaved nodes to encourage A* to merge into existing corridors!
+                if (!neighbour.isPaved)
+                {
+                    newCost += 50;
+                }
+
                 if (newCost < neighbour.gCost)
                 {
                     neighbour.gCost = newCost;
@@ -98,6 +116,10 @@ public class PathFinding : MonoBehaviour
                 return null;
             }
         }
+        
+        // Fix: Explicitly include the start node in the final path list
+        // Otherwise, MapGenerator won't spawn a floor tile directly outside the fromRoom door!
+        path.Add(start);
 
         path.Reverse();
         return path;

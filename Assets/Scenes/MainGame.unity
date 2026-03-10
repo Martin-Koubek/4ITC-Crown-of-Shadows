@@ -1356,10 +1356,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1514916654791210526, guid: 8c7723a23bc7a2548a31f1032e392f72, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1578192796702110584, guid: 8c7723a23bc7a2548a31f1032e392f72, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1711900708614767707, guid: 8c7723a23bc7a2548a31f1032e392f72, type: 3}
       propertyPath: mapGenerator
       value: 
       objectReference: {fileID: 1953768968}
+    - target: {fileID: 2616452550099149127, guid: 8c7723a23bc7a2548a31f1032e392f72, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4169174729678495788, guid: 8c7723a23bc7a2548a31f1032e392f72, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8132289317230323483, guid: 8c7723a23bc7a2548a31f1032e392f72, type: 3}
       propertyPath: m_Name
       value: Knight

@@ -12,6 +12,7 @@ public class Node
     public Node parent;
 
     public int fCost => gCost + hCost;
+    public bool isPaved = false;
 
     public Node(bool walkable, Vector3 worldPos, int x, int y)
     {

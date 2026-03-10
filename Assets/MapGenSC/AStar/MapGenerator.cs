@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Unity.AI.Navigation;
 using UnityEngine;
 
@@ -24,7 +24,6 @@ public class MapGenerator : MonoBehaviour
 
     [SerializeField] public List<Room> rooms = new List<Room>();
     [SerializeField] private GameObject _FloorTile;
-
     [SerializeField] public List<Room> spawnedRooms = new List<Room>();
     public List<GameObject> spawnedFloors = new List<GameObject>();
 
@@ -38,6 +37,7 @@ public class MapGenerator : MonoBehaviour
     private void Start()
     {
         NewFloor();
+        Physics.SyncTransforms();
         pathFinder.grid.RebuildGrid();
         CreateCorridors();
         _navMeshSurface.BuildNavMesh();
@@ -92,7 +92,12 @@ public class MapGenerator : MonoBehaviour
             int safetyNet = 0; // Pojistka
             do
             {
-                pos = new Vector3(rnd.Next(-100, 111), 0, rnd.Next(50, 150));
+                // Snap points to exactly multiples of 6 (assuming grid nodeRadius = 3 -> diameter = 6)
+                // This ensures all rooms spawn perfectly aligned with the A* nodes
+                int rx = rnd.Next(-17, 19) * 6;
+                int rz = rnd.Next(8, 25) * 6;
+                
+                pos = new Vector3(rx, 0, rz);
                 safetyNet++;
                 if (safetyNet > 100) break; // Pokud nenajde místo po 100 pokusech, prostě to zkusí tady
             }
@@ -112,6 +117,8 @@ public class MapGenerator : MonoBehaviour
         }
     }
 
+
+
     private void CreateCorridors()
     {
         // Smyčka přes všechny sousední místnosti
@@ -126,22 +133,57 @@ public class MapGenerator : MonoBehaviour
     }
     private void CreateCorridorBetween(Room fromRoom, Room toRoom)
     {
-        ConnectionPoint fromDoor = fromRoom.GetFreeConnectionPoint();
-        ConnectionPoint toDoor = toRoom.GetFreeConnectionPoint();
+        ConnectionPoint bestFromDoor = null;
+        ConnectionPoint bestToDoor = null;
+        float shortestDistance = float.MaxValue;
 
-        if (fromDoor == null || toDoor == null) return;
+        // Ensure connections points are loaded if they weren't somehow
+        if (fromRoom.connectionPoints.Count == 0) fromRoom.InicializujMistnost();
+        if (toRoom.connectionPoints.Count == 0) toRoom.InicializujMistnost();
 
-        fromDoor.used = true;
-        toDoor.used = true;
+        // Find the absolute closest pair of doors between these two rooms
+        foreach (var fDoor in fromRoom.connectionPoints)
+        {
+            if (fDoor.used) continue;
+            
+            foreach (var tDoor in toRoom.connectionPoints)
+            {
+                if (tDoor.used) continue;
+
+                float dist = Vector3.Distance(fDoor.transform.position, tDoor.transform.position);
+                if (dist < shortestDistance)
+                {
+                    shortestDistance = dist;
+                    bestFromDoor = fDoor;
+                    bestToDoor = tDoor;
+                }
+            }
+        }
+
+        if (bestFromDoor == null || bestToDoor == null) 
+        {
+            Debug.LogWarning($"No free doors between {fromRoom.name} and {toRoom.name}");
+            return;
+        }
+
+        bestFromDoor.used = true;
+        bestToDoor.used = true;
+
+        ConnectionPoint fromDoor = bestFromDoor;
+        ConnectionPoint toDoor = bestToDoor;
 
         Vector3 doorPosStart = fromDoor.transform.position;
-        Vector3 corridorStart = fromDoor.GetCorridorStart();
+        Vector3 corridorStart = doorPosStart; // The connection point is already perfectly spaced
 
         Vector3 doorPosEnd = toDoor.transform.position;
-        Vector3 corridorEnd = toDoor.GetCorridorStart();
-
-        FillGapWithTiles(doorPosStart, corridorStart);
-        FillGapWithTiles(doorPosEnd, corridorEnd);
+        Vector3 corridorEnd = doorPosEnd;
+        
+        // As you suggested, we just instantiate the tile EXACTLY at the connection point!
+        GameObject forceTile1 = Instantiate(_FloorTile, doorPosStart, Quaternion.identity, mapGen);
+        spawnedFloors.Add(forceTile1);
+        
+        GameObject forceTile2 = Instantiate(_FloorTile, doorPosEnd, Quaternion.identity, mapGen);
+        spawnedFloors.Add(forceTile2);
 
         Node startNode = pathFinder.grid.NodeFromWorldPoint(corridorStart);
         Node targetNode = pathFinder.grid.NodeFromWorldPoint(corridorEnd);
@@ -149,38 +191,29 @@ public class MapGenerator : MonoBehaviour
         if (targetNode != null) targetNode.walkable = true;
 
         var path = pathFinder.FindPath(corridorStart, corridorEnd);
-
-        path = pathFinder.FindPath(corridorStart, corridorEnd);
         if (path == null) Debug.LogWarning($"Cesta nenalezena mezi {fromRoom.name} a {toRoom.name}");
 
         if (path != null)
         {
             foreach (var node in path)
             {
-                GameObject newTile = Instantiate(_FloorTile, node.worldPos, Quaternion.identity, mapGen);
-                spawnedFloors.Add(newTile);
+                if (!node.isPaved)
+                {
+                    GameObject newTile = Instantiate(_FloorTile, node.worldPos, Quaternion.identity, mapGen);
+                    spawnedFloors.Add(newTile);
+                    node.isPaved = true;
+                }
             }
         }
     }
-    private void FillGapWithTiles(Vector3 start, Vector3 end)
-    {
-        float distance = Vector3.Distance(start, end);
-        int steps = Mathf.CeilToInt(distance / 2f);
 
-        for (int i = 0; i <= steps; i++)
-        {
-            Vector3 pos = Vector3.Lerp(start, end, (float)i / steps);
-            pos.y = 0;
-            GameObject newTile = Instantiate(_FloorTile, pos, Quaternion.identity, mapGen);
-            spawnedFloors.Add(newTile);
-        }
-    }
     public void NewFloorGen()
     {
         if (currentLevel == 3)
         {
             spawnedRooms.Clear();
             spawnedFloors.Clear();
+
             NewFloor();
             Physics.SyncTransforms();
             pathFinder.grid.RebuildGrid();
@@ -190,6 +223,7 @@ public class MapGenerator : MonoBehaviour
         {
             spawnedRooms.Clear();
             spawnedFloors.Clear();
+
 
             Room newStartRoom = Instantiate(startRoom, startRoomPos, Quaternion.identity, mapGen);
             newStartRoom.InicializujMistnost();
@@ -206,3 +240,4 @@ public class MapGenerator : MonoBehaviour
         }
     }
 }
+

@@ -9,7 +9,7 @@ public class Boss : MonoBehaviour
     public bool playerInRoom;
 
     public int basicHealth = 100;
-    private int _maxHealth = 200;
+    private float _maxHealth = 200f; // Changed to float
     public float curentHealth = 200;
 
     [SerializeField]
@@ -45,70 +45,87 @@ public class Boss : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.Find("Knight").transform;
-        player.TryGetComponent<BossUI>(out BossUI bossUI);
-        bUIReference = bossUI.UIReference;
-        ui = bossUI;
+        anim = GetComponent<Animator>(); // FIXED missing initialization
+        
+        GameObject p = GameObject.Find("Knight");
+        if (p != null)
+        {
+            player = p.transform;
+            if (player.TryGetComponent<BossUI>(out BossUI bossUI))
+            {
+                bUIReference = bossUI.UIReference;
+                ui = bossUI;
+            }
+        }
+        
         AnimatorHitId = Animator.StringToHash("cantAttack");
     }
 
     void Update()
     {
-        ui.curHealth.text = curentHealth.ToString();
-        ui.FillImage.fillAmount = curentHealth/_maxHealth;
+        if (ui != null && ui.curHealth != null && ui.FillImage != null)
+        {
+            ui.curHealth.text = curentHealth.ToString();
+            ui.FillImage.fillAmount = curentHealth / _maxHealth;
+        }
 
         if (playerInRoom)
         {
-            bUIReference.SetActive(true);
-            Vector3 playerPos = new Vector3(player.position.x, transform.position.y, player.position.z);
-            transform.LookAt(playerPos);
-            if (canAttack && !stuned)  
+            if (bUIReference != null) bUIReference.SetActive(true);
+            
+            if (player != null)
             {
-                AttackPlayer(); 
+                Vector3 playerPos = new Vector3(player.position.x, transform.position.y, player.position.z);
+                transform.LookAt(playerPos);
+                if (canAttack && !stuned)  
+                {
+                    AttackPlayer(); 
+                }
             }
-            else return;
         }
-        else return;
 
-        if(curentHealth <= 0)
+        if (curentHealth <= 0)
         {
-            player.TryGetComponent<VictoryScreenManager>(out VictoryScreenManager manager);
             canAttack = false;
-            manager.menu.SetActive(true);
-            bUIReference.SetActive(false);
+            if (player != null && player.TryGetComponent<VictoryScreenManager>(out VictoryScreenManager manager))
+            {
+                if (manager.menu != null) manager.menu.SetActive(true);
+            }
+            if (bUIReference != null) bUIReference.SetActive(false);
             Destroy(gameObject);
-
         }
-
     }
 
     private void AttackPlayer()
     {
         canAttack = false;
+        if (player == null || areaMarker == null || FireBall == null || FirePoint == null) return;
+        
         Vector3 areaSpot = new Vector3(player.position.x, 0, player.position.z);
         area = Instantiate(areaMarker);
         area.transform.position = areaSpot;
-        BossFireBall fireball;
-        fireball = Instantiate(FireBall, FirePoint.position, FirePoint.rotation);
-        fireball.TryGetComponent<Rigidbody>(out Rigidbody rig);
-        fireball.TryGetComponent<BossFireBall>(out BossFireBall fire);
-        fireball.transform.LookAt(areaSpot);
-
-        fire.dmg = dmg;
-        Vector3 direction = (areaSpot - FirePoint.position).normalized;
-
-        rig.AddForce(direction * shootForce, ForceMode.Impulse);
+        
+        BossFireBall fireball = Instantiate(FireBall, FirePoint.position, FirePoint.rotation);
+        
+        if (fireball.TryGetComponent<Rigidbody>(out Rigidbody rig) && fireball.TryGetComponent<BossFireBall>(out BossFireBall fire))
+        {
+            fireball.transform.LookAt(areaSpot);
+            fire.dmg = dmg;
+            Vector3 direction = (areaSpot - FirePoint.position).normalized;
+            rig.AddForce(direction * shootForce, ForceMode.Impulse);
+        }
     }
 
     public void KnockBack()
     {
-        anim.SetTrigger(AnimatorHitId);
+        if (anim != null) anim.SetTrigger(AnimatorHitId);
         stuned = true;
     }
+    
     public void EndStun()
     {
         stuned = false;
-        anim.ResetTrigger(AnimatorHitId);
+        if (anim != null) anim.ResetTrigger(AnimatorHitId);
     }
 
     public void StartAttackCooldown()
@@ -116,12 +133,11 @@ public class Boss : MonoBehaviour
         StartCoroutine(AttackCooldownRoutine());
     }
 
-    // Samotný odpoèet
+    // Samotne odpocet (removed czech accents to prevent encoding issues)
     private IEnumerator AttackCooldownRoutine()
     {
-        // canAttack je v tuhle chvíli false (nastaveno pøi výstøelu)
+        // canAttack je o tuhle chvili false (nastaveno pri vystrelu)
         yield return new WaitForSeconds(attackDelay);
-        canAttack = true; // Po uplynutí delaye boss mùže znovu útoèit
+        canAttack = true; // Po uplynuti delaye boss muze znovu utocit
     }
-
 }
