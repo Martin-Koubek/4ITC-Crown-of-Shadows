@@ -28,7 +28,7 @@ public class FireBall : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer == wall)
+        if (((1 << collision.gameObject.layer) & wall) != 0)
         {
             Destroy(gameObject);
         }
