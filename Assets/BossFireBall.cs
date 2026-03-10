@@ -1,3 +1,4 @@
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class BossFireBall : MonoBehaviour
@@ -16,7 +17,17 @@ public class BossFireBall : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        if (((1 << other.gameObject.layer) & floor) != 0)
+        if(other.gameObject.TryGetComponent<PlayerStats>(out PlayerStats playerStats))
+        {
+            _boss.gameObject.TryGetComponent<Boss>(out Boss boss);
+
+            playerStats.curentHealth -= dmg;
+            Destroy(boss.area);
+            Destroy(gameObject);
+            boss.StartAttackCooldown();
+        }
+
+        else if (((1 << other.gameObject.layer) & floor) != 0)
         {
             _boss.gameObject.TryGetComponent<Boss>(out Boss boss);
 
