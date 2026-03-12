@@ -30,7 +30,6 @@ public class Menu : MonoBehaviour
 
     private void Start()
     {
-        PlayerPrefs.DeleteAll();
         PlayedTutorial = PlayerPrefs.GetInt("playedTut");
     }
 
